@@ -12,8 +12,8 @@ export const About = () => {
             className="w-full aspect-[4/5] object-cover shadow-soft"
           />
           <div className="absolute -bottom-8 -right-4 md:-right-12 bg-background px-8 py-6 shadow-elegant max-w-[260px]">
-            <p className="font-display text-5xl text-primary">+10</p>
-            <p className="eyebrow mt-2">Años cuidando cuerpos en Murcia</p>
+            <p className="font-display text-5xl text-primary">Nuevo</p>
+            <p className="eyebrow mt-2">Espacio en Murcia · 2024</p>
           </div>
         </div>
 
@@ -30,8 +30,8 @@ export const About = () => {
               con un trato humano y cercano.
             </p>
             <p>
-              Trabajamos en grupos reducidos, con tiempo, escucha y un espacio
-              pensado para que dejes el ruido fuera. Aquí no hay prisas: hay método.
+              Un espacio nuevo en Murcia, pensado para que dejes el ruido fuera.
+              Aquí no hay prisas: hay método.
             </p>
           </div>
           <div className="mt-10 grid grid-cols-3 gap-6 pt-10 border-t border-border">
@@ -40,8 +40,8 @@ export const About = () => {
               <p className="eyebrow mt-2">Valoración Google</p>
             </div>
             <div>
-              <p className="font-display text-3xl text-primary">+2k</p>
-              <p className="eyebrow mt-2">Pacientes</p>
+              <p className="font-display text-3xl text-primary">Reformer</p>
+              <p className="eyebrow mt-2">Pilates máquina</p>
             </div>
             <div>
               <p className="font-display text-3xl text-primary">1:1</p>
