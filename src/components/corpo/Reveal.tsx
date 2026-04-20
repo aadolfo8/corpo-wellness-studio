@@ -5,14 +5,12 @@ export const Reveal = ({
   children,
   delay = 0,
   className = "",
-  as: Tag = "div",
 }: {
   children: React.ReactNode;
   delay?: number;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
 }) => {
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
@@ -32,13 +30,12 @@ export const Reveal = ({
   }, []);
 
   return (
-    <Tag
-      // @ts-expect-error generic ref
+    <div
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
       className={`reveal ${shown ? "in" : ""} ${className}`}
     >
       {children}
-    </Tag>
+    </div>
   );
 };
