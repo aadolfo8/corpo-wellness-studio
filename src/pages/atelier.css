@@ -1,0 +1,699 @@
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+.atelier-page {
+    --atelier-ink: #17191a;
+    --atelier-bone: #f3f0e7;
+    --atelier-paper: #e8e4d9;
+    --atelier-blue: #2945e8;
+    --atelier-line: rgba(23, 25, 26, .22);
+    background: var(--atelier-bone);
+    color: var(--atelier-ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    overflow: hidden;
+}
+
+.atelier-page a {
+    color: inherit;
+}
+
+.atelier-nav {
+    align-items: center;
+    border-bottom: 1px solid var(--atelier-line);
+    display: flex;
+    height: 78px;
+    justify-content: space-between;
+    padding: 0 4vw;
+}
+
+.atelier-logo {
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-size: 1.5rem;
+    letter-spacing: .12em;
+    text-decoration: none;
+}
+
+.atelier-nav nav {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.atelier-nav nav a,
+.atelier-nav-action,
+.atelier-location,
+.atelier-image-index,
+.atelier-opening-image figcaption,
+.atelier-info-strip,
+.atelier-footer,
+.atelier-section-title>p,
+.atelier-services-heading>p,
+.atelier-practice-copy>p:first-child,
+.atelier-visit>div>p,
+.atelier-service-number,
+.atelier-service-mark,
+.atelier-visit dt {
+    font-family: 'Azeret Mono', monospace;
+    font-size: .63rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.atelier-nav nav a,
+.atelier-nav-action {
+    text-decoration: none;
+    transition: color .25s ease;
+}
+
+.atelier-nav nav a:hover,
+.atelier-nav-action:hover,
+.atelier-footer a:hover {
+    color: var(--atelier-blue);
+}
+
+.atelier-nav-action span,
+.atelier-primary-action span,
+.atelier-text-link span {
+    color: var(--atelier-blue);
+    font-size: 1.15em;
+}
+
+.atelier-opening {
+    display: grid;
+    grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr);
+    min-height: calc(100svh - 78px);
+    padding: 5vw 4vw 4vw;
+    position: relative;
+}
+
+.atelier-opening-copy {
+    align-self: center;
+    max-width: 620px;
+    padding: 4vw 4vw 5vw 0;
+}
+
+.atelier-location {
+    color: var(--atelier-blue);
+    margin: 0 0 2.2rem;
+}
+
+.atelier-opening h1,
+.atelier-section-title h2,
+.atelier-services-heading h2,
+.atelier-practice-copy h2,
+.atelier-visit h2 {
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -.065em;
+    line-height: .89;
+    margin: 0;
+}
+
+.atelier-opening h1 {
+    font-size: clamp(4rem, 8vw, 8rem);
+}
+
+.atelier-page em {
+    color: var(--atelier-blue);
+    font-style: italic;
+}
+
+.atelier-lead {
+    font-size: clamp(1rem, 1.45vw, 1.25rem);
+    line-height: 1.5;
+    margin: 2.2rem 0 2.8rem;
+    max-width: 440px;
+}
+
+.atelier-primary-action {
+    align-items: center;
+    background: var(--atelier-ink);
+    color: var(--atelier-bone) !important;
+    display: inline-flex;
+    font-family: 'Azeret Mono', monospace;
+    font-size: .65rem;
+    gap: 1.8rem;
+    letter-spacing: .07em;
+    min-height: 48px;
+    padding: 0 1.3rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background .25s ease, transform .25s ease;
+}
+
+.atelier-primary-action:hover {
+    background: var(--atelier-blue);
+    transform: translateY(-2px);
+}
+
+.atelier-opening-image {
+    align-self: center;
+    margin: 0;
+    max-width: 720px;
+    padding: 18px;
+    position: relative;
+    width: 100%;
+}
+
+.atelier-opening-image::before {
+    border: 1px solid var(--atelier-ink);
+    content: '';
+    inset: 0;
+    position: absolute;
+    transform: rotate(1.2deg);
+}
+
+.atelier-opening-image img {
+    aspect-ratio: 4 / 5;
+    display: block;
+    height: auto;
+    object-fit: cover;
+    position: relative;
+    width: 100%;
+}
+
+.atelier-image-index {
+    background: var(--atelier-bone);
+    left: -2px;
+    padding: .5rem .75rem;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.atelier-opening-image figcaption {
+    bottom: -1rem;
+    left: 2rem;
+    position: absolute;
+}
+
+.atelier-vertical-label {
+    bottom: 4vw;
+    font-family: 'Azeret Mono', monospace;
+    font-size: .62rem;
+    letter-spacing: .1em;
+    margin: 0;
+    position: absolute;
+    right: 1rem;
+    text-transform: uppercase;
+    transform: rotate(-90deg);
+    transform-origin: right top;
+}
+
+.atelier-info-strip {
+    align-items: center;
+    background: var(--atelier-blue);
+    color: var(--atelier-bone);
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 4vw;
+}
+
+.atelier-info-strip span:last-child {
+    color: #fff;
+}
+
+.atelier-studio {
+    display: grid;
+    gap: 5vw;
+    grid-template-columns: minmax(230px, .55fr) 1.45fr;
+    padding: clamp(6rem, 12vw, 13rem) 8vw;
+}
+
+.atelier-section-title h2,
+.atelier-services-heading h2,
+.atelier-practice-copy h2,
+.atelier-visit h2 {
+    font-size: clamp(3.5rem, 6vw, 6.6rem);
+}
+
+.atelier-section-title>p,
+.atelier-services-heading>p,
+.atelier-practice-copy>p:first-child,
+.atelier-visit>div>p {
+    color: var(--atelier-blue);
+    margin: 0 0 1.5rem;
+}
+
+.atelier-studio-content {
+    display: grid;
+    gap: 5vw;
+    grid-template-columns: minmax(270px, .85fr) 1fr;
+}
+
+.atelier-studio-image {
+    position: relative;
+}
+
+.atelier-studio-image img {
+    aspect-ratio: 3 / 4;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+}
+
+.atelier-studio-image span {
+    bottom: -1.4rem;
+    font-family: 'Azeret Mono', monospace;
+    font-size: .61rem;
+    left: 0;
+    letter-spacing: .08em;
+    position: absolute;
+    text-transform: uppercase;
+}
+
+.atelier-studio-copy {
+    align-self: end;
+    max-width: 410px;
+    padding-bottom: 1rem;
+}
+
+.atelier-large-copy {
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-size: clamp(1.8rem, 3vw, 2.7rem);
+    letter-spacing: -.04em;
+    line-height: 1.03;
+    margin: 0 0 2rem;
+}
+
+.atelier-studio-copy>p:not(.atelier-large-copy) {
+    line-height: 1.65;
+    margin: 0 0 1.1rem;
+}
+
+.atelier-text-link {
+    border-bottom: 1px solid currentColor;
+    display: inline-flex;
+    font-family: 'Azeret Mono', monospace;
+    font-size: .65rem;
+    gap: 1rem;
+    letter-spacing: .05em;
+    margin-top: 1.5rem;
+    padding-bottom: .45rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.atelier-text-link:hover {
+    color: var(--atelier-blue);
+}
+
+.atelier-services {
+    background: var(--atelier-paper);
+    display: grid;
+    gap: 5vw;
+    grid-template-columns: minmax(230px, .55fr) 1.45fr;
+    padding: clamp(6rem, 12vw, 13rem) 8vw;
+}
+
+.atelier-service-list {
+    border-top: 1px solid var(--atelier-line);
+}
+
+.atelier-service-row {
+    align-items: center;
+    border-bottom: 1px solid var(--atelier-line);
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 2.2rem 1fr minmax(200px, .9fr) 1rem;
+    min-height: 145px;
+    position: relative;
+}
+
+.atelier-service-number,
+.atelier-service-mark {
+    color: var(--atelier-blue);
+}
+
+.atelier-service-name {
+    align-items: center;
+    display: flex;
+    gap: 1.25rem;
+}
+
+.atelier-service-name h3 {
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.35rem);
+    font-weight: 400;
+    letter-spacing: -.045em;
+    line-height: 1;
+    margin: 0;
+}
+
+.atelier-service-name img {
+    height: 62px;
+    object-fit: cover;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity .35s ease, transform .35s ease;
+    width: 82px;
+}
+
+.atelier-service-row:hover .atelier-service-name img,
+.atelier-service-row:focus-within .atelier-service-name img {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.atelier-service-row>p {
+    font-size: .85rem;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 300px;
+}
+
+.atelier-service-mark {
+    font-size: 1.1rem;
+}
+
+.atelier-practice {
+    background: var(--atelier-ink);
+    color: var(--atelier-bone);
+    display: grid;
+    gap: 6vw;
+    grid-template-columns: .85fr 1.15fr;
+    padding: clamp(6rem, 12vw, 13rem) 8vw;
+}
+
+.atelier-practice-copy h2 {
+    color: var(--atelier-bone);
+}
+
+.atelier-practice-copy>p:first-child {
+    color: #7990ff;
+}
+
+.atelier-practice-lead {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    margin: 2.5rem 0 0;
+    max-width: 330px;
+}
+
+.atelier-practice-notes {
+    border-top: 1px solid rgba(243, 240, 231, .3);
+}
+
+.atelier-practice-notes>div {
+    align-items: start;
+    border-bottom: 1px solid rgba(243, 240, 231, .3);
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 2rem 1fr 1fr;
+    padding: 2rem 0;
+}
+
+.atelier-practice-notes span {
+    color: #7990ff;
+    font-family: 'Azeret Mono', monospace;
+    font-size: .65rem;
+}
+
+.atelier-practice-notes strong {
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: -.04em;
+}
+
+.atelier-practice-notes p {
+    color: rgba(243, 240, 231, .7);
+    font-size: .85rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.atelier-visit {
+    background: var(--atelier-blue);
+    color: var(--atelier-bone);
+    display: grid;
+    gap: 6vw;
+    grid-template-columns: .9fr 1.1fr;
+    padding: clamp(6rem, 12vw, 13rem) 8vw 7rem;
+}
+
+.atelier-visit>div>p {
+    color: var(--atelier-bone);
+}
+
+.atelier-visit h2 em {
+    color: #b8c3ff;
+}
+
+.atelier-visit-details {
+    align-self: end;
+    max-width: 500px;
+}
+
+.atelier-visit-details>p {
+    font-size: clamp(1.15rem, 2vw, 1.6rem);
+    line-height: 1.45;
+    margin: 0 0 2.5rem;
+}
+
+.atelier-visit-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.atelier-visit .atelier-primary-action {
+    background: var(--atelier-bone);
+    color: var(--atelier-ink) !important;
+}
+
+.atelier-visit .atelier-primary-action:hover {
+    background: var(--atelier-ink);
+    color: var(--atelier-bone) !important;
+}
+
+.atelier-visit .atelier-text-link {
+    color: var(--atelier-bone);
+}
+
+.atelier-visit dl {
+    border-top: 1px solid rgba(243, 240, 231, .45);
+    margin: 5rem 0 0;
+}
+
+.atelier-visit dl>div {
+    border-bottom: 1px solid rgba(243, 240, 231, .45);
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 7rem 1fr;
+    padding: 1.25rem 0;
+}
+
+.atelier-visit dt {
+    color: #b8c3ff;
+}
+
+.atelier-visit dd {
+    font-size: .85rem;
+    line-height: 1.55;
+    margin: 0;
+}
+
+.atelier-visit a {
+    color: inherit;
+}
+
+.atelier-footer {
+    align-items: center;
+    background: var(--atelier-ink);
+    color: var(--atelier-bone);
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    padding: 2rem 4vw;
+}
+
+.atelier-footer a {
+    text-decoration: none;
+}
+
+@media (max-width: 800px) {
+    .atelier-nav {
+        height: 64px;
+        padding: 0 1.25rem;
+    }
+
+    .atelier-nav nav {
+        display: none;
+    }
+
+    .atelier-nav-action {
+        font-size: .58rem;
+    }
+
+    .atelier-opening {
+        display: block;
+        min-height: auto;
+        padding: 4rem 1.25rem 5rem;
+    }
+
+    .atelier-opening-copy {
+        padding: 0 0 4rem;
+    }
+
+    .atelier-opening h1 {
+        font-size: clamp(3.7rem, 17vw, 6rem);
+    }
+
+    .atelier-opening-image {
+        margin-left: .75rem;
+        max-width: none;
+        width: calc(100% - .75rem);
+    }
+
+    .atelier-opening-image figcaption {
+        bottom: -1.25rem;
+        left: 0;
+    }
+
+    .atelier-vertical-label {
+        display: none;
+    }
+
+    .atelier-info-strip {
+        align-items: start;
+        flex-direction: column;
+        gap: .65rem;
+        padding: 1.2rem 1.25rem;
+    }
+
+    .atelier-studio,
+    .atelier-services,
+    .atelier-practice,
+    .atelier-visit {
+        display: block;
+        padding: 5.5rem 1.25rem;
+    }
+
+    .atelier-section-title,
+    .atelier-services-heading {
+        margin-bottom: 3.5rem;
+    }
+
+    .atelier-section-title h2,
+    .atelier-services-heading h2,
+    .atelier-practice-copy h2,
+    .atelier-visit h2 {
+        font-size: clamp(3.5rem, 16vw, 5.8rem);
+    }
+
+    .atelier-studio-content {
+        display: block;
+    }
+
+    .atelier-studio-image {
+        margin: 0 0 4.5rem;
+        width: 84%;
+    }
+
+    .atelier-studio-copy {
+        max-width: none;
+    }
+
+    .atelier-service-row {
+        gap: .75rem;
+        grid-template-columns: 1.5rem 1fr 1rem;
+        padding: 1.5rem 0;
+    }
+
+    .atelier-service-name {
+        display: block;
+    }
+
+    .atelier-service-name img {
+        display: none;
+    }
+
+    .atelier-service-row>p {
+        grid-column: 2 / 4;
+        max-width: none;
+    }
+
+    .atelier-practice-copy {
+        margin-bottom: 4rem;
+    }
+
+    .atelier-practice-notes>div {
+        gap: .75rem;
+        grid-template-columns: 1.5rem 1fr;
+    }
+
+    .atelier-practice-notes p {
+        grid-column: 2;
+    }
+
+    .atelier-visit-details {
+        margin-top: 4rem;
+    }
+
+    .atelier-visit dl {
+        margin-top: 4rem;
+    }
+
+    .atelier-visit dl>div {
+        gap: 1rem;
+        grid-template-columns: 5.5rem 1fr;
+    }
+
+    .atelier-footer {
+        align-items: start;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 2rem 1.25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .atelier-page *,
+    .atelier-page *::before,
+    .atelier-page *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+.atelier-page a:focus-visible {
+    outline: 2px solid var(--atelier-blue);
+    outline-offset: 4px;
+}
+
+.atelier-service-name img,
+.atelier-service-row:hover .atelier-service-name img,
+.atelier-service-row:focus-within .atelier-service-name img {
+    opacity: 1;
+    transform: none;
+}
+
+.atelier-practice-notes h3 {
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: -.04em;
+    margin: 0;
+}
+
+@media (max-width: 800px) {
+    .atelier-nav nav {
+        display: flex;
+        gap: .75rem;
+    }
+
+    .atelier-nav nav a {
+        font-size: .51rem;
+    }
+
+    .atelier-nav-action {
+        display: none;
+    }
+
+    .atelier-practice-notes h3 {
+        grid-column: 2;
+    }
+}
