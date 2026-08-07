@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const links = [
   { href: "#servicios", label: "Servicios" },
@@ -25,9 +26,9 @@ export const Navbar = () => {
       }`}
     >
       <nav className="container-editorial flex items-center justify-between py-5">
-        <a href="#" className="font-display text-2xl tracking-[0.3em] text-foreground">
+        <Link to="/" className="font-display text-2xl tracking-[0.3em] text-foreground">
           CORPO
-        </a>
+        </Link>
         <ul className="hidden md:flex items-center gap-10">
           {links.map((l) => (
             <li key={l.href}>

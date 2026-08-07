@@ -1,0 +1,403 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700;800&display=swap');
+
+.motion-page {
+    background: #e9e6dc;
+    color: #151515;
+    font-family: 'Syne', sans-serif;
+    overflow: hidden;
+}
+
+.motion-nav {
+    align-items: center;
+    background: #151515;
+    color: #f4f1e8;
+    display: flex;
+    height: 72px;
+    justify-content: space-between;
+    padding: 0 4vw;
+    position: relative;
+    z-index: 2;
+}
+
+.motion-mark {
+    color: inherit;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: -.08em;
+    text-decoration: none;
+}
+
+.motion-mark span {
+    color: #eaff00;
+}
+
+.motion-nav nav {
+    display: flex;
+    gap: 2.2rem;
+}
+
+.motion-nav a {
+    color: inherit;
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .08em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.motion-nav a:hover {
+    color: #eaff00;
+}
+
+.motion-nav-cta span {
+    color: #eaff00;
+    font-size: 1rem;
+}
+
+.motion-hero {
+    height: min(790px, calc(100svh - 72px));
+    min-height: 600px;
+    position: relative;
+}
+
+.motion-hero>img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center 55%;
+    position: absolute;
+    width: 100%;
+}
+
+.motion-hero-overlay {
+    background: linear-gradient(90deg, rgba(10, 11, 9, .82), rgba(10, 11, 9, .22) 68%, rgba(10, 11, 9, .6));
+    inset: 0;
+    position: absolute;
+}
+
+.motion-hero-copy {
+    bottom: 7vw;
+    color: #f4f1e8;
+    left: 4vw;
+    position: absolute;
+}
+
+.motion-kicker {
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .12em;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.motion-hero h1,
+.motion-section-heading h2,
+.motion-method h2,
+.motion-statement h2,
+.motion-contact h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(4rem, 10vw, 10rem);
+    letter-spacing: -.09em;
+    line-height: .8;
+    margin: 1.2rem 0 0;
+}
+
+.motion-hero h1 {
+    max-width: 850px;
+}
+
+.motion-intro {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    line-height: 1.4;
+    margin: 2rem 0;
+    max-width: 360px;
+}
+
+.motion-circle-link {
+    align-items: center;
+    background: #eaff00;
+    border-radius: 50%;
+    color: #151515;
+    display: flex;
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    font-weight: 500;
+    height: 116px;
+    justify-content: center;
+    letter-spacing: .06em;
+    line-height: 1.35;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: transform .3s ease;
+    width: 116px;
+}
+
+.motion-circle-link:hover {
+    transform: rotate(-10deg) scale(1.08);
+}
+
+.motion-circle-link span {
+    font-size: 1.2rem;
+    margin-left: .35rem;
+}
+
+.motion-side-label {
+    bottom: 5rem;
+    color: #f4f1e8;
+    font-family: 'DM Mono', monospace;
+    font-size: .62rem;
+    letter-spacing: .12em;
+    position: absolute;
+    right: -2rem;
+    text-transform: uppercase;
+    transform: rotate(-90deg);
+}
+
+.motion-programs {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: minmax(260px, .8fr) 1.2fr;
+    padding: clamp(5rem, 11vw, 11rem) 4vw;
+}
+
+.motion-section-heading h2 {
+    font-size: clamp(3.5rem, 6vw, 6.6rem);
+}
+
+.motion-page em {
+    color: #ea351a;
+    font-style: normal;
+}
+
+.motion-program-list {
+    border-top: 2px solid #151515;
+}
+
+.motion-program {
+    align-items: start;
+    border-bottom: 1px solid #8d8c86;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 3.2rem 1fr minmax(180px, .85fr) 1.5rem;
+    padding: 2.4rem 0;
+}
+
+.motion-program>span:first-child,
+.motion-arrow {
+    font-family: 'DM Mono', monospace;
+    font-size: .68rem;
+}
+
+.motion-program h3 {
+    font-size: clamp(1.5rem, 2.5vw, 2.55rem);
+    letter-spacing: -.07em;
+    line-height: 1;
+    margin: 0;
+}
+
+.motion-program p {
+    font-size: .9rem;
+    line-height: 1.55;
+    margin: 0;
+}
+
+.motion-arrow {
+    font-size: 1.4rem;
+    transition: transform .25s;
+}
+
+.motion-program:hover .motion-arrow {
+    transform: translate(4px, -4px);
+}
+
+.motion-method {
+    background: #151515;
+    color: #f4f1e8;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.motion-method-image {
+    min-height: 670px;
+}
+
+.motion-method-image img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.motion-method-copy {
+    align-self: center;
+    padding: 6vw;
+}
+
+.motion-method h2 {
+    font-size: clamp(3.8rem, 7vw, 7rem);
+}
+
+.motion-method-copy>p:not(.motion-kicker) {
+    font-size: 1.1rem;
+    line-height: 1.55;
+    margin-top: 2.4rem;
+    max-width: 420px;
+}
+
+.motion-steps {
+    border-top: 1px solid #5d5d58;
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 4rem;
+    padding-top: 1rem;
+}
+
+.motion-steps span {
+    font-family: 'DM Mono', monospace;
+    font-size: .7rem;
+}
+
+.motion-steps span::before {
+    color: #eaff00;
+    content: '• ';
+}
+
+.motion-statement {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 660px;
+}
+
+.motion-statement img {
+    height: 100%;
+    min-height: 660px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.motion-statement>div {
+    padding: 4vw;
+}
+
+.motion-statement h2 {
+    font-size: clamp(3.8rem, 7vw, 7rem);
+}
+
+.motion-contact {
+    background: #eaff00;
+    min-height: 600px;
+    padding: clamp(5rem, 11vw, 10rem) 4vw 4vw;
+    position: relative;
+}
+
+.motion-contact h2 {
+    font-size: clamp(4rem, 9vw, 9rem);
+}
+
+.motion-contact>a {
+    align-items: center;
+    background: #151515;
+    border-radius: 50%;
+    bottom: 4vw;
+    color: #f4f1e8;
+    display: flex;
+    font-family: 'DM Mono', monospace;
+    font-size: .8rem;
+    height: 155px;
+    justify-content: center;
+    position: absolute;
+    right: 4vw;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 155px;
+}
+
+.motion-contact>a span {
+    color: #eaff00;
+    font-size: 1.5rem;
+    margin-left: .5rem;
+}
+
+.motion-contact-details {
+    bottom: 4vw;
+    font-family: 'DM Mono', monospace;
+    font-size: .7rem;
+    line-height: 1.65;
+    margin: 0;
+    position: absolute;
+}
+
+@media (max-width: 760px) {
+    .motion-nav {
+        height: 62px;
+        padding: 0 1.25rem;
+    }
+
+    .motion-nav nav {
+        display: none;
+    }
+
+    .motion-hero {
+        height: calc(100svh - 62px);
+        min-height: 560px;
+    }
+
+    .motion-hero-copy {
+        bottom: 3rem;
+        left: 1.25rem;
+    }
+
+    .motion-side-label {
+        display: none;
+    }
+
+    .motion-programs,
+    .motion-method,
+    .motion-statement {
+        display: block;
+    }
+
+    .motion-programs {
+        padding: 5rem 1.25rem;
+    }
+
+    .motion-section-heading {
+        margin-bottom: 3.5rem;
+    }
+
+    .motion-program {
+        grid-template-columns: 2rem 1fr 1.25rem;
+    }
+
+    .motion-program p {
+        grid-column: 2 / 4;
+    }
+
+    .motion-method-image,
+    .motion-statement img {
+        min-height: 420px;
+    }
+
+    .motion-method-copy,
+    .motion-statement>div {
+        padding: 4rem 1.25rem;
+    }
+
+    .motion-contact {
+        min-height: 610px;
+        padding: 5rem 1.25rem;
+    }
+
+    .motion-contact>a {
+        bottom: 7rem;
+        right: 1.25rem;
+    }
+
+    .motion-contact-details {
+        bottom: 2rem;
+    }
+
+    .motion-steps {
+        gap: 1rem;
+        justify-content: space-between;
+    }
+}
