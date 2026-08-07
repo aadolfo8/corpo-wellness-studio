@@ -7,45 +7,44 @@ export const About = () => {
         <div className="md:col-span-6 relative">
           <img
             src={about}
-            alt="Interior del estudio CORPO en Murcia"
+            alt="Sala luminosa con camilla y plantas"
             loading="lazy"
             className="w-full aspect-[4/5] object-cover shadow-soft"
           />
           <div className="absolute -bottom-8 -right-4 md:-right-12 bg-background px-8 py-6 shadow-elegant max-w-[260px]">
-            <p className="font-display text-5xl text-primary">Nuevo</p>
-            <p className="eyebrow mt-2">Espacio en Murcia · 2024</p>
+            <p className="font-display text-4xl text-primary">Ronda Sur</p>
+            <p className="eyebrow mt-2">Murcia</p>
           </div>
         </div>
 
         <div className="md:col-span-6 md:pl-10">
           <p className="eyebrow mb-6">— Sobre CORPO</p>
           <h2 className="font-display text-4xl md:text-5xl leading-[1.05] text-balance mb-8">
-            Una clínica donde la ciencia
-            <span className="font-display-italic text-primary"> se mueve despacio</span> y mira de cerca.
+            Un espacio cercano para
+            <span className="font-display-italic text-primary"> cuidar el cuerpo</span> de forma personal.
           </h2>
           <div className="space-y-5 text-muted-foreground leading-relaxed">
             <p>
-              Nacimos con una idea sencilla: tratar a cada persona como única.
-              Nuestro equipo de fisioterapeutas combina la mejor evidencia clínica
-              con un trato humano y cercano.
+              Corpo reúne fisioterapia avanzada, Pilates Máquina y recuperación en
+              un entorno cercano de Ronda Sur, Murcia.
             </p>
             <p>
-              Un espacio nuevo en Murcia, pensado para que dejes el ruido fuera.
-              Aquí no hay prisas: hay método.
+              La atención y la progresión se adaptan a cada persona, con o sin una
+              lesión concreta.
             </p>
           </div>
-          <div className="mt-10 grid grid-cols-3 gap-6 pt-10 border-t border-border">
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 border-t border-border">
             <div>
-              <p className="font-display text-3xl text-primary">5★</p>
-              <p className="eyebrow mt-2">Valoración Google</p>
+              <p className="font-display text-2xl text-primary">Fisioterapia</p>
+              <p className="eyebrow mt-2">Avanzada</p>
             </div>
             <div>
-              <p className="font-display text-3xl text-primary">Reformer</p>
-              <p className="eyebrow mt-2">Pilates máquina</p>
+              <p className="font-display text-2xl text-primary">Pilates</p>
+              <p className="eyebrow mt-2">Máquina</p>
             </div>
             <div>
-              <p className="font-display text-3xl text-primary">1:1</p>
-              <p className="eyebrow mt-2">Atención</p>
+              <p className="font-display text-2xl text-primary">Atención</p>
+              <p className="eyebrow mt-2">Personalizada</p>
             </div>
           </div>
         </div>

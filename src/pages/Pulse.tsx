@@ -4,44 +4,50 @@ import heroReformer from "@/assets/hero-reformer.jpg";
 import fisio from "@/assets/service-fisio.jpg";
 import pilates from "@/assets/service-pilates.jpg";
 import recovery from "@/assets/service-recovery.jpg";
+import { corpo } from "@/lib/corpo";
 import "./pulse.css";
-
-const bookingUrl = "https://appclinicacorpo.viday.es/";
-const whatsappUrl = "https://api.whatsapp.com/send?phone=34624060340&text=Hola%20Corpo%2C%20me%20gustar%C3%ADa%20pedir%20cita.";
-const mapsUrl = "https://www.google.com/maps/place/?q=place_id:ChIJCd3Qckl5Yw0R4g0ilsJ_AZ4";
 
 const needs = [
   {
     id: "entender",
-    label: "Entender algo que me pasa",
-    title: "Empieza por una valoración",
-    text: "Hablamos de lo que ocurre, revisamos tu movilidad y elegimos el tratamiento que tiene sentido para tu momento.",
+    label: "Quiero consultar fisioterapia",
+    title: "Fisioterapia avanzada",
+    text: "Fisioterapia avanzada con atención personalizada.",
     service: "Fisioterapia avanzada",
     image: fisio,
+    imageAlt: "Manos durante un trabajo corporal",
   },
   {
     id: "mover",
-    label: "Volver a moverme mejor",
-    title: "Construye una práctica",
-    text: "Pilates Máquina te permite trabajar fuerza, control y movilidad con una guía profesional y progresiva.",
+    label: "Me interesa el movimiento guiado",
+    title: "Pilates Máquina",
+    text: "Pilates Máquina con una progresión adaptada a cada persona.",
     service: "Pilates Máquina",
     image: pilates,
+    imageAlt: "Persona utilizando una máquina de Pilates",
   },
   {
     id: "cuidar",
-    label: "Cuidarme antes de parar",
-    title: "Haz espacio para tu cuerpo",
-    text: "Un acompañamiento personalizado para mantenerte activo, recuperar confianza y cuidar tus hábitos de movimiento.",
+    label: "Quiero consultar recuperación",
+    title: "Recuperación",
+    text: "Recuperación con atención personalizada.",
     service: "Recuperación",
     image: recovery,
+    imageAlt: "Toalla y recipientes sobre una superficie iluminada",
   },
 ];
 
 const faqs = [
-  ["¿Necesito experiencia previa?", "No. Si es tu primera vez, empezamos por la técnica, la respiración y ejercicios sencillos."],
-  ["¿Y si tengo dolor?", "Lo más prudente es pedir orientación antes de empezar. Desde ahí decidimos si conviene fisioterapia, ejercicio guiado o Pilates Máquina adaptado."],
-  ["¿Dónde está Corpo?", "En C. Pedáneo José Sánchez Mompeán, 16, Bajo, 30010 San Benito - Patiño, Murcia."],
+  ["¿Esta guía recomienda un tratamiento?", "No. Solo organiza servicios confirmados y te lleva a un canal de contacto."],
+  ["¿Qué servicios ofrece Corpo?", "Fisioterapia avanzada, Pilates Máquina, terapia manual, ondas de choque, diatermia, presoterapia y recuperación."],
+  ["¿Dónde está Corpo?", `En ${corpo.address}.`],
 ];
+
+const getContextualWhatsappUrl = (selection: string) => {
+  const url = new URL(corpo.whatsappUrl);
+  url.searchParams.set("text", `Hola Corpo, me gustaría orientarme sobre: ${selection}.`);
+  return url.toString();
+};
 
 const Pulse = () => {
   const [selectedNeed, setSelectedNeed] = useState(needs[0]);
@@ -52,28 +58,28 @@ const Pulse = () => {
   };
 
   const handleNeedKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
-    if (!["ArrowDown", "ArrowRight", "ArrowUp", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+    if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
     event.preventDefault();
     const nextIndex = event.key === "Home"
       ? 0
       : event.key === "End"
         ? needs.length - 1
-        : (index + (event.key === "ArrowDown" || event.key === "ArrowRight" ? 1 : -1) + needs.length) % needs.length;
+        : (index + (event.key === "ArrowDown" ? 1 : -1) + needs.length) % needs.length;
     selectNeed(nextIndex);
   };
 
   return (
     <main className="pulse-page">
       <header className="pulse-header">
-        <Link to="/" className="pulse-logo" aria-label="Volver a propuestas">CORPO<span>+</span></Link>
+        <Link to="/#proposal-pulse" className="pulse-logo" aria-label="Volver a la propuesta Pulse">CORPO<span>+</span></Link>
         <p className="pulse-status"><span aria-hidden="true" /> Clínica de fisioterapia en Murcia</p>
-        <a href={whatsappUrl} target="_blank" rel="noreferrer" className="pulse-header-action">Hablar ahora <span aria-hidden="true">↗</span></a>
+        <a href={corpo.whatsappUrl} target="_blank" rel="noreferrer" className="pulse-header-action" aria-label="Hablar por WhatsApp (nueva pestaña)">Hablar ahora <span aria-hidden="true">↗</span></a>
       </header>
 
       <section className="pulse-cover" aria-labelledby="pulse-title">
         <div className="pulse-cover-image">
-          <img src={heroReformer} alt="Sala de Pilates Reformer de Corpo" />
-          <span>Corpo / Archivo</span>
+          <img src={heroReformer} alt="Máquina de Pilates en una sala luminosa" />
+          <span>Corpo / Movimiento</span>
         </div>
         <div className="pulse-cover-copy">
           <p className="pulse-label">CORPO / UNA CLÍNICA PARA MOVERTE MEJOR</p>
@@ -88,9 +94,9 @@ const Pulse = () => {
         <div className="pulse-selector-intro">
           <p className="pulse-label">Una pregunta rápida</p>
           <h2 id="selector-title">¿Qué te trae<br /><em>hoy?</em></h2>
-          <p>No hace falta que sepas qué servicio necesitas. Elige lo que más se parece a tu momento y te orientamos.</p>
+          <p>Esta guía no hace una recomendación clínica. Solo te ayuda a localizar un servicio confirmado y abrir el canal que prefieras.</p>
         </div>
-        <div className="pulse-need-list" role="tablist" aria-label="Motivo de visita">
+        <div className="pulse-need-list" role="tablist" aria-label="Orientación de servicios" aria-orientation="vertical">
           {needs.map((need, index) => (
             <button
               key={need.id}
@@ -108,13 +114,18 @@ const Pulse = () => {
             </button>
           ))}
         </div>
-        <article id="pulse-need-answer" className="pulse-answer" role="tabpanel" aria-labelledby={`pulse-need-${selectedNeed.id}`} aria-live="polite">
-          <img src={selectedNeed.image} alt="" />
+        <article id="pulse-need-answer" className="pulse-answer" role="tabpanel" aria-labelledby={`pulse-need-${selectedNeed.id}`} aria-live="polite" aria-atomic="true">
+          <img src={selectedNeed.image} alt={selectedNeed.imageAlt} loading="lazy" />
           <div>
-            <p className="pulse-label">Tu posible punto de partida</p>
+            <p className="pulse-label">Orientación, no recomendación clínica</p>
+            <p className="pulse-answer-context">Has elegido: {selectedNeed.label}</p>
             <h3>{selectedNeed.title}</h3>
             <p>{selectedNeed.text}</p>
             <span className="pulse-answer-service">{selectedNeed.service}</span>
+            <div className="pulse-answer-actions">
+              <a href={getContextualWhatsappUrl(selectedNeed.label)} target="_blank" rel="noreferrer" aria-label={`Consultar por WhatsApp sobre ${selectedNeed.label} (nueva pestaña)`}>Contarlo por WhatsApp <span aria-hidden="true">↗</span></a>
+              <a href={corpo.bookingUrl} target="_blank" rel="noreferrer" aria-label="Reservar online (nueva pestaña)">Reservar online <span aria-hidden="true">↗</span></a>
+            </div>
           </div>
         </article>
       </section>
@@ -122,12 +133,12 @@ const Pulse = () => {
       <section className="pulse-route" aria-labelledby="route-title">
         <div className="pulse-route-title">
           <p className="pulse-label">Una ruta clara</p>
-          <h2 id="route-title">Del “no sé<br /><em>por dónde</em><br />empezar”.</h2>
+          <h2 id="route-title">De la duda<br /><em>a un canal</em><br />directo.</h2>
         </div>
-        <ol className="pulse-route-line" aria-label="Proceso de Corpo">
-          <li><span>01</span><h3>Escuchar</h3><p>Qué ocurre, desde cuándo y qué quieres recuperar.</p></li>
-          <li><span>02</span><h3>Valorar</h3><p>Movilidad, dolor, hábitos y objetivos reales.</p></li>
-          <li><span>03</span><h3>Acompañar</h3><p>Un plan adaptado que puedas sostener.</p></li>
+        <ol className="pulse-route-line" aria-label="Formas de continuar con Corpo">
+          <li><span>01</span><h3>Orientarte</h3><p>Consulta los servicios confirmados de Corpo.</p></li>
+          <li><span>02</span><h3>Contactar</h3><p>Escribe por WhatsApp o email, o llama por teléfono.</p></li>
+          <li><span>03</span><h3>Reservar</h3><p>Elige una cita desde la reserva online.</p></li>
         </ol>
       </section>
 
@@ -153,17 +164,18 @@ const Pulse = () => {
           <p>Estamos en Ronda Sur. Puedes reservar directamente o escribirnos antes si prefieres contarnos tu caso.</p>
         </div>
         <div className="pulse-contact-options">
-          <a href={bookingUrl} target="_blank" rel="noreferrer"><span>01</span><strong>Reservar online</strong><b aria-hidden="true">↗</b></a>
-          <a href={whatsappUrl} target="_blank" rel="noreferrer"><span>02</span><strong>Escribir por WhatsApp</strong><b aria-hidden="true">↗</b></a>
-          <a href="tel:+34624060340"><span>03</span><strong>Llamar al 624 06 03 40</strong><b aria-hidden="true">↗</b></a>
-          <a href={mapsUrl} target="_blank" rel="noreferrer"><span>04</span><strong>Ver cómo llegar</strong><b aria-hidden="true">↗</b></a>
+          <a href={corpo.bookingUrl} target="_blank" rel="noreferrer" aria-label="Reservar online (nueva pestaña)"><span>01</span><strong>Reservar online</strong><b aria-hidden="true">↗</b></a>
+          <a href={corpo.whatsappUrl} target="_blank" rel="noreferrer" aria-label="Escribir por WhatsApp (nueva pestaña)"><span>02</span><strong>Escribir por WhatsApp</strong><b aria-hidden="true">↗</b></a>
+          <a href={corpo.phoneUrl}><span>03</span><strong>Llamar al {corpo.phone}</strong><b aria-hidden="true">↗</b></a>
+          <a href={corpo.emailUrl}><span>04</span><strong>Enviar un email</strong><b aria-hidden="true">↗</b></a>
+          <a href={corpo.directionsUrl} target="_blank" rel="noreferrer" aria-label="Abrir indicaciones para llegar (nueva pestaña)"><span>05</span><strong>Cómo llegar</strong><b aria-hidden="true">↗</b></a>
         </div>
       </section>
 
       <footer className="pulse-footer">
-        <Link to="/" className="pulse-logo">CORPO<span>+</span></Link>
-        <span>C. Pedáneo José Sánchez Mompeán, 16, Bajo · Murcia</span>
-        <a href="https://www.instagram.com/clinicacorpomurcia/" target="_blank" rel="noreferrer">Instagram ↗</a>
+        <Link to="/#proposal-pulse" className="pulse-logo" aria-label="Volver a la propuesta Pulse">CORPO<span>+</span></Link>
+        <a href={corpo.mapsUrl} target="_blank" rel="noreferrer" aria-label="Ver la ubicación de Corpo (nueva pestaña)">{corpo.addressLines[0]} · Murcia</a>
+        <a href={corpo.instagramUrl} target="_blank" rel="noreferrer" aria-label="Instagram de Corpo (nueva pestaña)">Instagram <span aria-hidden="true">↗</span></a>
       </footer>
     </main>
   );

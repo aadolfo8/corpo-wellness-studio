@@ -4,57 +4,60 @@ import heroReformer from "@/assets/hero-reformer.jpg";
 import fisio from "@/assets/service-fisio.jpg";
 import pilates from "@/assets/service-pilates.jpg";
 import recovery from "@/assets/service-recovery.jpg";
+import { corpo } from "@/lib/corpo";
 import "./atelier.css";
 
 const services = [
   {
     title: "Fisioterapia avanzada",
-    detail: "Valoración, tratamiento manual y ejercicio terapéutico para entender lo que ocurre y acompañar tu recuperación.",
+    detail: "Fisioterapia avanzada y terapia manual con atención personalizada.",
     image: fisio,
   },
   {
     title: "Pilates Máquina",
-    detail: "Sesiones en Reformer para trabajar fuerza, movilidad, postura y control con la guía de profesionales.",
+    detail: "Movimiento guiado con una progresión adaptada a cada persona.",
     image: pilates,
   },
   {
     title: "Recuperación",
-    detail: "Un proceso progresivo para volver a moverte con más confianza, desde el tratamiento hasta tu actividad.",
+    detail: "Recuperación dentro de una atención cercana y personalizada.",
     image: recovery,
   },
 ];
 
+const secondaryServices = ["Terapia manual", "Ondas de choque", "Diatermia", "Presoterapia"];
+
 const Atelier = () => (
   <main className="atelier-page">
     <header className="atelier-nav">
-      <Link to="/" className="atelier-logo" aria-label="Volver a propuestas">CORPO</Link>
+      <Link to="/#proposal-atelier" className="atelier-logo" aria-label="Volver a la propuesta Atelier">CORPO</Link>
       <nav aria-label="Navegación principal">
         <a href="#estudio">El estudio</a>
         <a href="#servicios">Servicios</a>
         <a href="#visita">Visita</a>
       </nav>
-      <a className="atelier-nav-action" href="#visita">Conócenos <span>↗</span></a>
+      <a className="atelier-nav-action" href="#visita">Conócenos <span aria-hidden="true">↗</span></a>
     </header>
 
     <section className="atelier-opening" aria-labelledby="atelier-title">
       <div className="atelier-opening-copy">
         <p className="atelier-location">Ronda Sur / Murcia</p>
         <h1 id="atelier-title">Un lugar para<br /><em>volver a ti.</em></h1>
-        <p className="atelier-lead">Fisioterapia y Pilates Máquina en un espacio pensado para escuchar al cuerpo, entenderlo y acompañarlo.</p>
-        <a className="atelier-primary-action" href="#estudio">Entrar en Corpo <span>↓</span></a>
+        <p className="atelier-lead">Fisioterapia avanzada, Pilates Máquina y recuperación con atención personalizada en Ronda Sur.</p>
+        <a className="atelier-primary-action" href="#estudio">Entrar en Corpo <span aria-hidden="true">↓</span></a>
       </div>
       <figure className="atelier-opening-image">
         <span className="atelier-image-index">CORPO / 001</span>
-        <img src={heroReformer} alt="Sala de Pilates Reformer de Corpo" />
+        <img src={heroReformer} alt="Sala luminosa con una máquina de Pilates" />
         <figcaption>El movimiento como práctica diaria</figcaption>
       </figure>
       <p className="atelier-vertical-label">Fisioterapia · Pilates · Murcia</p>
     </section>
 
-    <div className="atelier-info-strip" aria-label="Información de la clínica">
+    <div className="atelier-info-strip" role="group" aria-label="Información de la clínica">
       <span>Clínica Corpo</span>
-      <span>C. Pedáneo José Sánchez Mompeán, 16, Bajo</span>
-      <span>624 06 03 40</span>
+      <span>{corpo.addressLines[0]}</span>
+      <a href={corpo.phoneUrl}>{corpo.phone}</a>
     </div>
 
     <section id="estudio" className="atelier-studio">
@@ -64,14 +67,14 @@ const Atelier = () => (
       </div>
       <div className="atelier-studio-content">
         <div className="atelier-studio-image">
-          <img src={aboutStudio} alt="Interior del estudio Corpo en Murcia" loading="lazy" />
+          <img src={aboutStudio} alt="Sala luminosa con camilla y plantas" loading="lazy" />
           <span>Una mirada de cerca</span>
         </div>
         <div className="atelier-studio-copy">
-          <p className="atelier-large-copy">Corpo nace para que cuidar el cuerpo no se sienta como una tarea más.</p>
-          <p>Un estudio de fisioterapia y Pilates Máquina en Ronda Sur, con un trato cercano y una forma de trabajar adaptada a cada persona.</p>
-          <p>Antes de pedirle más al cuerpo, lo observamos. A partir de ahí construimos una práctica que puedas sostener.</p>
-          <a href="#servicios" className="atelier-text-link">Descubrir el método <span>↘</span></a>
+          <p className="atelier-large-copy">Un espacio cercano para cuidar el cuerpo de forma personal.</p>
+          <p>Corpo reúne fisioterapia avanzada, Pilates Máquina y recuperación en Ronda Sur, Murcia.</p>
+          <p>La atención y la progresión se adaptan a cada persona.</p>
+          <a href="#servicios" className="atelier-text-link">Ver servicios <span aria-hidden="true">↘</span></a>
         </div>
       </div>
     </section>
@@ -90,22 +93,36 @@ const Atelier = () => (
               <img src={service.image} alt="" loading="lazy" />
             </div>
             <p>{service.detail}</p>
-            <span className="atelier-service-mark" aria-hidden="true">↗</span>
+            <a
+              className="atelier-service-mark"
+              href={corpo.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Consultar sobre ${service.title} por WhatsApp`}
+            >
+              Consultar <span aria-hidden="true">↗</span>
+            </a>
           </article>
         ))}
+        <div className="atelier-secondary-services">
+          <p>También disponible</p>
+          <ul>
+            {secondaryServices.map((service) => <li key={service}>{service}</li>)}
+          </ul>
+        </div>
       </div>
     </section>
 
     <section className="atelier-practice">
       <div className="atelier-practice-copy">
-        <p>Una forma de trabajar</p>
-        <h2>Primero<br /><em>escuchar.</em></h2>
-        <p className="atelier-practice-lead">Después valorar. Elegir el tratamiento, el ejercicio o la sesión que tiene sentido para ti.</p>
+        <p>Principios de Corpo</p>
+        <h2>Cuidado<br /><em>personal.</em></h2>
+        <p className="atelier-practice-lead">Atención personalizada y una progresión adaptada a cada persona.</p>
       </div>
       <div className="atelier-practice-notes">
-        <div><span>01</span><h3>Entender</h3><p>Qué ocurre y qué necesitas recuperar.</p></div>
-        <div><span>02</span><h3>Acompañar</h3><p>Con una guía profesional, cercana y clara.</p></div>
-        <div><span>03</span><h3>Progresar</h3><p>A tu ritmo, con un plan que puedas sostener.</p></div>
+        <div><span>01</span><h3>Cercanía</h3><p>Un entorno cercano en Ronda Sur, Murcia.</p></div>
+        <div><span>02</span><h3>Atención</h3><p>Un cuidado personalizado para cada persona.</p></div>
+        <div><span>03</span><h3>Progresión</h3><p>Una progresión adaptada a cada persona.</p></div>
       </div>
     </section>
 
@@ -117,20 +134,21 @@ const Atelier = () => (
       <div className="atelier-visit-details">
         <p>Estamos en Ronda Sur, Murcia. Puedes escribirnos, llamarnos o reservar online para dar el primer paso.</p>
         <div className="atelier-visit-actions">
-          <a className="atelier-primary-action" href="https://appclinicacorpo.viday.es/" target="_blank" rel="noreferrer">Reservar online <span>↗</span></a>
-          <a className="atelier-text-link" href="https://www.google.com/maps/place/?q=place_id:ChIJCd3Qckl5Yw0R4g0ilsJ_AZ4" target="_blank" rel="noreferrer">Cómo llegar <span>↗</span></a>
+          <a className="atelier-primary-action" href={corpo.bookingUrl} target="_blank" rel="noopener noreferrer">Reservar online <span aria-hidden="true">↗</span></a>
+          <a className="atelier-text-link" href={corpo.whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a>
+          <a className="atelier-text-link" href={corpo.directionsUrl} target="_blank" rel="noopener noreferrer">Cómo llegar <span aria-hidden="true">↗</span></a>
         </div>
         <dl>
-          <div><dt>Dirección</dt><dd>C. Pedáneo José Sánchez Mompeán, 16, Bajo<br />30010 San Benito - Patiño, Murcia</dd></div>
-          <div><dt>Contacto</dt><dd><a href="tel:+34624060340">624 06 03 40</a><br /><a href="mailto:clinicacorporondasur@gmail.com">clinicacorporondasur@gmail.com</a></dd></div>
+          <div><dt>Dirección</dt><dd>{corpo.addressLines.map((line) => <span key={line}>{line}</span>)}</dd></div>
+          <div><dt>Contacto</dt><dd><a href={corpo.phoneUrl}>{corpo.phone}</a><a href={corpo.emailUrl}>{corpo.email}</a></dd></div>
         </dl>
       </div>
     </section>
 
     <footer className="atelier-footer">
-      <Link to="/" className="atelier-logo">CORPO</Link>
+      <Link to="/#proposal-atelier" className="atelier-logo" aria-label="Volver a la propuesta Atelier">CORPO</Link>
       <span>Fisioterapia · Pilates Máquina · Murcia</span>
-      <a href="https://www.instagram.com/clinicacorpomurcia/" target="_blank" rel="noreferrer">Instagram ↗</a>
+      <a href={corpo.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram ↗</a>
     </footer>
   </main>
 );
