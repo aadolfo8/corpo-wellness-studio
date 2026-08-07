@@ -9,6 +9,7 @@
     background: var(--atelier-bone);
     color: var(--atelier-ink);
     font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
     overflow: hidden;
 }
 
@@ -30,6 +31,12 @@
     font-size: 1.5rem;
     letter-spacing: .12em;
     text-decoration: none;
+}
+
+.atelier-nav>.atelier-logo {
+    align-items: center;
+    display: inline-flex;
+    min-height: 44px;
 }
 
 .atelier-nav nav {
@@ -59,6 +66,9 @@
 
 .atelier-nav nav a,
 .atelier-nav-action {
+    align-items: center;
+    display: inline-flex;
+    min-height: 44px;
     text-decoration: none;
     transition: color .25s ease;
 }
@@ -207,8 +217,12 @@
     padding: 1rem 4vw;
 }
 
-.atelier-info-strip span:last-child {
+.atelier-info-strip a {
+    align-items: center;
     color: #fff;
+    display: inline-flex;
+    min-height: 44px;
+    text-decoration: none;
 }
 
 .atelier-studio {
@@ -280,6 +294,7 @@
 }
 
 .atelier-text-link {
+    align-items: center;
     border-bottom: 1px solid currentColor;
     display: inline-flex;
     font-family: 'Azeret Mono', monospace;
@@ -287,6 +302,7 @@
     gap: 1rem;
     letter-spacing: .05em;
     margin-top: 1.5rem;
+    min-height: 44px;
     padding-bottom: .45rem;
     text-decoration: none;
     text-transform: uppercase;
@@ -313,7 +329,7 @@
     border-bottom: 1px solid var(--atelier-line);
     display: grid;
     gap: 1.5rem;
-    grid-template-columns: 2.2rem 1fr minmax(200px, .9fr) 1rem;
+    grid-template-columns: 2.2rem 1fr minmax(200px, .9fr) minmax(6.5rem, auto);
     min-height: 145px;
     position: relative;
 }
@@ -333,7 +349,7 @@
     font-family: 'Bodoni Moda', Georgia, serif;
     font-size: clamp(1.5rem, 2.5vw, 2.35rem);
     font-weight: 400;
-    letter-spacing: -.045em;
+    letter-spacing: -.04em;
     line-height: 1;
     margin: 0;
 }
@@ -361,7 +377,49 @@
 }
 
 .atelier-service-mark {
-    font-size: 1.1rem;
+    align-items: center;
+    display: inline-flex;
+    gap: .4rem;
+    justify-content: flex-end;
+    min-height: 44px;
+    text-decoration: none;
+}
+
+.atelier-service-mark:hover {
+    color: var(--atelier-ink);
+}
+
+.atelier-secondary-services {
+    border-bottom: 1px solid var(--atelier-line);
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 2.2rem 1fr;
+    padding: 2rem 0;
+}
+
+.atelier-secondary-services>p {
+    color: var(--atelier-blue);
+    font-family: 'Azeret Mono', monospace;
+    font-size: .63rem;
+    grid-column: 1 / -1;
+    letter-spacing: .08em;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.atelier-secondary-services ul {
+    display: grid;
+    gap: .75rem 2rem;
+    grid-column: 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.atelier-secondary-services li {
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-size: 1.2rem;
 }
 
 .atelier-practice {
@@ -407,11 +465,12 @@
     font-size: .65rem;
 }
 
-.atelier-practice-notes strong {
+.atelier-practice-notes h3 {
     font-family: 'Bodoni Moda', Georgia, serif;
     font-size: 1.6rem;
     font-weight: 400;
     letter-spacing: -.04em;
+    margin: 0;
 }
 
 .atelier-practice-notes p {
@@ -456,6 +515,10 @@
     gap: 1.5rem;
 }
 
+.atelier-visit-actions .atelier-text-link {
+    margin-top: 0;
+}
+
 .atelier-visit .atelier-primary-action {
     background: var(--atelier-bone);
     color: var(--atelier-ink) !important;
@@ -484,13 +547,24 @@
 }
 
 .atelier-visit dt {
-    color: #b8c3ff;
+    color: var(--atelier-bone);
 }
 
 .atelier-visit dd {
     font-size: .85rem;
     line-height: 1.55;
     margin: 0;
+}
+
+.atelier-visit dd span,
+.atelier-visit dd a {
+    display: block;
+}
+
+.atelier-visit dd a {
+    align-items: center;
+    display: flex;
+    min-height: 44px;
 }
 
 .atelier-visit a {
@@ -508,6 +582,9 @@
 }
 
 .atelier-footer a {
+    align-items: center;
+    display: inline-flex;
+    min-height: 44px;
     text-decoration: none;
 }
 
@@ -522,7 +599,7 @@
     }
 
     .atelier-nav-action {
-        font-size: .58rem;
+        font-size: .63rem;
     }
 
     .atelier-opening {
@@ -596,7 +673,7 @@
 
     .atelier-service-row {
         gap: .75rem;
-        grid-template-columns: 1.5rem 1fr 1rem;
+        grid-template-columns: 1.5rem minmax(0, 1fr);
         padding: 1.5rem 0;
     }
 
@@ -609,8 +686,21 @@
     }
 
     .atelier-service-row>p {
-        grid-column: 2 / 4;
+        grid-column: 2;
         max-width: none;
+    }
+
+    .atelier-service-mark {
+        grid-column: 2;
+        justify-content: flex-start;
+    }
+
+    .atelier-secondary-services {
+        grid-template-columns: 1.5rem minmax(0, 1fr);
+    }
+
+    .atelier-secondary-services ul {
+        grid-template-columns: 1fr;
     }
 
     .atelier-practice-copy {
@@ -623,6 +713,10 @@
     }
 
     .atelier-practice-notes p {
+        grid-column: 2;
+    }
+
+    .atelier-practice-notes h3 {
         grid-column: 2;
     }
 
@@ -647,53 +741,31 @@
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-
-    .atelier-page *,
-    .atelier-page *::before,
-    .atelier-page *::after {
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-    }
-}
-
 .atelier-page a:focus-visible {
     outline: 2px solid var(--atelier-blue);
     outline-offset: 4px;
 }
 
-.atelier-service-name img,
-.atelier-service-row:hover .atelier-service-name img,
-.atelier-service-row:focus-within .atelier-service-name img {
-    opacity: 1;
-    transform: none;
+.atelier-visit a:focus-visible,
+.atelier-info-strip a:focus-visible {
+    outline-color: var(--atelier-bone);
 }
 
-.atelier-practice-notes h3 {
-    font-family: 'Bodoni Moda', Georgia, serif;
-    font-size: 1.6rem;
-    font-weight: 400;
-    letter-spacing: -.04em;
-    margin: 0;
-}
-
-@media (max-width: 800px) {
-    .atelier-nav nav {
-        display: flex;
-        gap: .75rem;
+@media (prefers-reduced-motion: reduce) {
+    html:has(.atelier-page) {
+        scroll-behavior: auto;
     }
 
-    .atelier-nav nav a {
-        font-size: .51rem;
+    .atelier-nav a,
+    .atelier-primary-action,
+    .atelier-text-link,
+    .atelier-service-name img {
+        transition: none;
     }
 
-    .atelier-nav-action {
-        display: none;
-    }
-
-    .atelier-practice-notes h3 {
-        grid-column: 2;
+    .atelier-primary-action:hover,
+    .atelier-opening-image::before,
+    .atelier-service-name img {
+        transform: none;
     }
 }

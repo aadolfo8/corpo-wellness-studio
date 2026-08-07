@@ -5,21 +5,24 @@ import recovery from "@/assets/service-recovery.jpg";
 const services = [
   {
     n: "01",
-    title: "Fisioterapia",
-    desc: "Diagnóstico y tratamiento manual avanzado: terapia miofascial, punción seca, neurodinamia y ejercicio terapéutico para resolver lesiones desde la raíz.",
+    title: "Fisioterapia avanzada",
+    desc: "Fisioterapia avanzada, terapia manual, ondas de choque y diatermia con atención personalizada.",
     img: fisio,
+    alt: "Manos durante una sesión de terapia manual",
   },
   {
     n: "02",
     title: "Pilates Máquina",
-    desc: "Sesiones reducidas en Reformer guiadas por fisioterapeutas. Tonifica, mejora tu postura y devuelve movilidad a tu cuerpo con precisión.",
+    desc: "Movimiento guiado con una progresión adaptada a cada persona.",
     img: pilates,
+    alt: "Persona practicando Pilates Máquina",
   },
   {
     n: "03",
     title: "Recuperación",
-    desc: "Programas personalizados post-lesión, suelo pélvico y readaptación deportiva. Volvemos a tu mejor versión, paso a paso.",
+    desc: "Recuperación y presoterapia dentro de una atención cercana y personalizada.",
     img: recovery,
+    alt: "Toalla preparada en un espacio de cuidado",
   },
 ];
 
@@ -32,8 +35,8 @@ export const Services = () => {
             <p className="eyebrow">— Servicios</p>
           </div>
           <h2 className="md:col-span-9 font-display text-4xl md:text-6xl leading-[1.05] text-balance">
-            Tres caminos hacia un mismo destino:
-            <span className="font-display-italic text-primary"> sentirte bien.</span>
+            Distintas formas de cuidar el cuerpo,
+            <span className="font-display-italic text-primary"> una atención personal.</span>
           </h2>
         </div>
 
@@ -43,9 +46,9 @@ export const Services = () => {
               <div className="relative overflow-hidden bg-muted aspect-[4/5] mb-6">
                 <img
                   src={s.img}
-                  alt={s.title}
+                  alt={s.alt}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
                 />
                 <span className="absolute top-5 left-5 font-display text-sm text-cream mix-blend-difference">
                   {s.n}

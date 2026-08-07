@@ -1,16 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700;800&display=swap');
 
 .motion-page {
-    background: #e9e6dc;
-    color: #151515;
+    --motion-ink: #151515;
+    --motion-paper: #e9e6dc;
+    --motion-cream: #f4f1e8;
+    --motion-signal: #eaff00;
+    --motion-red: #ea351a;
+    background: var(--motion-paper);
+    color: var(--motion-ink);
     font-family: 'Syne', sans-serif;
-    overflow: hidden;
+    font-weight: 400;
+    overflow-x: hidden;
 }
 
 .motion-nav {
     align-items: center;
-    background: #151515;
-    color: #f4f1e8;
+    background: var(--motion-ink);
+    color: var(--motion-cream);
     display: flex;
     height: 72px;
     justify-content: space-between;
@@ -20,15 +26,18 @@
 }
 
 .motion-mark {
+    align-items: center;
     color: inherit;
+    display: inline-flex;
     font-family: 'Archivo Black', sans-serif;
     font-size: 1.4rem;
-    letter-spacing: -.08em;
+    letter-spacing: -.04em;
+    min-height: 44px;
     text-decoration: none;
 }
 
 .motion-mark span {
-    color: #eaff00;
+    color: var(--motion-signal);
 }
 
 .motion-nav nav {
@@ -37,20 +46,23 @@
 }
 
 .motion-nav a {
+    align-items: center;
     color: inherit;
+    display: inline-flex;
     font-family: 'DM Mono', monospace;
     font-size: .68rem;
     letter-spacing: .08em;
+    min-height: 44px;
     text-decoration: none;
     text-transform: uppercase;
 }
 
 .motion-nav a:hover {
-    color: #eaff00;
+    color: var(--motion-signal);
 }
 
 .motion-nav-cta span {
-    color: #eaff00;
+    color: var(--motion-signal);
     font-size: 1rem;
 }
 
@@ -76,7 +88,7 @@
 
 .motion-hero-copy {
     bottom: 7vw;
-    color: #f4f1e8;
+    color: var(--motion-cream);
     left: 4vw;
     position: absolute;
 }
@@ -96,7 +108,7 @@
 .motion-contact h2 {
     font-family: 'Archivo Black', sans-serif;
     font-size: clamp(4rem, 10vw, 10rem);
-    letter-spacing: -.09em;
+    letter-spacing: -.04em;
     line-height: .8;
     margin: 1.2rem 0 0;
 }
@@ -114,9 +126,9 @@
 
 .motion-circle-link {
     align-items: center;
-    background: #eaff00;
+    background: var(--motion-signal);
     border-radius: 50%;
-    color: #151515;
+    color: var(--motion-ink);
     display: flex;
     font-family: 'DM Mono', monospace;
     font-size: .65rem;
@@ -142,7 +154,7 @@
 
 .motion-side-label {
     bottom: 5rem;
-    color: #f4f1e8;
+    color: var(--motion-cream);
     font-family: 'DM Mono', monospace;
     font-size: .62rem;
     letter-spacing: .12em;
@@ -164,12 +176,12 @@
 }
 
 .motion-page em {
-    color: #ea351a;
+    color: var(--motion-red);
     font-style: normal;
 }
 
 .motion-program-list {
-    border-top: 2px solid #151515;
+    border-top: 2px solid var(--motion-ink);
 }
 
 .motion-program {
@@ -177,19 +189,21 @@
     border-bottom: 1px solid #8d8c86;
     display: grid;
     gap: 1rem;
-    grid-template-columns: 3.2rem 1fr minmax(180px, .85fr) 1.5rem;
+    grid-template-columns: 3.2rem 1fr minmax(180px, .85fr) minmax(6.5rem, auto);
     padding: 2.4rem 0;
 }
 
 .motion-program>span:first-child,
-.motion-arrow {
+.motion-program-action {
     font-family: 'DM Mono', monospace;
     font-size: .68rem;
 }
 
 .motion-program h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
     font-size: clamp(1.5rem, 2.5vw, 2.55rem);
-    letter-spacing: -.07em;
+    letter-spacing: -.04em;
     line-height: 1;
     margin: 0;
 }
@@ -200,18 +214,25 @@
     margin: 0;
 }
 
-.motion-arrow {
-    font-size: 1.4rem;
-    transition: transform .25s;
+.motion-program-action {
+    align-items: center;
+    color: inherit;
+    display: inline-flex;
+    gap: .45rem;
+    justify-content: flex-end;
+    min-height: 44px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color .25s ease;
 }
 
-.motion-program:hover .motion-arrow {
-    transform: translate(4px, -4px);
+.motion-program-action:hover {
+    color: var(--motion-red);
 }
 
 .motion-method {
-    background: #151515;
-    color: #f4f1e8;
+    background: var(--motion-ink);
+    color: var(--motion-cream);
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -256,7 +277,7 @@
 }
 
 .motion-steps span::before {
-    color: #eaff00;
+    color: var(--motion-signal);
     content: '• ';
 }
 
@@ -283,47 +304,115 @@
 }
 
 .motion-contact {
-    background: #eaff00;
-    min-height: 600px;
-    padding: clamp(5rem, 11vw, 10rem) 4vw 4vw;
-    position: relative;
+    background: var(--motion-signal);
+    display: grid;
+    gap: clamp(4rem, 8vw, 9rem);
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+    padding: clamp(5rem, 11vw, 10rem) 4vw;
 }
 
 .motion-contact h2 {
-    font-size: clamp(4rem, 9vw, 9rem);
+    font-size: clamp(3.8rem, 8vw, 8rem);
 }
 
-.motion-contact>a {
+.motion-contact-heading>p:last-child {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    margin: 2.5rem 0 0;
+    max-width: 430px;
+}
+
+.motion-contact-panel {
+    align-self: end;
+}
+
+.motion-contact-booking {
     align-items: center;
-    background: #151515;
+    background: var(--motion-ink);
     border-radius: 50%;
-    bottom: 4vw;
-    color: #f4f1e8;
+    color: var(--motion-cream);
     display: flex;
     font-family: 'DM Mono', monospace;
     font-size: .8rem;
+    gap: .6rem;
     height: 155px;
     justify-content: center;
-    position: absolute;
-    right: 4vw;
+    margin-left: auto;
     text-decoration: none;
     text-transform: uppercase;
+    transition: transform .25s ease;
     width: 155px;
 }
 
-.motion-contact>a span {
-    color: #eaff00;
+.motion-contact-booking:hover {
+    transform: rotate(-5deg);
+}
+
+.motion-contact-booking span {
+    color: var(--motion-signal);
     font-size: 1.5rem;
-    margin-left: .5rem;
+}
+
+.motion-contact-links {
+    border-top: 2px solid var(--motion-ink);
+    margin-top: 3.5rem;
+}
+
+.motion-contact-links a {
+    align-items: center;
+    border-bottom: 1px solid rgba(21, 21, 21, .45);
+    color: var(--motion-ink);
+    display: flex;
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem;
+    justify-content: space-between;
+    min-height: 56px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.motion-contact-links a:hover {
+    background: rgba(21, 21, 21, .08);
+    transform: translateX(.65rem);
+}
+
+.motion-contact-links a span {
+    font-size: .68rem;
+    text-transform: none;
 }
 
 .motion-contact-details {
-    bottom: 4vw;
     font-family: 'DM Mono', monospace;
     font-size: .7rem;
+    font-style: normal;
     line-height: 1.65;
-    margin: 0;
-    position: absolute;
+    margin: 2rem 0 0;
+}
+
+.motion-contact-details span {
+    display: block;
+}
+
+.motion-page a:focus-visible {
+    outline: 3px solid var(--motion-ink);
+    outline-offset: 4px;
+}
+
+.motion-nav a:focus-visible {
+    outline-color: var(--motion-signal);
+}
+
+.motion-hero a:focus-visible {
+    outline-color: var(--motion-cream);
+}
+
+.motion-contact a:focus-visible {
+    outline-color: var(--motion-ink);
+}
+
+.motion-contact-links a span {
+    overflow-wrap: anywhere;
 }
 
 @media (max-width: 760px) {
@@ -346,6 +435,14 @@
         left: 1.25rem;
     }
 
+    .motion-hero h1,
+    .motion-section-heading h2,
+    .motion-method h2,
+    .motion-statement h2,
+    .motion-contact h2 {
+        font-size: clamp(2.75rem, 14vw, 4rem);
+    }
+
     .motion-side-label {
         display: none;
     }
@@ -365,11 +462,16 @@
     }
 
     .motion-program {
-        grid-template-columns: 2rem 1fr 1.25rem;
+        grid-template-columns: 2rem 1fr;
     }
 
     .motion-program p {
-        grid-column: 2 / 4;
+        grid-column: 2;
+    }
+
+    .motion-program-action {
+        grid-column: 2;
+        justify-content: flex-start;
     }
 
     .motion-method-image,
@@ -383,21 +485,40 @@
     }
 
     .motion-contact {
-        min-height: 610px;
+        display: block;
         padding: 5rem 1.25rem;
     }
 
-    .motion-contact>a {
-        bottom: 7rem;
-        right: 1.25rem;
+    .motion-contact-panel {
+        margin-top: 4rem;
     }
 
-    .motion-contact-details {
-        bottom: 2rem;
+    .motion-contact-booking {
+        margin-left: 0;
     }
 
     .motion-steps {
+        align-items: flex-start;
+        flex-direction: column;
         gap: 1rem;
-        justify-content: space-between;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html:has(.motion-page) {
+        scroll-behavior: auto;
+    }
+
+    .motion-nav a,
+    .motion-circle-link,
+    .motion-program-action,
+    .motion-contact-booking,
+    .motion-contact-links a {
+        transition: none;
+    }
+
+    .motion-circle-link:hover,
+    .motion-contact-booking:hover {
+        transform: none;
     }
 }

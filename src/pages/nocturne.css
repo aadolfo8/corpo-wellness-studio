@@ -7,3 +7,49 @@
 .nocturne-footer { align-items: center; border-top: 1px solid rgba(232,237,240,.22); color: var(--nocturne-muted); display: flex; justify-content: space-between; margin-top: 4rem; padding: 1.5rem 4vw; }.nocturne-footer .nocturne-logo { color: var(--nocturne-paper); font-size: 1.2rem; }.nocturne-footer a { color: var(--nocturne-muted); text-decoration: none; }
 @media (max-width: 800px) { .nocturne-header { min-height: 64px; padding: 0 1.25rem; }.nocturne-header p { display: none; }.nocturne-header > a { font-size: .57rem; }.nocturne-scene { min-height: auto; padding: 3rem 1.25rem 0; }.nocturne-scene::before, .nocturne-scene-caption { display: none; }.nocturne-title-lockup { left: 1.25rem; top: 3rem; }.nocturne-title-lockup h1 { font-size: clamp(4rem, 22vw, 7rem); }.nocturne-wall { display: block; margin-top: 15rem; min-height: auto; }.nocturne-wall::before { bottom: auto; height: 1px; left: 0; right: 0; top: 8.1rem; width: auto; }.nocturne-wall::after { display: none; }.nocturne-pane-tabs { display: grid; grid-template-columns: repeat(2, 1fr); padding: 0; }.nocturne-pane-tabs button { min-height: 65px; padding: 0 .8rem; }.nocturne-active-pane { display: block; padding: 2.5rem 1rem; }.nocturne-pane-image { margin-bottom: 2.5rem; }.nocturne-pane-image img { aspect-ratio: 1 / .9; }.nocturne-pane-copy h2 { font-size: clamp(3rem, 15vw, 5rem); }.nocturne-wall-footer { margin-top: 1rem; }.nocturne-footer { align-items: start; flex-direction: column; gap: 1rem; margin-top: 3rem; padding: 2rem 1.25rem; } }
 @media (prefers-reduced-motion: reduce) { .nocturne-page *, .nocturne-page *::before, .nocturne-page *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; transform: none !important; } html { scroll-behavior: auto !important; } }
+
+.nocturne-header > a,
+.nocturne-logo,
+.nocturne-actions a,
+.nocturne-footer a {
+  align-items: center;
+  display: inline-flex;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.nocturne-pane-image img {
+  display: block;
+}
+
+.nocturne-footer > span {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 800px) {
+  .nocturne-header > a:not(.nocturne-logo),
+  .nocturne-pane-tabs button,
+  .nocturne-actions a,
+  .nocturne-footer {
+    font-size: .6875rem;
+  }
+
+  .nocturne-header .nocturne-logo {
+    font-size: 1.5rem;
+  }
+
+  .nocturne-wall::before,
+  .nocturne-wall::after {
+    display: none;
+  }
+
+  .nocturne-pane-tabs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nocturne-pane-tabs button {
+    min-height: 58px;
+    padding: 0 1rem;
+  }
+}
