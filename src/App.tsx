@@ -9,6 +9,7 @@ import Motion from "./pages/Motion.tsx";
 import Pulse from "./pages/Pulse.tsx";
 import Terra from "./pages/Terra.tsx";
 import Clinical from "./pages/Clinical.tsx";
+import Nocturne from "./pages/Nocturne.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import StudioIndex from "./pages/StudioIndex.tsx";
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/pulse" element={<Pulse />} />
           <Route path="/terra" element={<Terra />} />
           <Route path="/clinical" element={<Clinical />} />
+          <Route path="/nocturne" element={<Nocturne />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
