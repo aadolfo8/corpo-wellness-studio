@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import heroReformer from "@/assets/hero-reformer.jpg";
 import aboutStudio from "@/assets/about-studio.jpg";
 import serviceRecovery from "@/assets/service-recovery.jpg";
 import servicePilates from "@/assets/service-pilates.jpg";
 import serviceFisio from "@/assets/service-fisio.jpg";
+import heroReformer from "@/assets/hero-reformer.jpg";
 
 const proposals = [
   {
@@ -54,13 +54,21 @@ const proposals = [
     image: serviceFisio,
     position: "object-[center_45%]",
   },
+  {
+    path: "/nocturne",
+    number: "07",
+    title: "Nocturne",
+    description: "Una escena nocturna de paneles para recorrer Corpo a través de sus estados.",
+    image: heroReformer,
+    position: "object-[center_55%]",
+  },
 ];
 
 const StudioIndex = () => (
   <main className="min-h-screen bg-[#141513] px-5 py-5 text-[#f3f0e9] sm:px-8 sm:py-8 lg:px-12">
     <header className="mx-auto flex max-w-[1500px] items-center justify-between border-b border-white/20 pb-5 font-medium text-xs uppercase tracking-[0.22em]">
       <span>Corpo / propuestas web</span>
-      <span>06 conceptos</span>
+      <span>07 conceptos</span>
     </header>
 
     <section className="mx-auto max-w-[1500px] pb-12 pt-20 sm:pt-28">
