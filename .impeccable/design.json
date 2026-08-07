@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-07T00:00:00.000Z",
+  "title": "Design System: Corpo Atelier",
+  "extensions": {
+    "colorMeta": {
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#17191a", "tonalRamp": ["#17191a", "#303335", "#494c4e", "#65696b", "#85898b", "#a8abad", "#cdd0d0", "#f3f0e7"] },
+      "bone": { "role": "neutral", "displayName": "Bone Paper", "canonical": "#f3f0e7", "tonalRamp": ["#17191a", "#333536", "#505253", "#6d6f70", "#8b8d8d", "#aaacab", "#cfceca", "#f3f0e7"] },
+      "paper": { "role": "neutral", "displayName": "Warm Paper", "canonical": "#e8e4d9", "tonalRamp": ["#17191a", "#333535", "#505152", "#6d6f6e", "#8a8b88", "#a9a9a4", "#ccc9c1", "#e8e4d9"] },
+      "cobalt": { "role": "primary", "displayName": "Cobalt Signal", "canonical": "#2945e8", "tonalRamp": ["#101b68", "#17288f", "#2037b4", "#2945e8", "#5269ef", "#7b8cf4", "#a0adf8", "#d7dcff"] },
+      "cobalt-soft": { "role": "secondary", "displayName": "Soft Cobalt", "canonical": "#b8c3ff", "tonalRamp": ["#101b68", "#28388b", "#4353a8", "#5f70c4", "#7d8dda", "#9aa8ed", "#b8c3ff", "#e8ebff"] }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "quiet-state", "value": "opacity .35s ease, transform .35s ease", "purpose": "Reveal a service image on row hover without moving the catalogue." },
+      { "name": "action-lift", "value": "background .25s ease, transform .25s ease", "purpose": "Give primary actions a restrained tactile response." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "800px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "A square ink action with mono label and cobalt hover state.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#visita\">ENTRAR EN CORPO <span>↓</span></a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 1.8rem; min-height: 48px; padding: 0 1.3rem; background: #17191a; color: #f3f0e7; font: 500 .65rem/1 'Azeret Mono', monospace; letter-spacing: .07em; text-transform: uppercase; text-decoration: none; transition: background .25s ease, transform .25s ease; } .ds-btn-primary:hover { background: #2945e8; transform: translateY(-2px); } .ds-btn-primary span { color: #2945e8; } .ds-btn-primary:focus-visible { outline: 2px solid #2945e8; outline-offset: 4px; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "A measured wordmark bar with catalogue links and one action.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-logo\" href=\"#\">CORPO</a><a href=\"#estudio\">EL ESTUDIO</a><a href=\"#servicios\">SERVICIOS</a><a href=\"#visita\">VISITA</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 2.5rem; padding: 1.5rem 4vw; border-bottom: 1px solid rgba(23,25,26,.22); color: #17191a; font: .63rem/1 'Azeret Mono', monospace; letter-spacing: .08em; text-transform: uppercase; } .ds-nav-logo { margin-right: auto; color: #17191a; font: 1.5rem/1 'Bodoni Moda', Georgia, serif; letter-spacing: .12em; text-decoration: none; } .ds-nav a:hover { color: #2945e8; } .ds-nav a:focus-visible { outline: 2px solid #2945e8; outline-offset: 4px; }"
+    },
+    {
+      "name": "Service Catalogue Row",
+      "kind": "custom",
+      "refersTo": "service-catalogue-row",
+      "description": "A ruled service entry that reveals an image beside its title on hover.",
+      "html": "<article class=\"ds-service-row\"><span>01</span><h3>FISIOTERAPIA AVANZADA</h3><p>Valoracion y tratamiento personalizado.</p><span>↗</span></article>",
+      "css": ".ds-service-row { display: grid; grid-template-columns: 2.2rem 1fr minmax(200px,.9fr) 1rem; gap: 1.5rem; align-items: center; min-height: 145px; border-top: 1px solid rgba(23,25,26,.22); color: #17191a; } .ds-service-row h3 { margin: 0; font: 400 clamp(1.5rem,2.5vw,2.35rem)/1 'Bodoni Moda', Georgia, serif; letter-spacing: -.045em; } .ds-service-row > span { color: #2945e8; font-family: 'Azeret Mono', monospace; } .ds-service-row p { margin: 0; font: .85rem/1.5 'IBM Plex Sans', sans-serif; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Movement Gallery",
+    "overview": "Corpo Atelier treats the clinic like a quiet gallery of movement rather than a standard medical landing page. Photography is framed as an object, services are catalogued as a sequence of works, and the visitor moves from the space to the method to the visit. The world is precise without feeling cold: bone paper, ink, cobalt, editorial display type, and small inventory labels.",
+    "keyCharacteristics": ["Framed, object-like photography.", "Cobalt used as a single decisive signal.", "Service rows instead of a grid of cards.", "Display type paired with measured mono labels."],
+    "rules": [{ "name": "The Single Signal Rule", "body": "Cobalt is the only saturated voice on a light section. It should guide the eye, not become decoration.", "section": "colors" }, { "name": "The Two Voices Rule", "body": "Display type carries the feeling; sans-serif carries the facts. Mono only marks information that behaves like a label or coordinate.", "section": "typography" }, { "name": "The Flat Room Rule", "body": "Do not add drop shadows or glass effects. If a section needs hierarchy, use space, a rule, or a change of material.", "section": "elevation" }],
+    "dos": ["Do let one image or headline own each region.", "Do use cobalt to direct attention to the next meaningful action.", "Do keep the clinic's address and contact paths visible in the visit section."],
+    "donts": ["Don't turn the service catalogue into equal-size cards.", "Don't add invented testimonials, prices, patient counts, or clinical outcomes.", "Don't use rounded pills, gradients, glass panels, or decorative shadows in this world."]
+  }
+}
