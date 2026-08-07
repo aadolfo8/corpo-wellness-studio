@@ -12,6 +12,7 @@ import Terra from "./pages/Terra.tsx";
 import Clinical from "./pages/Clinical.tsx";
 import Nocturne from "./pages/Nocturne.tsx";
 import Restore from "./pages/Restore.tsx";
+import Reformer from "./pages/Reformer.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import StudioIndex from "./pages/StudioIndex.tsx";
 
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/clinical" element={<Clinical />} />
           <Route path="/nocturne" element={<Nocturne />} />
           <Route path="/restore" element={<Restore />} />
+          <Route path="/reformer" element={<Reformer />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

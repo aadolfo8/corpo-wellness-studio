@@ -70,13 +70,21 @@ const proposals = [
     image: serviceRecovery,
     position: "object-[center_45%]",
   },
+  {
+    path: "/reformer",
+    number: "09",
+    title: "Reformer",
+    description: "Una página específica para descubrir Pilates Máquina desde el aparato y la práctica.",
+    image: servicePilates,
+    position: "object-[center_48%]",
+  },
 ];
 
 const StudioIndex = () => (
   <main className="min-h-screen bg-[#141513] px-5 py-5 text-[#f3f0e9] sm:px-8 sm:py-8 lg:px-12">
     <header className="mx-auto flex max-w-[1500px] items-center justify-between border-b border-white/20 pb-5 font-medium text-xs uppercase tracking-[0.22em]">
       <span>Corpo / propuestas web</span>
-      <span>08 conceptos</span>
+      <span>09 conceptos</span>
     </header>
 
     <section className="mx-auto max-w-[1500px] pb-12 pt-20 sm:pt-28">
