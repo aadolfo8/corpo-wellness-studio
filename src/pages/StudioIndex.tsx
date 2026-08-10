@@ -111,7 +111,7 @@ const proposals = [
     title: "Eje",
     tag: "Brutalismo industrial",
     description: "Una propuesta de señalización precisa que presenta el movimiento como un sistema en marcha.",
-    image: fisio,
+    image: serviceFisio,
     position: "object-[center_48%]",
   },
 ];
