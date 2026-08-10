@@ -96,6 +96,24 @@ const proposals = [
     image: aboutStudio,
     position: "object-[center_58%]",
   },
+  {
+    path: "/linea",
+    number: "11",
+    title: "Línea",
+    tag: "Minimalismo editorial",
+    description: "Una propuesta clara y serena para empezar a cuidar el cuerpo sin añadir más ruido.",
+    image: heroReformer,
+    position: "object-[center_52%]",
+  },
+  {
+    path: "/eje",
+    number: "12",
+    title: "Eje",
+    tag: "Brutalismo industrial",
+    description: "Una propuesta de señalización precisa que presenta el movimiento como un sistema en marcha.",
+    image: fisio,
+    position: "object-[center_48%]",
+  },
 ];
 
 const StudioIndex = () => (
@@ -108,7 +126,7 @@ const StudioIndex = () => (
     <section className="mx-auto max-w-[1500px] pb-12 pt-20 sm:pt-28">
       <p className="mb-5 font-serif text-lg italic text-[#d9d0bb]">Selección de dirección creativa</p>
       <h1 className="max-w-5xl text-5xl font-light leading-[0.92] tracking-[-0.045em] sm:text-7xl lg:text-8xl">
-        Diez direcciones para contar la misma clínica.
+        Doce direcciones para contar la misma clínica.
       </h1>
       <div className="mt-10 grid max-w-4xl grid-cols-2 gap-x-6 gap-y-3 border-t border-white/20 pt-5 text-[11px] uppercase tracking-[0.18em] text-white/55 sm:grid-cols-4">
         <span>Claridad</span><span>Confianza</span><span>Diferenciación</span><span>Contacto</span>

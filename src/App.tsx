@@ -11,6 +11,8 @@ const Nocturne = lazy(() => import("./pages/Nocturne.tsx"));
 const Restore = lazy(() => import("./pages/Restore.tsx"));
 const Reformer = lazy(() => import("./pages/Reformer.tsx"));
 const Trama = lazy(() => import("./pages/Trama.tsx"));
+const Linea = lazy(() => import("./pages/Linea.tsx"));
+const Eje = lazy(() => import("./pages/Eje.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const routeMeta: Record<string, [string, string]> = {
@@ -25,6 +27,8 @@ const routeMeta: Record<string, [string, string]> = {
   "/restore": ["Corpo Restore | Mapa de recuperación", "Una propuesta centrada en movilidad, fuerza, control y atención personalizada."],
   "/reformer": ["Corpo Reformer | Pilates Máquina", "Una guía visual para descubrir el aparato Reformer y reservar Pilates Máquina en Corpo."],
   "/trama": ["Corpo Trama | Volver al movimiento", "Una propuesta guiada para descubrir cómo puede acompañarte Corpo en Ronda Sur, Murcia."],
+  "/linea": ["Corpo Línea | Cuidar el cuerpo", "Una propuesta minimalista para descubrir la fisioterapia y Pilates Máquina de Corpo."],
+  "/eje": ["Corpo Eje | Movimiento con precisión", "Una propuesta de señalización industrial para conocer los servicios de Corpo."],
 };
 
 const RouteEffects = () => {
@@ -91,6 +95,8 @@ const App = () => (
         <Route path="/restore" element={<Restore />} />
         <Route path="/reformer" element={<Reformer />} />
         <Route path="/trama" element={<Trama />} />
+        <Route path="/linea" element={<Linea />} />
+        <Route path="/eje" element={<Eje />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
