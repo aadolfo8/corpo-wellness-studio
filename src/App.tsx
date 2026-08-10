@@ -10,6 +10,7 @@ const Clinical = lazy(() => import("./pages/Clinical.tsx"));
 const Nocturne = lazy(() => import("./pages/Nocturne.tsx"));
 const Restore = lazy(() => import("./pages/Restore.tsx"));
 const Reformer = lazy(() => import("./pages/Reformer.tsx"));
+const Trama = lazy(() => import("./pages/Trama.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const routeMeta: Record<string, [string, string]> = {
@@ -23,6 +24,7 @@ const routeMeta: Record<string, [string, string]> = {
   "/nocturne": ["Corpo Nocturne | Fisioterapia y Pilates Máquina", "Una propuesta nocturna para recorrer la fisioterapia y el Pilates Máquina de Corpo."],
   "/restore": ["Corpo Restore | Mapa de recuperación", "Una propuesta centrada en movilidad, fuerza, control y atención personalizada."],
   "/reformer": ["Corpo Reformer | Pilates Máquina", "Una guía visual para descubrir el aparato Reformer y reservar Pilates Máquina en Corpo."],
+  "/trama": ["Corpo Trama | Volver al movimiento", "Una propuesta guiada para descubrir cómo puede acompañarte Corpo en Ronda Sur, Murcia."],
 };
 
 const RouteEffects = () => {
@@ -88,6 +90,7 @@ const App = () => (
         <Route path="/nocturne" element={<Nocturne />} />
         <Route path="/restore" element={<Restore />} />
         <Route path="/reformer" element={<Reformer />} />
+        <Route path="/trama" element={<Trama />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
