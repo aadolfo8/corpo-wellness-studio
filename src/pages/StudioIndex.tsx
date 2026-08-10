@@ -87,6 +87,15 @@ const proposals = [
     image: servicePilates,
     position: "object-[center_48%]",
   },
+  {
+    path: "/trama",
+    number: "10",
+    title: "Trama",
+    tag: "Recorrido guiado",
+    description: "Una propuesta de señalización visual para empezar a recuperar el movimiento desde donde estás.",
+    image: aboutStudio,
+    position: "object-[center_58%]",
+  },
 ];
 
 const StudioIndex = () => (
@@ -99,7 +108,7 @@ const StudioIndex = () => (
     <section className="mx-auto max-w-[1500px] pb-12 pt-20 sm:pt-28">
       <p className="mb-5 font-serif text-lg italic text-[#d9d0bb]">Selección de dirección creativa</p>
       <h1 className="max-w-5xl text-5xl font-light leading-[0.92] tracking-[-0.045em] sm:text-7xl lg:text-8xl">
-        Nueve direcciones para contar la misma clínica.
+        Diez direcciones para contar la misma clínica.
       </h1>
       <div className="mt-10 grid max-w-4xl grid-cols-2 gap-x-6 gap-y-3 border-t border-white/20 pt-5 text-[11px] uppercase tracking-[0.18em] text-white/55 sm:grid-cols-4">
         <span>Claridad</span><span>Confianza</span><span>Diferenciación</span><span>Contacto</span>
