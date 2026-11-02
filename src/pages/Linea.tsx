@@ -9,22 +9,22 @@ import "./linea.css";
 const startingPoints = [
   {
     label: "Fisioterapia",
-    title: "Cuando algo pide atención",
-    text: "Exploramos qué está pasando y planteamos una atención adaptada a ti.",
+    title: "Conocer fisioterapia",
+    text: "Atención de fisioterapia, distinta de la práctica de Pilates Máquina.",
     image: recovery,
     tone: "linea-card--rose",
   },
   {
     label: "Pilates Máquina",
-    title: "Cuando quieres ganar confianza",
-    text: "Movimiento guiado en Reformer para construir control, fuerza y continuidad.",
+    title: "Explorar Pilates Máquina",
+    text: "Práctica con máquina en formato individual o en grupos reducidos.",
     image: heroReformer,
     tone: "linea-card--blue",
   },
   {
-    label: "Recuperación",
-    title: "Cuando necesitas retomar el ritmo",
-    text: "Un acompañamiento posible para volver a sentir el cuerpo más disponible.",
+    label: "Otros recursos",
+    title: "Preguntar por opciones",
+    text: "Diatermia, ondas de choque y presoterapia: recursos que puedes preguntar por separado.",
     image: aboutStudio,
     tone: "linea-card--green",
   },
@@ -61,8 +61,8 @@ const Linea = () => {
         <div className="linea-hero-copy linea-reveal">
           <p className="linea-meta">Fisioterapia · Pilates Máquina · Murcia</p>
           <h1 id="linea-title">Cuidar el cuerpo<br />empieza por escucharlo.</h1>
-          <p>Un estudio cercano para volver al movimiento con atención y una progresión que tenga sentido para ti.</p>
-          <a className="linea-primary-action" href="#empezar">Encontrar mi inicio <span aria-hidden="true">↓</span></a>
+          <p>Fisioterapia avanzada y Pilates Máquina en Ronda Sur. Información clara para preguntar antes de reservar.</p>
+          <a className="linea-primary-action" href="#empezar">Conocer los servicios <span aria-hidden="true">↓</span></a>
         </div>
         <figure className="linea-hero-photo linea-reveal">
           <img src={heroReformer} alt="Máquina Reformer junto a la ventana del estudio Corpo" fetchPriority="high" />
@@ -70,7 +70,7 @@ const Linea = () => {
         </figure>
         <div className="linea-hero-note linea-reveal">
           <span>01</span>
-          <p>La primera conversación puede ser el gesto más útil.</p>
+          <p>Puedes preguntar por la oferta actual sin elegir un tratamiento.</p>
         </div>
       </section>
 
@@ -95,13 +95,13 @@ const Linea = () => {
 
       <section id="metodo" className="linea-method" aria-labelledby="method-title">
         <div className="linea-method-intro linea-reveal">
-          <p className="linea-meta">El método</p>
-          <h2 id="method-title">Menos ruido.<br />Más atención.</h2>
+          <p className="linea-meta">Cómo leer la oferta</p>
+          <h2 id="method-title">Menos dudas.<br />Más claridad.</h2>
         </div>
         <div className="linea-method-list">
-          <article className="linea-reveal"><span>01</span><div><h3>Escuchamos</h3><p>Antes de intervenir, hacemos espacio para entender qué necesitas.</p></div></article>
-          <article className="linea-reveal"><span>02</span><div><h3>Probamos</h3><p>El movimiento y la terapia se adaptan al momento en el que estás.</p></div></article>
-          <article className="linea-reveal"><span>03</span><div><h3>Acompañamos</h3><p>Buscamos una progresión que puedas reconocer también fuera del estudio.</p></div></article>
+          <article className="linea-reveal"><span>01</span><div><h3>Servicio</h3><p>Fisioterapia avanzada o Pilates Máquina: no son la misma oferta.</p></div></article>
+          <article className="linea-reveal"><span>02</span><div><h3>Modalidad</h3><p>Individual y grupo reducido describen opciones de Pilates Máquina.</p></div></article>
+          <article className="linea-reveal"><span>03</span><div><h3>Recurso</h3><p>Las tecnologías citadas no indican por sí solas qué atención necesitas.</p></div></article>
         </div>
       </section>
 
@@ -112,7 +112,7 @@ const Linea = () => {
         </div>
         <div className="linea-visit-details">
           <address>{corpo.addressLines[0]}<br />{corpo.addressLines[1]}</address>
-          <p>Escríbenos o reserva online. Te orientaremos para que el primer paso sea sencillo.</p>
+          <p>Escribe para preguntar por una modalidad o recurso, o utiliza el enlace de reserva online de Corpo.</p>
           <div className="linea-visit-actions">
             <a href={corpo.bookingUrl} target="_blank" rel="noopener noreferrer">Reservar <span aria-hidden="true">↗</span></a>
             <a href={corpo.whatsappUrl} target="_blank" rel="noopener noreferrer">Escribir por WhatsApp <span aria-hidden="true">↗</span></a>

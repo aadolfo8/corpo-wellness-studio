@@ -9,20 +9,20 @@ import "./trama.css";
 const startingPoints = [
   {
     number: "01",
-    title: "Dolor que no cede",
-    text: "Fisioterapia avanzada para observar qué está ocurriendo y proponer un camino adaptado.",
+    title: "Fisioterapia avanzada",
+    text: "Atención de fisioterapia: un servicio distinto de las clases de Pilates Máquina.",
     image: recovery,
   },
   {
     number: "02",
-    title: "Quiero volver a moverme",
-    text: "Pilates Máquina para entrenar fuerza, control y confianza de forma progresiva.",
+    title: "Pilates Máquina",
+    text: "Una práctica con máquina que Corpo presenta en formato individual y en grupos reducidos.",
     image: heroReformer,
   },
   {
     number: "03",
-    title: "Necesito recuperar ritmo",
-    text: "Un acompañamiento que puede combinar terapia manual, tecnología y movimiento guiado.",
+    title: "Otras consultas",
+    text: "Diatermia, ondas de choque y presoterapia son recursos citados por Corpo, no modalidades de Pilates.",
     image: aboutStudio,
   },
 ];
@@ -39,7 +39,7 @@ const Trama = () => (
       <div className="trama-hero-copy">
         <p className="trama-label">Ronda Sur, Murcia</p>
         <h1 id="trama-title">Volver a ti<br />empieza por<br /><i>un gesto.</i></h1>
-        <p className="trama-intro">Un lugar para entender tu cuerpo y recuperar el movimiento con atención cercana.</p>
+        <p className="trama-intro">Fisioterapia, Pilates Máquina y otros recursos: tres nombres distintos para preparar tu consulta.</p>
         <a className="trama-action" href="#puntos-de-partida">Ver recorridos <span aria-hidden="true">↓</span></a>
       </div>
       <figure className="trama-hero-image">
@@ -53,7 +53,7 @@ const Trama = () => (
       <div className="trama-section-intro">
         <p className="trama-label">Punto de partida</p>
         <h2 id="starts-title">No hace falta<br />saberlo todo.</h2>
-        <p>Solo hace falta empezar por algo que reconoces. El resto se conversa y se construye paso a paso.</p>
+        <p>Las categorías presentan información de la clínica; ninguna sustituye una consulta ni indica qué opción te corresponde.</p>
       </div>
       <div className="trama-start-grid">
         {startingPoints.map((point) => (
@@ -75,13 +75,13 @@ const Trama = () => (
         <img src={aboutStudio} alt="Espacio de trabajo luminoso de Corpo" loading="lazy" decoding="async" />
       </div>
       <div className="trama-method-copy">
-        <p className="trama-label">Una forma de trabajar</p>
-        <h2 id="method-title">Escuchar.<br />Probar. Ajustar.</h2>
-        <p>La atención personalizada es una conversación entre lo que sientes, lo que observamos y lo que tu cuerpo necesita hoy.</p>
+        <p className="trama-label">Guía para quien visita la web</p>
+        <h2 id="method-title">Leer.<br />Preguntar. Contactar.</h2>
+        <p>Estas categorías sirven para entender los nombres de la oferta, no describen cómo se desarrolla una sesión en Corpo.</p>
         <dl className="trama-method-list">
-          <div><dt>Atención</dt><dd>Tu proceso marca el ritmo.</dd></div>
-          <div><dt>Movimiento</dt><dd>Con una progresión posible.</dd></div>
-          <div><dt>Continuidad</dt><dd>Para llevarlo contigo fuera del estudio.</dd></div>
+          <div><dt>Servicio</dt><dd>Fisioterapia avanzada o Pilates Máquina.</dd></div>
+          <div><dt>Modalidad</dt><dd>Pilates individual o en grupo reducido.</dd></div>
+          <div><dt>Recurso</dt><dd>Pregunta por las tecnologías citadas.</dd></div>
         </dl>
       </div>
     </section>

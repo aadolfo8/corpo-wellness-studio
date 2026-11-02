@@ -21,8 +21,8 @@ export const Hero = () => {
           <span className="font-display-italic text-primary">como obra</span> a cuidar.
         </h1>
         <p className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed animate-fade-up motion-reduce:animate-none [animation-delay:240ms]">
-          Fisioterapia avanzada, Pilates Máquina y recuperación con atención
-          personalizada y una progresión adaptada a cada persona.
+          Fisioterapia avanzada y Pilates Máquina en Ronda Sur. Conoce los servicios,
+          encuentra la clínica y elige cómo contactar.
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-6 animate-fade-up motion-reduce:animate-none [animation-delay:360ms]">
           <a

@@ -13,18 +13,24 @@ const Reformer = lazy(() => import("./pages/Reformer.tsx"));
 const Trama = lazy(() => import("./pages/Trama.tsx"));
 const Linea = lazy(() => import("./pages/Linea.tsx"));
 const Eje = lazy(() => import("./pages/Eje.tsx"));
+const Duo = lazy(() => import("./pages/Duo.tsx"));
+const Uniforme = lazy(() => import("./pages/Uniforme.tsx"));
+const Consulta = lazy(() => import("./pages/Consulta.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const routeMeta: Record<string, [string, string]> = {
-  "/": ["Corpo | Propuestas de diseño", "Nueve direcciones creativas para la web de Corpo."],
+  "/": ["Corpo | Propuestas de diseño", "Tres propuestas nuevas para la web de Corpo y los descartes anteriores."],
+  "/duo": ["Corpo Dúo | Fisioterapia y Pilates en Murcia", "Fisioterapia con ecógrafo y Pilates Máquina en Ronda Sur, Murcia. Pide cita online."],
+  "/uniforme": ["Corpo | Fisioterapia + Pilates en Murcia", "Fisioterapia con ecógrafo y Pilates Máquina en Ronda Sur, Murcia. Pide cita online."],
+  "/consulta": ["Corpo Consulta | Fisioterapia y Pilates en Murcia", "Fisioterapia con ecógrafo y Pilates Máquina en Ronda Sur, Murcia. Pide cita online."],
   "/wellness": ["Corpo Wellness | Fisioterapia y Pilates Máquina", "Una propuesta editorial y cercana para descubrir Corpo en Ronda Sur, Murcia."],
-  "/motion": ["Corpo Motion | Movimiento y recuperación", "Una propuesta dinámica para conocer la fisioterapia, el Pilates Máquina y la recuperación en Corpo."],
+  "/motion": ["Corpo Motion | Fisioterapia y Pilates Máquina", "Una propuesta dinámica sobre fisioterapia avanzada, Pilates Máquina y recursos publicados por Corpo."],
   "/atelier": ["Corpo Atelier | Galería de movimiento", "Una propuesta de Corpo concebida como una galería de movimiento, servicios y espacio."],
-  "/pulse": ["Corpo Pulse | Encuentra tu punto de partida", "Una propuesta interactiva para orientarte entre los servicios confirmados de Corpo."],
-  "/terra": ["Corpo Terra | Una clínica en Ronda Sur", "Una propuesta mediterránea con los servicios, el contacto y la ubicación exacta de Corpo."],
+  "/pulse": ["Corpo Pulse | Servicios publicados", "Un índice interactivo de servicios y recursos publicados por Corpo, sin recomendaciones clínicas."],
+  "/terra": ["Corpo Terra | Una clínica en Ronda Sur", "Una propuesta mediterránea con servicios, contacto y ubicación de Corpo en Ronda Sur."],
   "/clinical": ["Corpo Clinical | Servicios y contacto", "Una propuesta precisa para consultar los servicios y canales de contacto de Corpo."],
   "/nocturne": ["Corpo Nocturne | Fisioterapia y Pilates Máquina", "Una propuesta nocturna para recorrer la fisioterapia y el Pilates Máquina de Corpo."],
-  "/restore": ["Corpo Restore | Mapa de recuperación", "Una propuesta centrada en movilidad, fuerza, control y atención personalizada."],
+  "/restore": ["Corpo Restore | Mapa de preguntas", "Una propuesta para explorar los servicios de Corpo sin recomendaciones clínicas."],
   "/reformer": ["Corpo Reformer | Pilates Máquina", "Una guía visual para descubrir el aparato Reformer y reservar Pilates Máquina en Corpo."],
   "/trama": ["Corpo Trama | Volver al movimiento", "Una propuesta guiada para descubrir cómo puede acompañarte Corpo en Ronda Sur, Murcia."],
   "/linea": ["Corpo Línea | Cuidar el cuerpo", "Una propuesta minimalista para descubrir la fisioterapia y Pilates Máquina de Corpo."],
@@ -49,7 +55,7 @@ const RouteEffects = () => {
       const target = hash ? document.getElementById(hash.slice(1)) : document.querySelector<HTMLElement>("h1");
       if (!target) return false;
       if (hash) {
-        target.scrollIntoView({ block: "center" });
+        target.scrollIntoView({ block: target.dataset.scrollAlign === "start" ? "start" : "center" });
         if (target.matches("a, button, [tabindex]")) target.focus({ preventScroll: true });
       }
       else {
@@ -97,6 +103,9 @@ const App = () => (
         <Route path="/trama" element={<Trama />} />
         <Route path="/linea" element={<Linea />} />
         <Route path="/eje" element={<Eje />} />
+        <Route path="/duo" element={<Duo />} />
+        <Route path="/uniforme" element={<Uniforme />} />
+        <Route path="/consulta" element={<Consulta />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>

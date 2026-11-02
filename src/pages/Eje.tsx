@@ -9,19 +9,19 @@ const services = [
   {
     id: "01",
     name: "Fisioterapia avanzada",
-    detail: "Atención personalizada para observar, intervenir y acompañar tu proceso.",
+    detail: "Servicio de atención de fisioterapia, distinto de las sesiones de Pilates Máquina.",
     image: fisio,
   },
   {
     id: "02",
     name: "Pilates Máquina",
-    detail: "Práctica en Reformer dentro de un estudio dedicado al movimiento.",
+    detail: "Práctica con máquina en sesiones individuales y en grupos reducidos.",
     image: heroReformer,
   },
   {
     id: "03",
-    name: "Recuperación",
-    detail: "Terapia manual, ondas de choque, diatermia y presoterapia entre los recursos disponibles.",
+    name: "Recursos publicados",
+    detail: "Ondas de choque, diatermia y presoterapia: recursos citados, no modalidades de Pilates.",
     image: aboutStudio,
   },
 ];
@@ -43,7 +43,7 @@ const Eje = () => (
         <figcaption><span>01</span><span>El punto de partida cambia para cada cuerpo.</span></figcaption>
       </figure>
       <div className="eje-hero-intro">
-        <p>Corpo combina fisioterapia y Pilates Máquina con una atención cercana y una progresión adaptada.</p>
+        <p>Dos servicios principales y otros recursos publicados: conoce la oferta antes de abrir la reserva.</p>
         <a href="#servicios">Ver sistemas <span aria-hidden="true">↓</span></a>
       </div>
       <span className="eje-registration eje-registration--a" aria-hidden="true">+</span>
@@ -52,14 +52,14 @@ const Eje = () => (
 
     <section id="servicios" className="eje-systems" aria-labelledby="systems-title">
       <header className="eje-section-bar">
-        <p>Configuración disponible</p>
-        <h2 id="systems-title">SISTEMAS<br />EN SERVICIO</h2>
+        <p>Oferta comunicada por Corpo</p>
+        <h2 id="systems-title">SERVICIOS<br />Y RECURSOS</h2>
         <span>[ 01 - 03 ]</span>
       </header>
       <div className="eje-system-grid">
         {services.map((service) => (
           <article className="eje-system" key={service.id}>
-            <div className="eje-system-head"><span>{service.id}</span><span>Servicio confirmado</span></div>
+            <div className="eje-system-head"><span>{service.id}</span><span>Oferta publicada</span></div>
             <img src={service.image} alt="" loading="lazy" decoding="async" />
             <div className="eje-system-copy"><h3>{service.name}</h3><p>{service.detail}</p></div>
           </article>
@@ -68,11 +68,11 @@ const Eje = () => (
     </section>
 
     <section className="eje-process" aria-labelledby="process-title">
-      <div className="eje-process-title"><p>Secuencia de atención</p><h2 id="process-title">UN PASO<br />A LA VEZ</h2></div>
+      <div className="eje-process-title"><p>Secuencia de consulta</p><h2 id="process-title">UN PASO<br />A LA VEZ</h2></div>
       <ol>
-        <li><span>01</span><div><h3>Escuchar</h3><p>Empezamos por entender cómo estás y qué buscas recuperar.</p></div></li>
-        <li><span>02</span><div><h3>Trabajar</h3><p>Fisioterapia y movimiento se adaptan al momento en el que llegas.</p></div></li>
-        <li><span>03</span><div><h3>Continuar</h3><p>La progresión se construye para que puedas sostenerla fuera del estudio.</p></div></li>
+        <li><span>01</span><div><h3>Explorar</h3><p>Conoce los servicios y recursos que Corpo ha publicado.</p></div></li>
+        <li><span>02</span><div><h3>Consultar</h3><p>Pregunta por modalidades y disponibilidad por WhatsApp o email.</p></div></li>
+        <li><span>03</span><div><h3>Reservar</h3><p>Utiliza el enlace de reserva online de Corpo.</p></div></li>
       </ol>
       <div className="eje-process-mark" aria-hidden="true">C<br />R<br />P</div>
     </section>

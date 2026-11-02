@@ -1,19 +1,19 @@
 const benefits = [
   {
     t: "Fisioterapia avanzada",
-    d: "Fisioterapia y terapia manual dentro de una atención personalizada.",
+    d: "Atención de fisioterapia, distinta de una sesión de Pilates Máquina.",
   },
   {
     t: "Pilates Máquina",
-    d: "Movimiento guiado con una progresión adaptada a cada persona.",
+    d: "Una práctica con máquina que se anuncia en formato individual y grupo reducido.",
   },
   {
-    t: "Recuperación",
-    d: "Un acompañamiento cercano para cuidar el cuerpo con o sin una lesión concreta.",
+    t: "Consulta directa",
+    d: "WhatsApp, teléfono y email si quieres preguntar por un servicio o una modalidad.",
   },
   {
-    t: "Servicios disponibles",
-    d: "Ondas de choque, diatermia y presoterapia forman parte de la atención de Corpo.",
+    t: "Otros recursos",
+    d: "Ondas de choque, diatermia y presoterapia se citan aparte de las modalidades de Pilates.",
   },
 ];
 
@@ -23,10 +23,10 @@ export const Method = () => {
       <div className="absolute inset-0 bg-gradient-clay opacity-40" />
       <div className="relative container-editorial">
         <div className="grid md:grid-cols-12 gap-10 mb-20">
-          <p className="eyebrow md:col-span-3 text-cream/60">— Forma de cuidar</p>
+          <p className="eyebrow md:col-span-3 text-cream/60">— Entender la oferta</p>
           <h2 className="md:col-span-9 font-display text-4xl md:text-6xl leading-[1.05] text-balance text-cream">
-            Una atención cercana.
-            <span className="font-display-italic text-accent"> Una progresión personal.</span>
+            Dos servicios principales.
+            <span className="font-display-italic text-accent"> Otras preguntas posibles.</span>
           </h2>
         </div>
 
@@ -44,8 +44,8 @@ export const Method = () => {
         </div>
 
         <p className="mt-24 max-w-3xl font-display-italic text-2xl md:text-3xl leading-snug text-cream/90">
-          Fisioterapia, Pilates Máquina y recuperación comparten una misma idea:
-          acompañar a cada persona con cercanía.
+          Dos formas de conocer Corpo: explorar su fisioterapia y descubrir
+          las modalidades de Pilates Máquina que anuncia.
         </p>
       </div>
     </section>

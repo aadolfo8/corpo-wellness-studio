@@ -10,22 +10,22 @@ import "./atelier.css";
 const services = [
   {
     title: "Fisioterapia avanzada",
-    detail: "Fisioterapia avanzada y terapia manual con atención personalizada.",
+    detail: "Atención de fisioterapia; una línea diferente de las sesiones de Pilates Máquina.",
     image: fisio,
   },
   {
     title: "Pilates Máquina",
-    detail: "Movimiento guiado con una progresión adaptada a cada persona.",
+    detail: "Práctica con máquina en sesiones individuales o grupos reducidos.",
     image: pilates,
   },
   {
-    title: "Recuperación",
-    detail: "Recuperación dentro de una atención cercana y personalizada.",
+    title: "Otros recursos",
+    detail: "Diatermia, ondas de choque y presoterapia son recursos citados por Corpo; no son modalidades de Pilates.",
     image: recovery,
   },
 ];
 
-const secondaryServices = ["Terapia manual", "Ondas de choque", "Diatermia", "Presoterapia"];
+const secondaryServices = ["Ondas de choque", "Diatermia", "Presoterapia"];
 
 const Atelier = () => (
   <main className="atelier-page">
@@ -43,7 +43,7 @@ const Atelier = () => (
       <div className="atelier-opening-copy">
         <p className="atelier-location">Ronda Sur / Murcia</p>
         <h1 id="atelier-title">Un lugar para<br /><em>volver a ti.</em></h1>
-        <p className="atelier-lead">Fisioterapia avanzada, Pilates Máquina y recuperación con atención personalizada en Ronda Sur.</p>
+        <p className="atelier-lead">Una mirada editorial a la fisioterapia avanzada, el Pilates Máquina y los canales de Corpo en Ronda Sur.</p>
         <a className="atelier-primary-action" href="#estudio">Entrar en Corpo <span aria-hidden="true">↓</span></a>
       </div>
       <figure className="atelier-opening-image">
@@ -72,8 +72,8 @@ const Atelier = () => (
         </div>
         <div className="atelier-studio-copy">
           <p className="atelier-large-copy">Un espacio cercano para cuidar el cuerpo de forma personal.</p>
-          <p>Corpo reúne fisioterapia avanzada, Pilates Máquina y recuperación en Ronda Sur, Murcia.</p>
-          <p>La atención y la progresión se adaptan a cada persona.</p>
+          <p>La clínica comunica fisioterapia avanzada y Pilates Máquina como sus servicios principales en Ronda Sur, Murcia.</p>
+          <p>La diferencia está en el tipo de oferta: atención de fisioterapia, práctica de Pilates y recursos específicos que puedes preguntar por separado.</p>
           <a href="#servicios" className="atelier-text-link">Ver servicios <span aria-hidden="true">↘</span></a>
         </div>
       </div>
@@ -105,7 +105,7 @@ const Atelier = () => (
           </article>
         ))}
         <div className="atelier-secondary-services">
-          <p>También disponible</p>
+          <p>También mencionado por Corpo</p>
           <ul>
             {secondaryServices.map((service) => <li key={service}>{service}</li>)}
           </ul>
@@ -115,14 +115,14 @@ const Atelier = () => (
 
     <section className="atelier-practice">
       <div className="atelier-practice-copy">
-        <p>Principios de Corpo</p>
-        <h2>Cuidado<br /><em>personal.</em></h2>
-        <p className="atelier-practice-lead">Atención personalizada y una progresión adaptada a cada persona.</p>
+        <p>Para recorrer la página</p>
+        <h2>Una oferta,<br /><em>varias preguntas.</em></h2>
+        <p className="atelier-practice-lead">Estas notas ayudan a distinguir qué preguntar; no describen el método clínico de Corpo.</p>
       </div>
       <div className="atelier-practice-notes">
-        <div><span>01</span><h3>Cercanía</h3><p>Un entorno cercano en Ronda Sur, Murcia.</p></div>
-        <div><span>02</span><h3>Atención</h3><p>Un cuidado personalizado para cada persona.</p></div>
-        <div><span>03</span><h3>Progresión</h3><p>Una progresión adaptada a cada persona.</p></div>
+        <div><span>01</span><h3>Fisioterapia</h3><p>Un servicio de atención de la clínica.</p></div>
+        <div><span>02</span><h3>Pilates Máquina</h3><p>Individual o en grupo reducido.</p></div>
+        <div><span>03</span><h3>Otros recursos</h3><p>Diatermia, ondas de choque y presoterapia.</p></div>
       </div>
     </section>
 

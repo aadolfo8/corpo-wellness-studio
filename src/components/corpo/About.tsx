@@ -25,12 +25,12 @@ export const About = () => {
           </h2>
           <div className="space-y-5 text-muted-foreground leading-relaxed">
             <p>
-              Corpo reúne fisioterapia avanzada, Pilates Máquina y recuperación en
-              un entorno cercano de Ronda Sur, Murcia.
+              En Ronda Sur, Corpo presenta dos líneas principales: fisioterapia avanzada
+              y Pilates Máquina. Su perfil también menciona otras tecnologías de atención.
             </p>
             <p>
-              La atención y la progresión se adaptan a cada persona, con o sin una
-              lesión concreta.
+              Puedes consultar por teléfono, WhatsApp o email si necesitas aclarar
+              una modalidad antes de utilizar la reserva online.
             </p>
           </div>
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 border-t border-border">
