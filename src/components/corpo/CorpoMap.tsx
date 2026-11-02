@@ -5,7 +5,7 @@ import { corpo } from "@/lib/corpo";
 import "./corpo-map.css";
 
 type CorpoMapProps = {
-  variant: "wellness" | "terra";
+  variant: "wellness" | "terra" | "duo" | "uniforme" | "consulta";
   className?: string;
 };
 

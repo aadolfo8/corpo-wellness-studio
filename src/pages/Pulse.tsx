@@ -7,54 +7,60 @@ import recovery from "@/assets/service-recovery.jpg";
 import { corpo } from "@/lib/corpo";
 import "./pulse.css";
 
-const needs = [
+const categories = [
   {
     id: "entender",
-    label: "Quiero consultar fisioterapia",
+    label: "Fisioterapia avanzada",
     title: "Fisioterapia avanzada",
-    text: "Fisioterapia avanzada con atención personalizada.",
-    service: "Fisioterapia avanzada",
+    text: "Es atención de fisioterapia; no es una modalidad de Pilates Máquina ni el nombre de una tecnología.",
+    question: "¿Qué servicios de fisioterapia ofrece Corpo?",
+    service: "SERVICIO / FISIOTERAPIA",
+    booking: true,
     image: fisio,
     imageAlt: "Manos durante un trabajo corporal",
   },
   {
     id: "mover",
-    label: "Me interesa el movimiento guiado",
+    label: "Pilates Máquina",
     title: "Pilates Máquina",
-    text: "Pilates Máquina con una progresión adaptada a cada persona.",
-    service: "Pilates Máquina",
+    text: "Es práctica con máquina. Individual y grupo reducido describen dos modalidades, no dos tratamientos diferentes.",
+    question: "¿Qué modalidad de Pilates Máquina puedo consultar?",
+    service: "SERVICIO / DOS MODALIDADES",
+    booking: true,
     image: pilates,
     imageAlt: "Persona utilizando una máquina de Pilates",
   },
   {
     id: "cuidar",
-    label: "Quiero consultar recuperación",
-    title: "Recuperación",
-    text: "Recuperación con atención personalizada.",
-    service: "Recuperación",
+    label: "Tecnologías publicadas",
+    title: "Otros recursos",
+    text: "Diatermia, ondas de choque y presoterapia son recursos citados por Corpo, no tipos de clase ni indicaciones para un síntoma.",
+    question: "¿Puedo preguntar por estos recursos y su disponibilidad?",
+    service: "RECURSOS / CONSULTAR",
+    booking: false,
     image: recovery,
     imageAlt: "Toalla y recipientes sobre una superficie iluminada",
   },
 ];
 
 const faqs = [
-  ["¿Esta guía recomienda un tratamiento?", "No. Solo organiza servicios confirmados y te lleva a un canal de contacto."],
-  ["¿Qué servicios ofrece Corpo?", "Fisioterapia avanzada, Pilates Máquina, terapia manual, ondas de choque, diatermia, presoterapia y recuperación."],
-  ["¿Dónde está Corpo?", `En ${corpo.address}.`],
+  ["¿Esta guía recomienda un tratamiento?", "No. Es un índice de lo que Corpo publica; no evalúa síntomas ni indica qué servicio necesitas."],
+  ["¿Hay Pilates Máquina individual y en grupo?", "Corpo menciona sesiones individuales y grupos reducidos. Consulta modalidades y disponibilidad directamente con la clínica."],
+  ["¿Dónde está Corpo?", "En la calle Pedáneo José Sánchez Mompeán, en Ronda Sur, Murcia. Consulta la ubicación enlazada antes de desplazarte."],
 ];
 
-const getContextualWhatsappUrl = (selection: string) => {
+const getContextualWhatsappUrl = (question: string) => {
   const url = new URL(corpo.whatsappUrl);
-  url.searchParams.set("text", `Hola Corpo, me gustaría orientarme sobre: ${selection}.`);
+  url.searchParams.set("text", `Hola Corpo. ${question}`);
   return url.toString();
 };
 
 const Pulse = () => {
-  const [selectedNeed, setSelectedNeed] = useState(needs[0]);
+  const [selectedNeed, setSelectedNeed] = useState(categories[0]);
 
   const selectNeed = (index: number) => {
-    setSelectedNeed(needs[index]);
-    document.getElementById(`pulse-need-${needs[index].id}`)?.focus();
+    setSelectedNeed(categories[index]);
+    document.getElementById(`pulse-need-${categories[index].id}`)?.focus();
   };
 
   const handleNeedKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
@@ -63,8 +69,8 @@ const Pulse = () => {
     const nextIndex = event.key === "Home"
       ? 0
       : event.key === "End"
-        ? needs.length - 1
-        : (index + (event.key === "ArrowDown" ? 1 : -1) + needs.length) % needs.length;
+        ? categories.length - 1
+        : (index + (event.key === "ArrowDown" ? 1 : -1) + categories.length) % categories.length;
     selectNeed(nextIndex);
   };
 
@@ -82,22 +88,22 @@ const Pulse = () => {
           <span>Corpo / Movimiento</span>
         </div>
         <div className="pulse-cover-copy">
-          <p className="pulse-label">CORPO / UNA CLÍNICA PARA MOVERTE MEJOR</p>
-          <h1 id="pulse-title">No empieces<br />por el<br /><em>tratamiento.</em></h1>
-          <p>Empieza por la pregunta. ¿Qué quieres volver a hacer?</p>
-          <a className="pulse-button" href="#elige">Encontrar mi punto de partida <span>↓</span></a>
+          <p className="pulse-label">CORPO / SERVICIOS Y CONTACTO</p>
+          <h1 id="pulse-title">Conoce<br />la oferta<br /><em>de Corpo.</em></h1>
+          <p>Explora servicios y recursos publicados sin tener que elegir un tratamiento.</p>
+          <a className="pulse-button" href="#elige">Explorar servicios <span>↓</span></a>
         </div>
       <div className="pulse-cover-stamp" aria-hidden="true">FISIO<br />+<br />MOVIMIENTO</div>
       </section>
 
       <section id="elige" className="pulse-selector" aria-labelledby="selector-title">
         <div className="pulse-selector-intro">
-          <p className="pulse-label">Una pregunta rápida</p>
-          <h2 id="selector-title">¿Qué te trae<br /><em>hoy?</em></h2>
-          <p>Esta guía no hace una recomendación clínica. Solo te ayuda a localizar un servicio confirmado y abrir el canal que prefieras.</p>
+          <p className="pulse-label">Índice interactivo</p>
+          <h2 id="selector-title">¿Qué ofrece<br /><em>Corpo?</em></h2>
+          <p>Compara servicios, modalidades y recursos. Cada opción explica la diferencia y propone una pregunta para contactar, sin valorar síntomas.</p>
         </div>
-        <div className="pulse-need-list" role="tablist" aria-label="Orientación de servicios" aria-orientation="vertical">
-          {needs.map((need, index) => (
+        <div className="pulse-need-list" role="tablist" aria-label="Servicios y recursos publicados" aria-orientation="vertical">
+          {categories.map((need, index) => (
             <button
               key={need.id}
               type="button"
@@ -117,14 +123,14 @@ const Pulse = () => {
         <article id="pulse-need-answer" className="pulse-answer" role="tabpanel" aria-labelledby={`pulse-need-${selectedNeed.id}`} aria-live="polite" aria-atomic="true">
           <img src={selectedNeed.image} alt={selectedNeed.imageAlt} loading="lazy" />
           <div>
-            <p className="pulse-label">Orientación, no recomendación clínica</p>
-            <p className="pulse-answer-context">Has elegido: {selectedNeed.label}</p>
+            <p className="pulse-label">Información, no recomendación clínica</p>
+            <p className="pulse-answer-context">{selectedNeed.service}</p>
             <h3>{selectedNeed.title}</h3>
             <p>{selectedNeed.text}</p>
-            <span className="pulse-answer-service">{selectedNeed.service}</span>
+            <p><strong>Para preguntar:</strong> {selectedNeed.question}</p>
             <div className="pulse-answer-actions">
-              <a href={getContextualWhatsappUrl(selectedNeed.label)} target="_blank" rel="noreferrer" aria-label={`Consultar por WhatsApp sobre ${selectedNeed.label} (nueva pestaña)`}>Contarlo por WhatsApp <span aria-hidden="true">↗</span></a>
-              <a href={corpo.bookingUrl} target="_blank" rel="noreferrer" aria-label="Reservar online (nueva pestaña)">Reservar online <span aria-hidden="true">↗</span></a>
+              <a href={getContextualWhatsappUrl(selectedNeed.question)} target="_blank" rel="noreferrer" aria-label={`Preguntar por WhatsApp sobre ${selectedNeed.label} (nueva pestaña)`}>Enviar esta pregunta <span aria-hidden="true">↗</span></a>
+              {selectedNeed.booking && <a href={corpo.bookingUrl} target="_blank" rel="noreferrer" aria-label="Reservar online (nueva pestaña)">Reservar online <span aria-hidden="true">↗</span></a>}
             </div>
           </div>
         </article>
@@ -136,9 +142,9 @@ const Pulse = () => {
           <h2 id="route-title">De la duda<br /><em>a un canal</em><br />directo.</h2>
         </div>
         <ol className="pulse-route-line" aria-label="Formas de continuar con Corpo">
-          <li><span>01</span><h3>Orientarte</h3><p>Consulta los servicios confirmados de Corpo.</p></li>
+          <li><span>01</span><h3>Explorar</h3><p>Distingue servicios principales de otros recursos publicados.</p></li>
           <li><span>02</span><h3>Contactar</h3><p>Escribe por WhatsApp o email, o llama por teléfono.</p></li>
-          <li><span>03</span><h3>Reservar</h3><p>Elige una cita desde la reserva online.</p></li>
+          <li><span>03</span><h3>Reservar</h3><p>Utiliza el enlace de reserva online de Corpo.</p></li>
         </ol>
       </section>
 

@@ -9,17 +9,17 @@ const services = [
   {
     number: "01",
     title: "Fisioterapia avanzada",
-    text: "Fisioterapia avanzada con terapia manual, ondas de choque y diatermia.",
+    text: "Atención de fisioterapia, distinta de las sesiones de Pilates Máquina. Las tecnologías se consultan aparte.",
   },
   {
     number: "02",
     title: "Pilates Máquina",
-    text: "Movimiento guiado con una progresión adaptada a cada persona.",
+    text: "Práctica con máquina en sesiones individuales y grupos reducidos.",
   },
   {
     number: "03",
-    title: "Recuperación",
-    text: "Recuperación y presoterapia con atención personalizada.",
+    title: "Presoterapia",
+    text: "Un recurso citado por Corpo, no una modalidad de Pilates. Pregunta por él sin elegirlo como tratamiento.",
   },
 ];
 
@@ -41,7 +41,7 @@ const Motion = () => (
       <div className="motion-hero-copy">
         <p className="motion-kicker">Fisioterapia avanzada + Pilates Máquina / Murcia</p>
         <h1>EL CUERPO<br />SE MUEVE.</h1>
-        <p className="motion-intro">Atención personalizada y movimiento guiado con una progresión adaptada a cada persona.</p>
+        <p className="motion-intro">Fisioterapia avanzada y Pilates Máquina en Ronda Sur: atención y práctica con máquina, en espacios distintos de la oferta.</p>
         <a href="#programas" className="motion-circle-link">Explorar<br />servicios <span aria-hidden="true">↓</span></a>
       </div>
       <p className="motion-side-label">Corpo / Movimiento con criterio</p>
@@ -75,10 +75,10 @@ const Motion = () => (
     <section id="metodo" className="motion-method">
       <div className="motion-method-image"><img src={fisio} alt="Manos durante una sesión de terapia manual" loading="lazy" /></div>
       <div className="motion-method-copy">
-        <p className="motion-kicker">02 / Nuestro método</p>
+         <p className="motion-kicker">02 / Servicios y recursos</p>
         <h2>MOVERSE<br />CON<br /><em>CRITERIO.</em></h2>
-        <p>Corpo combina fisioterapia avanzada, Pilates Máquina y recuperación con una atención cercana y personalizada.</p>
-        <div className="motion-steps"><span>Fisioterapia</span><span>Pilates Máquina</span><span>Recuperación</span></div>
+         <p>La fisioterapia y el Pilates Máquina son servicios; presoterapia, diatermia y ondas de choque son recursos citados por Corpo. Si quieres saber más, pregunta directamente o utiliza el enlace de reserva online.</p>
+         <div className="motion-steps"><span>Fisioterapia</span><span>Pilates Máquina</span><span>Otros recursos</span></div>
       </div>
     </section>
 

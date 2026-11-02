@@ -18,3 +18,7 @@
 .corpo-map-shell .leaflet-marker-icon:focus-visible, .corpo-map-shell .leaflet-control a:focus-visible, .corpo-map-shell .leaflet-popup-close-button:focus-visible { outline: 3px solid var(--map-accent); outline-offset: 3px; }
 @media (max-width: 800px) { .corpo-map-shell { min-height: 340px; }.corpo-map-shell .leaflet-control-attribution { font-size: 10px; } }
 @media (prefers-reduced-motion: reduce) { .corpo-map-shell .leaflet-zoom-animated { transition: none !important; } }
+.corpo-map-shell--duo { --map-accent: #2f4a3a; --map-ink: #1d2620; --map-paper: #efe6d4; }
+.corpo-map-shell--uniforme { --map-accent: #c9a978; --map-ink: #24392d; --map-paper: #f1e8d6; }
+.corpo-map-shell--consulta { --map-accent: #4b6b4f; --map-ink: #1f2a21; --map-paper: #f6f1e6; }
+.corpo-map-shell--duo .leaflet-tile-pane, .corpo-map-shell--uniforme .leaflet-tile-pane, .corpo-map-shell--consulta .leaflet-tile-pane { filter: grayscale(.85) sepia(.3) hue-rotate(20deg) saturate(.75) contrast(.92); }

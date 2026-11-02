@@ -9,17 +9,17 @@ import { corpo } from "@/lib/corpo";
 import "./terra.css";
 
 const stations = [
-  ["Llegar", "Dejar el ruido fuera y llegar con tiempo para ti."],
-  ["Observar", "Escuchar qué ocurre antes de elegir qué hacer."],
-  ["Mover", "Encontrar el gesto, la carga o la práctica que necesitas."],
-  ["Volver", "Llevarte una forma posible de seguir cuidándote."],
+  ["Ubicar", "Corpo está en la calle Pedáneo José Sánchez Mompeán, en Ronda Sur."],
+  ["Explorar", "Conocer la fisioterapia avanzada y el Pilates Máquina que presenta la clínica."],
+  ["Preguntar", "Consultar por las modalidades de Pilates y otros recursos publicados."],
+  ["Llegar", "Abrir las indicaciones antes de desplazarte o contactar por teléfono."],
 ];
 
 const services = [
-  ["Fisioterapia avanzada", "Atención personalizada de fisioterapia con una progresión adaptada a cada persona.", fisio],
-  ["Pilates Máquina", "Práctica en Reformer dentro de un estudio dedicado al movimiento.", pilates],
-  ["Terapia manual", "Una de las formas de trabajo disponibles en la clínica.", recovery],
-  ["Tecnología", "Ondas de choque, diatermia y presoterapia entre los servicios confirmados de Corpo.", aboutStudio],
+  ["Fisioterapia avanzada", "Atención de fisioterapia, distinta de las clases de Pilates Máquina.", fisio],
+  ["Pilates Máquina", "Práctica con máquina en modalidad individual o en grupos reducidos.", pilates],
+  ["Presoterapia", "Un recurso citado por Corpo; no es una modalidad de Pilates.", recovery],
+  ["Otras tecnologías", "Ondas de choque y diatermia son otros recursos que puedes preguntar por separado.", aboutStudio],
 ];
 
 const Terra = () => (
@@ -50,7 +50,7 @@ const Terra = () => (
       <div className="terra-route-intro">
         <p className="terra-kicker">El recorrido</p>
         <h2 id="route-title">El cuerpo<br /><em>tiene estaciones.</em></h2>
-        <p>No todo empieza haciendo. A veces empieza parando, mirando y dejando que alguien te acompañe.</p>
+        <p>Un recorrido por la información práctica: dónde está Corpo, qué publica y cómo contactar.</p>
       </div>
       <ol className="terra-stations">
         {stations.map(([title, text], index) => (
@@ -67,15 +67,15 @@ const Terra = () => (
       <div className="terra-place-copy">
         <p className="terra-kicker">El lugar</p>
         <h2 id="place-title">Un espacio<br /><em>sin prisa.</em></h2>
-        <p>Corpo está en Ronda Sur, Murcia. Un estudio donde fisioterapia y Pilates Máquina conviven con una manera de trabajar cercana y precisa.</p>
-        <div className="terra-place-note"><span>Nota de campo / 01</span><p>Pregunta qué necesitas. Nosotros empezamos por escucharlo.</p></div>
+        <p>Corpo está en Ronda Sur, Murcia. Su perfil público reúne fisioterapia avanzada, Pilates Máquina y canales de contacto directo.</p>
+        <div className="terra-place-note"><span>Nota de campo / 01</span><p>La dirección de la calle está publicada; confirma el portal en el mapa antes de venir.</p></div>
       </div>
     </section>
 
     <section id="servicios" className="terra-notebook" aria-labelledby="notebook-title">
       <div className="terra-notebook-head">
         <p className="terra-kicker">Cuaderno de trabajo</p>
-        <h2 id="notebook-title">Lo que podemos<br /><em>hacer contigo.</em></h2>
+        <h2 id="notebook-title">Lo que puedes<br /><em>conocer aquí.</em></h2>
       </div>
       <div className="terra-notebook-list">
         {services.map(([title, text, image], index) => (
