@@ -5,9 +5,9 @@ import { corpo } from "@/lib/corpo";
 import "./restore.css";
 
 const movementAxes = [
-  ["movilidad", "Movilidad", "Observar cómo se mueve tu cuerpo y qué gestos quieres trabajar.", "Fisioterapia avanzada"],
-  ["fuerza", "Fuerza", "Trabajar fuerza con una progresión adaptada a cada persona.", "Recuperación"],
-  ["control", "Control", "Coordinar respiración, postura y movimiento con atención.", "Pilates Máquina"],
+  ["movilidad", "Movilidad", "Puedes describir con tus palabras qué movimiento tienes en mente, sin elegir un servicio.", "Una pregunta para Corpo"],
+  ["fuerza", "Fuerza", "Si te interesa el movimiento con máquina, Corpo anuncia Pilates individual y en grupo reducido; eso no indica qué opción necesitas.", "Conocer modalidades"],
+  ["control", "Control", "Las tecnologías citadas por Corpo son recursos distintos de los formatos de Pilates Máquina.", "Distinguir recursos"],
 ];
 
 const Restore = () => (
@@ -22,7 +22,7 @@ const Restore = () => (
       <div className="restore-opening-copy">
         <p className="restore-code">CORPO / RECUPERACIÓN / MURCIA</p>
         <h1 id="restore-title">Vuelve a lo<br /><em>que te mueve.</em></h1>
-        <p>Un mapa sencillo para entender qué necesitas recuperar y encontrar una forma clara de empezar.</p>
+        <p>Un mapa de preguntas para conocer los servicios publicados y contactar con Corpo, sin elegir un tratamiento por ti.</p>
         <a className="restore-primary" href="#mapa">Abrir el mapa <span aria-hidden="true">↓</span></a>
       </div>
       <figure className="restore-map-visual">
@@ -37,7 +37,7 @@ const Restore = () => (
     </section>
 
     <section id="mapa" className="restore-axis-section" aria-labelledby="axis-title">
-      <div className="restore-axis-intro"><p className="restore-code">01 / El mapa</p><h2 id="axis-title">Tres formas<br />de volver.</h2><p>No tienes que llegar con una respuesta. Puedes empezar por reconocer qué echas de menos en tu movimiento.</p></div>
+      <div className="restore-axis-intro"><p className="restore-code">01 / El mapa</p><h2 id="axis-title">Tres formas<br />de volver.</h2><p>Estas palabras ayudan a iniciar una conversación; no vinculan síntomas con servicios ni sustituyen una consulta.</p></div>
       <div className="restore-axis-list">
         {movementAxes.map(([id, title, text, service], index) => <article id={`axis-${id}`} key={id}><span className="restore-axis-number">0{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div><strong>{service}</strong></article>)}
       </div>
@@ -48,7 +48,7 @@ const Restore = () => (
       <div className="restore-path-track">
         <div className="restore-path-line" aria-hidden="true"><span /></div>
         <ol className="restore-path-list">
-          <li><span>01</span><h3>Explorar</h3><p>Conoce la fisioterapia, el Pilates Máquina y la recuperación.</p></li>
+          <li><span>01</span><h3>Explorar</h3><p>Distingue fisioterapia, Pilates Máquina y los recursos citados aparte.</p></li>
           <li><span>02</span><h3>Preguntar</h3><p>Cuéntanos qué necesitas por WhatsApp, teléfono o email.</p></li>
           <li><span>03</span><h3>Continuar</h3><p>Reserva online cuando quieras dar el siguiente paso.</p></li>
         </ol>
@@ -57,7 +57,7 @@ const Restore = () => (
 
     <section className="restore-evidence" aria-labelledby="evidence-title">
       <div className="restore-evidence-image"><img src={aboutStudio} alt="Sala luminosa con camilla y plantas" loading="lazy" /><span>Un espacio para trabajar cerca</span></div>
-      <div className="restore-evidence-copy"><p className="restore-code">03 / El espacio</p><h2 id="evidence-title">La recuperación<br /><em>también necesita lugar.</em></h2><p>Corpo combina fisioterapia y Pilates Máquina en un estudio de Ronda Sur pensado para trabajar con atención, sin ruido innecesario.</p><a href="#contacto" className="restore-text-link">Abrir contacto <span aria-hidden="true">↘</span></a></div>
+      <div className="restore-evidence-copy"><p className="restore-code">03 / El espacio</p><h2 id="evidence-title">La recuperación<br /><em>también necesita lugar.</em></h2><p>En Ronda Sur, Corpo reúne fisioterapia avanzada y Pilates Máquina. Consulta las modalidades y los recursos disponibles con la clínica.</p><a href="#contacto" className="restore-text-link">Abrir contacto <span aria-hidden="true">↘</span></a></div>
     </section>
 
     <section id="contacto" className="restore-contact" aria-labelledby="contact-title">

@@ -1,0 +1,44 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "dm sans",
+        "createdAt": "2026-11-02T07:33:08.420Z",
+        "reason": "Claude: each Corpo proposal route intentionally has its own type pairing (existing pattern in src/pages/*.css); DESIGN.md describes an earlier proposal"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "bricolage grotesque",
+        "createdAt": "2026-11-02T07:33:08.513Z",
+        "reason": "Claude: each Corpo proposal route intentionally has its own type pairing (existing pattern in src/pages/*.css); DESIGN.md describes an earlier proposal"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "instrument serif",
+        "createdAt": "2026-11-02T07:33:08.623Z",
+        "reason": "Claude: each Corpo proposal route intentionally has its own type pairing (existing pattern in src/pages/*.css); DESIGN.md describes an earlier proposal"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "manrope",
+        "createdAt": "2026-11-02T07:33:08.733Z",
+        "reason": "Claude: each Corpo proposal route intentionally has its own type pairing (existing pattern in src/pages/*.css); DESIGN.md describes an earlier proposal"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "schibsted grotesk",
+        "createdAt": "2026-11-02T07:33:08.843Z",
+        "reason": "Claude: each Corpo proposal route intentionally has its own type pairing (existing pattern in src/pages/*.css); DESIGN.md describes an earlier proposal"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "newsreader",
+        "createdAt": "2026-11-02T07:44:32.360Z",
+        "reason": "Claude: per-proposal type pairing, same as other proposal fonts; DESIGN.md describes an earlier proposal"
+      }
+    ]
+  }
+}

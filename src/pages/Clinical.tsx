@@ -6,9 +6,8 @@ import "./clinical.css";
 const serviceMatrix = [
   ["Fisioterapia avanzada", "Servicio confirmado", "fisio"],
   ["Pilates Máquina", "Servicio confirmado", "pilates"],
-  ["Terapia manual", "Servicio confirmado", "manual"],
-  ["Recuperación", "Servicio confirmado", "recovery"],
-  ["Ondas de choque · Diatermia · Presoterapia", "Tecnologías confirmadas", "support"],
+  ["Pilates Máquina individual o en grupo reducido", "Modalidades publicadas", "manual"],
+  ["Ondas de choque · Diatermia · Presoterapia", "Recursos mencionados", "support"],
 ];
 
 const Clinical = () => (
@@ -34,8 +33,8 @@ const Clinical = () => (
       <section id="entrada" className="clinical-opening" aria-labelledby="clinical-title">
         <div className="clinical-opening-copy">
           <p className="clinical-code">Registro 00 / Corpo Murcia</p>
-          <h1 id="clinical-title">Tu cuerpo<br />no es un<br /><em>protocolo.</em></h1>
-          <p>Atención personalizada y una progresión adaptada a cada persona.</p>
+          <h1 id="clinical-title">La oferta,<br />sin letra<br /><em>pequeña.</em></h1>
+          <p>Consulta servicios, modalidades publicadas y canales de contacto en un mismo lugar.</p>
         </div>
         <div className="clinical-opening-data">
           <div className="clinical-data-item"><span>Ubicación</span><strong>Ronda Sur<br />Murcia</strong></div>
@@ -46,18 +45,18 @@ const Clinical = () => (
       </section>
 
       <section id="servicios" className="clinical-matrix" aria-labelledby="matrix-title">
-        <div className="clinical-section-intro"><p className="clinical-code">01 / Servicios confirmados</p><h2 id="matrix-title">Encuentra<br /><em>tu entrada.</em></h2><p>Corpo combina fisioterapia y Pilates Máquina en un entorno cercano, con atención personalizada y una progresión adaptada a cada persona.</p></div>
+        <div className="clinical-section-intro"><p className="clinical-code">01 / Oferta publicada</p><h2 id="matrix-title">Encuentra<br /><em>tu entrada.</em></h2><p>Fisioterapia es un servicio; individual y grupo reducido son modalidades de Pilates Máquina. Las tecnologías figuran aparte. Esta tabla no indica disponibilidad ni aconseja tratamientos.</p></div>
         <div className="clinical-service-data">
           <div className="clinical-table-wrap">
             <table>
-              <caption className="sr-only">Servicios y tecnologías confirmados de Corpo</caption>
+              <caption className="sr-only">Servicios, modalidades y recursos publicados por Corpo</caption>
               <thead><tr><th scope="col">Servicio o tecnología</th><th scope="col">Registro</th></tr></thead>
               <tbody>
                 {serviceMatrix.map(([service, record, type]) => <tr key={service}><th scope="row"><span className={`clinical-service-dot clinical-dot-${type}`} aria-hidden="true" />{service}</th><td>{record}</td></tr>)}
               </tbody>
             </table>
           </div>
-          <ul className="clinical-mobile-records" aria-label="Servicios y tecnologías confirmados de Corpo">
+          <ul className="clinical-mobile-records" aria-label="Servicios, modalidades y recursos publicados por Corpo">
             {serviceMatrix.map(([service, record, type]) => <li key={service}><span className={`clinical-service-dot clinical-dot-${type}`} aria-hidden="true" /><div><span>Servicio o tecnología</span><strong>{service}</strong><small>{record}</small></div></li>)}
           </ul>
         </div>
@@ -67,27 +66,27 @@ const Clinical = () => (
         <div className="clinical-first-image"><img src={aboutStudio} alt="Sala luminosa con plantas" loading="lazy" /><span>Imagen de ambiente</span></div>
         <div className="clinical-first-copy">
           <p className="clinical-code">02 / Enfoque</p>
-          <h2 id="first-visit-title">Una atención<br /><em>adaptada.</em></h2>
+          <h2 id="first-visit-title">Lo que puedes<br /><em>consultar.</em></h2>
           <ul className="clinical-checklist">
-            <li><span>A</span><div><strong>Atención personalizada</strong><p>Fisioterapia y Pilates Máquina en un entorno cercano.</p></div></li>
-            <li><span>B</span><div><strong>Progresión adaptada</strong><p>Una forma de acompañar adaptada a cada persona.</p></div></li>
+            <li><span>A</span><div><strong>Fisioterapia avanzada</strong><p>Un servicio principal de la clínica.</p></div></li>
+            <li><span>B</span><div><strong>Pilates Máquina</strong><p>Pregunta por sesiones individuales y grupos reducidos.</p></div></li>
             <li><span>C</span><div><strong>Conversación directa</strong><p>Contacto por teléfono, WhatsApp, email o reserva online.</p></div></li>
           </ul>
         </div>
       </section>
 
-      <section className="clinical-principles" aria-label="Principios de Corpo">
-        <p className="clinical-code">Una forma de trabajar</p>
-        <div><strong>Cercanía</strong><span>en la atención.</span></div>
-        <div><strong>Adaptación</strong><span>en la progresión.</span></div>
-        <div><strong>Claridad</strong><span>para continuar.</span></div>
+      <section className="clinical-principles" aria-label="Cómo leer la oferta de Corpo">
+        <p className="clinical-code">Cómo leer este índice</p>
+        <div><strong>Servicio</strong><span>fisioterapia o Pilates Máquina.</span></div>
+        <div><strong>Modalidad</strong><span>Pilates individual o en grupo reducido.</span></div>
+        <div><strong>Recurso</strong><span>diatermia, ondas de choque o presoterapia.</span></div>
       </section>
 
       <section id="contacto" className="clinical-dossier" aria-labelledby="dossier-title">
         <div className="clinical-dossier-heading"><p className="clinical-code">03 / Abrir un canal</p><h2 id="dossier-title">Hablemos de<br /><em>tu siguiente paso.</em></h2></div>
         <div className="clinical-dossier-content">
           <div className="clinical-contact-list">
-            <a href={corpo.bookingUrl} target="_blank" rel="noopener noreferrer" aria-label="Elegir cita online (nueva pestaña)"><span>Reserva</span><strong>Elegir cita online</strong><b aria-hidden="true">↗</b></a>
+            <a href={corpo.bookingUrl} target="_blank" rel="noopener noreferrer" aria-label="Abrir reserva online (nueva pestaña)"><span>Reserva</span><strong>Abrir reserva online</strong><b aria-hidden="true">↗</b></a>
             <a href={corpo.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp (nueva pestaña)"><span>WhatsApp</span><strong>Escribir un mensaje</strong><b aria-hidden="true">↗</b></a>
             <a href={corpo.phoneUrl}><span>Teléfono</span><strong>{corpo.phone}</strong><b aria-hidden="true">↗</b></a>
             <a href={corpo.emailUrl}><span>Email</span><strong>Enviar un email</strong><b aria-hidden="true">↗</b></a>

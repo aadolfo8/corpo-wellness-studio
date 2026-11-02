@@ -13,8 +13,8 @@ const apparatusParts = [
 
 const practicePoints = [
   ["Servicio", "Pilates Máquina en Ronda Sur."],
-  ["Atención", "Personalizada para cada persona."],
-  ["Progresión", "Adaptada a cada persona."],
+  ["Modalidades", "Corpo anuncia sesiones individuales y grupos reducidos."],
+  ["Disponibilidad", "Consulta las opciones actuales con la clínica."],
   ["Contacto", "Reserva online, WhatsApp o teléfono."],
 ];
 
@@ -43,7 +43,7 @@ const Reformer = () => {
       </header>
 
       <section className="reformer-opening" aria-labelledby="reformer-title">
-        <div className="reformer-opening-copy"><p className="reformer-code">Pilates Máquina / 01</p><h1 id="reformer-title">Pilates<br /><em>Máquina</em><br />en Corpo.</h1><p>Pilates Máquina con atención personalizada y una progresión adaptada a cada persona.</p><a className="reformer-start" href="#aparato">Conocer el aparato <span aria-hidden="true">↓</span></a></div>
+        <div className="reformer-opening-copy"><p className="reformer-code">Pilates Máquina / 01</p><h1 id="reformer-title">Pilates<br /><em>Máquina</em><br />en Corpo.</h1><p>Corpo publica Pilates Máquina individual y en grupos reducidos. Explora el aparato ilustrado aquí y consulta las modalidades actuales.</p><a className="reformer-start" href="#aparato">Conocer el aparato <span aria-hidden="true">↓</span></a></div>
         <figure className="reformer-opening-image"><img src={servicePilates} alt="Persona sentada en un aparato Reformer" width="1280" height="1600" /><figcaption>Una máquina.<br />Distintas formas de movimiento.</figcaption></figure>
       </section>
 
@@ -59,13 +59,13 @@ const Reformer = () => {
       </section>
 
       <section className="reformer-session" aria-labelledby="session-title">
-        <div className="reformer-session-heading"><p className="reformer-code">Pilates Máquina / 03</p><h2 id="session-title">Una práctica<br /><em>personalizada.</em></h2></div>
+        <div className="reformer-session-heading"><p className="reformer-code">Pilates Máquina / 03</p><h2 id="session-title">Una práctica<br /><em>por conocer.</em></h2></div>
         <ul className="reformer-session-track">
           {practicePoints.map(([title, text], index) => <li key={title}><span>0{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}
         </ul>
       </section>
 
-      <section className="reformer-first-time" aria-labelledby="first-time-title"><div><p className="reformer-code">Pilates Máquina / 04</p><h2 id="first-time-title">Antes de<br /><em>reservar.</em></h2></div><div className="reformer-first-copy"><p>Si tienes dolor, una lesión reciente o dudas sobre qué puedes hacer, escríbenos para contarnos qué buscas.</p><dl><div><dt>Servicio</dt><dd>Pilates Máquina</dd></div><div><dt>Atención</dt><dd>Personalizada</dd></div><div><dt>Contacto</dt><dd>WhatsApp o teléfono</dd></div></dl></div></section>
+      <section className="reformer-first-time" aria-labelledby="first-time-title"><div><p className="reformer-code">Pilates Máquina / 04</p><h2 id="first-time-title">Antes de<br /><em>reservar.</em></h2></div><div className="reformer-first-copy"><p>Si quieres conocer plazas o la diferencia entre las modalidades publicadas, contacta con Corpo antes de reservar.</p><dl><div><dt>Servicio</dt><dd>Pilates Máquina</dd></div><div><dt>Modalidades</dt><dd>Individual y grupo reducido</dd></div><div><dt>Contacto</dt><dd>WhatsApp o teléfono</dd></div></dl></div></section>
 
       <section id="reserva" className="reformer-booking" aria-labelledby="booking-title"><div className="reformer-booking-card"><p className="reformer-code">Pilates Máquina / 05</p><h2 id="booking-title">El siguiente<br /><em>paso.</em></h2><p>Reserva online con Corpo o escríbenos para contarnos qué buscas.</p><div className="reformer-booking-links"><a href={corpo.bookingUrl} target="_blank" rel="noopener noreferrer" aria-label="Reservar online (nueva pestaña)">Reservar online <span aria-hidden="true">↗</span></a><a href={corpo.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp sobre Pilates Máquina (nueva pestaña)">WhatsApp <span aria-hidden="true">↗</span></a></div></div><div className="reformer-booking-details"><address>{corpo.addressLines[0]}<br />{corpo.addressLines[1]}</address><a href={corpo.directionsUrl} target="_blank" rel="noopener noreferrer" aria-label="Cómo llegar a Corpo en Google Maps (nueva pestaña)">Cómo llegar <span aria-hidden="true">↗</span></a><a href={corpo.phoneUrl}>{corpo.phone}</a></div></section>
 
