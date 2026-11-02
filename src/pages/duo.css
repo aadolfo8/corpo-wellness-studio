@@ -170,15 +170,17 @@
   .duo-nav { grid-template-columns: 1fr auto; }
   .duo-nav nav { display: none; }
   .duo-hero-title > span { margin-top: 0.4rem; }
-  /* En móvil los dos servicios van uno junto al otro, desfasados en altura, para verse a la vez. */
-  .duo-hero-title { font-size: clamp(2.5rem, 11.5vw, 3.6rem); padding-bottom: 1.1rem; }
-  .duo-split { gap: 0.6rem; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
-  .duo-half { border-radius: 18px; padding: 0.95rem 0.85rem; }
-  .duo-half--pilates { margin-bottom: 8svh; }
-  .duo-half--fisio { margin-top: 8svh; }
-  .duo-half-copy { gap: 0.4rem; }
-  .duo-half-copy strong { font-size: clamp(1.45rem, 7vw, 2.1rem); line-height: 1; }
-  .duo-half-copy > span { font-size: 0.82rem; line-height: 1.35; }
+  /* En móvil la portada es un collage: Pilates arriba a la izquierda y Fisioterapia superpuesta abajo a la derecha. */
+  .duo-hero-title { font-size: clamp(2.5rem, 11.5vw, 3.6rem); padding-bottom: 1rem; }
+  .duo-split { display: block; }
+  .duo-half { border-radius: 20px; padding: 1rem; position: absolute; }
+  .duo-half--pilates { height: 70%; justify-content: flex-start; left: 0; top: 0; width: 74%; }
+  .duo-half--pilates::after { background: linear-gradient(0deg, rgba(47, 74, 58, 0.05) 45%, rgba(47, 74, 58, 0.88)); }
+  .duo-half--pilates .duo-half-copy { margin-top: 0.5rem; }
+  .duo-half--fisio { border: 5px solid var(--duo-cream); bottom: 0; box-shadow: 0 22px 44px rgba(29, 38, 32, 0.28); height: 58%; right: 0; width: 66%; }
+  .duo-half-copy { gap: 0.35rem; }
+  .duo-half-copy strong { font-size: clamp(1.7rem, 8.4vw, 2.4rem); line-height: 1; }
+  .duo-half-copy > span { font-size: 0.85rem; line-height: 1.35; max-width: 15rem; }
   .duo-half-more { display: none; }
   /* En móvil la cita ya está fija en la barra superior. */
   .duo-seal { display: none; }
@@ -188,7 +190,8 @@
   /* En móvil las secciones arrancan a pantalla completa y crecen solo si el contenido no cabe. */
   .duo-screen { height: auto; min-height: var(--duo-screen); }
   .duo-pilates, .duo-fisio { display: flex; flex-direction: column; gap: 1.5rem; padding: 2.5rem 1rem; }
-  .duo-pilates-media, .duo-fisio-media { height: 30svh; }
+  /* Los vídeos vienen de reels verticales: casi en su formato original para recortarlos lo mínimo. */
+  .duo-pilates-media, .duo-fisio-media { aspect-ratio: 9 / 14; flex: none; max-height: 82svh; }
   .duo-steps li { padding: 0.75rem; }
   .duo-logo { height: 28px; }
   .duo-contact { display: flex; flex-direction: column; }
