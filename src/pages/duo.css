@@ -20,10 +20,14 @@
 .duo-page img, .duo-page video { display: block; height: 100%; object-fit: cover; width: 100%; }
 
 .duo-nav { align-items: center; background: var(--duo-cream); display: grid; gap: 1rem; grid-template-columns: 1fr auto 1fr; height: var(--duo-nav); padding: 0 var(--duo-gutter); position: sticky; top: 0; z-index: 1100; }
-.duo-wordmark { font-family: "Bricolage Grotesque", sans-serif; font-size: 1.65rem; font-weight: 800; letter-spacing: -0.06em; }
+.duo-logo-link { color: var(--duo-ink) !important; display: inline-flex; justify-self: start; }
+.duo-logo { display: block; height: 32px; width: auto; }
+.duo-logo--footer { height: 40px; }
 .duo-nav nav { display: flex; gap: 2rem; }
-.duo-nav nav a { font-size: 0.92rem; font-weight: 500; }
-.duo-nav nav a:hover { color: var(--duo-green); }
+.duo-nav nav a { font-size: 0.92rem; font-weight: 500; padding: 0.35rem 0; position: relative; transition: color 200ms ease; }
+.duo-nav nav a::after { background: var(--duo-green); border-radius: 2px; bottom: 0; content: ""; height: 2px; left: 0; position: absolute; right: 0; transform: scaleX(0); transform-origin: right; transition: transform 450ms cubic-bezier(0.65, 0, 0.35, 1); }
+.duo-nav nav a:hover, .duo-nav nav a.is-active { color: var(--duo-green); }
+.duo-nav nav a:hover::after, .duo-nav nav a.is-active::after { transform: scaleX(1); transform-origin: left; }
 .duo-nav .duo-button { justify-self: end; }
 
 .duo-button { align-items: center; background: var(--duo-green); border-radius: 999px; color: var(--duo-cream) !important; display: inline-flex; font-weight: 600; gap: 0.5rem; justify-content: center; min-height: 50px; padding: 0 1.5rem; transition: background-color 180ms ease, transform 180ms ease; white-space: nowrap; }
@@ -37,7 +41,9 @@
 
 /* Cada sección ocupa exactamente una pantalla bajo la barra de navegación. */
 .duo-screen { height: var(--duo-screen); min-height: 560px; scroll-margin-top: var(--duo-nav); }
-.duo-kicker { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; margin: 0 0 clamp(0.75rem, 2vh, 1.25rem); text-transform: uppercase; }
+.duo-kicker { align-items: center; display: flex; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; margin: 0 0 clamp(0.75rem, 2vh, 1.25rem); text-transform: uppercase; }
+.duo-kicker::before { background: currentColor; content: ""; height: 1px; margin-right: 0; transition: margin-right 900ms 250ms cubic-bezier(0.16, 1, 0.3, 1), width 900ms 250ms cubic-bezier(0.16, 1, 0.3, 1); width: 0; }
+.is-visible .duo-kicker::before { margin-right: 0.75rem; width: 2rem; }
 .duo-page h2 { font-size: clamp(2.2rem, min(4.6vw, 7.4vh), 4.8rem); font-weight: 700; letter-spacing: -0.05em; line-height: 0.96; }
 .duo-lead { font-size: clamp(1rem, min(1.35vw, 2.2vh), 1.2rem); line-height: 1.55; margin: clamp(1rem, 3vh, 1.75rem) 0 clamp(1.25rem, 3.5vh, 2rem); max-width: 30rem; }
 
@@ -54,10 +60,13 @@
 .duo-half--pilates::after { background: linear-gradient(180deg, rgba(47, 74, 58, 0.1) 30%, rgba(47, 74, 58, 0.9)); }
 .duo-half--fisio::after { background: linear-gradient(180deg, rgba(31, 51, 40, 0.1) 30%, rgba(31, 51, 40, 0.88)); }
 .duo-half:hover > img, .duo-half:hover > video { transform: scale(1.04); }
+.duo-half--fisio > img { object-position: 50% 45%; }
 .duo-half-index { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.12em; }
 .duo-half-copy { display: grid; gap: 0.5rem; margin-top: auto; }
 .duo-half-copy strong { font-family: "Bricolage Grotesque", sans-serif; font-size: clamp(2.2rem, min(4.4vw, 7vh), 4.6rem); font-weight: 700; letter-spacing: -0.05em; line-height: 0.95; }
 .duo-half-copy > span { font-size: 1.05rem; max-width: 24rem; opacity: 0.92; }
+.duo-half-more > span { display: inline-block; transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1); }
+.duo-half:hover .duo-half-more > span { transform: translateY(4px); }
 .duo-half-more { border-top: 1px solid rgba(245, 239, 227, 0.4); font-size: 0.9rem; font-weight: 600; margin-top: clamp(0.8rem, 2vh, 1.3rem); padding-top: 0.8rem; }
 
 .duo-seal { align-items: center; background: var(--duo-beige); border: 6px solid var(--duo-cream); border-radius: 50%; box-shadow: 0 18px 40px rgba(29, 38, 32, 0.25); color: var(--duo-green-deep) !important; display: flex; flex-direction: column; font-family: "Bricolage Grotesque", sans-serif; font-size: 1.5rem; font-weight: 700; height: 144px; justify-content: center; left: 50%; letter-spacing: -0.03em; line-height: 1; position: absolute; top: 50%; transform: translate(-50%, -50%); transition: transform 220ms ease, background-color 220ms ease; width: 144px; z-index: 2; }
@@ -74,10 +83,10 @@
 .duo-pilates-intro { align-self: center; }
 .duo-pilates-media { border-radius: 22px; margin: 0; min-height: 0; overflow: hidden; }
 .duo-steps { align-self: center; display: grid; gap: clamp(0.6rem, 1.6vh, 1rem); list-style: none; margin: 0; padding: 0; }
-.duo-steps li { align-items: start; background: rgba(245, 239, 227, 0.08); border: 1px solid rgba(245, 239, 227, 0.2); border-radius: 18px; display: grid; gap: 0.9rem; grid-template-columns: auto 1fr; padding: clamp(0.75rem, 2vh, 1.1rem); }
-.duo-steps li:has(.duo-step-photo) { grid-template-columns: clamp(76px, 7vw, 108px) auto 1fr; }
-.duo-page .duo-step-photo { align-self: stretch; aspect-ratio: 1; border-radius: 12px; height: auto; min-height: 100%; }
-.duo-steps li > span { color: var(--duo-beige); font-size: 0.85rem; font-weight: 700; padding-top: 0.25rem; }
+.duo-steps li { align-items: center; background: rgba(245, 239, 227, 0.08); border: 1px solid rgba(245, 239, 227, 0.2); border-radius: 18px; cursor: default; display: grid; gap: 0.9rem; grid-template-columns: clamp(76px, 7vw, 108px) auto 1fr; padding: clamp(0.65rem, 1.8vh, 0.95rem); }
+.duo-step-number { align-self: start; border: 1px solid rgba(233, 223, 204, 0.4); border-radius: 999px; color: var(--duo-beige); font-size: 0.78rem; font-weight: 700; margin-top: 0.15rem; padding: 0.2rem 0.5rem; transition: background-color 250ms ease, color 250ms ease; }
+.duo-steps li:hover { background: rgba(245, 239, 227, 0.14); border-color: rgba(233, 223, 204, 0.55); transform: translateX(6px); }
+.duo-steps li:hover .duo-step-number { background: var(--duo-beige); color: var(--duo-green-deep); }
 .duo-steps h3 { font-size: clamp(1.2rem, 1.6vw, 1.5rem); letter-spacing: -0.03em; }
 .duo-steps p { line-height: 1.45; margin: 0.35rem 0 0; opacity: 0.85; }
 
@@ -86,16 +95,31 @@
 .duo-fisio .duo-kicker { color: var(--duo-green); }
 .duo-fisio-intro { align-self: center; }
 .duo-fisio-media { border-radius: 22px; margin: 0; min-height: 0; overflow: hidden; }
-.duo-services { align-self: center; display: grid; gap: clamp(0.45rem, 1.2vh, 0.7rem); list-style: none; margin: 0; padding: 0; }
-.duo-services li { align-items: center; background: var(--duo-cream); border-radius: 16px; display: grid; gap: 0.9rem; grid-template-columns: 1fr; padding: clamp(0.6rem, 1.6vh, 0.85rem) clamp(0.8rem, 1.4vw, 1.1rem); }
-.duo-services li:has(.duo-service-photo) { grid-template-columns: clamp(56px, 5vw, 76px) 1fr; padding-left: clamp(0.5rem, 1vh, 0.65rem); }
-.duo-page .duo-service-photo { aspect-ratio: 1; border-radius: 11px; height: auto; }
+.duo-services { align-self: center; display: grid; gap: clamp(0.35rem, 1vh, 0.6rem); list-style: none; margin: 0; padding: 0; }
+.duo-services li { align-items: center; background: var(--duo-cream); border-radius: 16px; cursor: default; display: grid; gap: 0.9rem; grid-template-columns: clamp(46px, min(4.4vw, 7vh), 68px) 1fr; padding: clamp(0.4rem, 1vh, 0.6rem); padding-right: clamp(0.8rem, 1.4vw, 1.1rem); }
+.duo-services li:hover { background: #fffaf0; box-shadow: 0 10px 24px rgba(31, 51, 40, 0.1); transform: translateX(6px); }
 .duo-services h3 { font-size: clamp(1.05rem, 1.4vw, 1.3rem); letter-spacing: -0.03em; }
-.duo-services p { color: var(--duo-muted); font-size: 0.92rem; line-height: 1.4; margin: 0.2rem 0 0; }
-.duo-services .duo-eco { background: var(--duo-green-deep); color: var(--duo-cream); padding: clamp(0.9rem, 2.4vh, 1.4rem) clamp(1rem, 1.6vw, 1.4rem); }
-.duo-services .duo-eco h3 { font-size: clamp(1.6rem, min(2.6vw, 4.4vh), 2.4rem); letter-spacing: -0.05em; line-height: 1; margin-top: 0.6rem; }
+.duo-services p { color: var(--duo-muted); font-size: 0.9rem; line-height: 1.35; margin: 0.15rem 0 0; }
+.duo-services .duo-eco { background: var(--duo-green-deep); color: var(--duo-cream); grid-template-columns: clamp(68px, min(6.5vw, 11vh), 108px) 1fr; padding: clamp(0.55rem, 1.4vh, 0.85rem); padding-right: clamp(1rem, 1.6vw, 1.4rem); }
+.duo-services .duo-eco:hover { background: #24402f; box-shadow: 0 14px 30px rgba(31, 51, 40, 0.25); }
+.duo-services .duo-eco h3 { font-size: clamp(1.5rem, min(2.4vw, 4vh), 2.3rem); letter-spacing: -0.05em; line-height: 1; margin-top: 0.45rem; }
 .duo-services .duo-eco p { color: rgba(245, 239, 227, 0.86); font-size: 0.95rem; margin-top: 0.45rem; }
 .duo-eco-badge { background: var(--duo-beige); border-radius: 999px; color: var(--duo-green-deep); display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; padding: 0.35rem 0.75rem; text-transform: uppercase; }
+
+/* Miniaturas, entrada escalonada y hover de las listas */
+.duo-thumb { align-items: center; aspect-ratio: 1; background: var(--duo-beige); border-radius: 12px; color: var(--duo-green); display: flex; justify-content: center; overflow: hidden; }
+.duo-thumb svg { height: 42%; width: 42%; }
+.duo-thumb img, .duo-thumb video { transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1); }
+.duo-steps li:hover .duo-thumb img, .duo-services li:hover .duo-thumb img { transform: scale(1.1); }
+.duo-steps li, .duo-services li { opacity: 0; transition: opacity 650ms cubic-bezier(0.16, 1, 0.3, 1) calc(200ms + var(--i, 0) * 90ms), translate 650ms cubic-bezier(0.16, 1, 0.3, 1) calc(200ms + var(--i, 0) * 90ms), transform 350ms cubic-bezier(0.16, 1, 0.3, 1), background-color 250ms ease, border-color 250ms ease, box-shadow 350ms ease; translate: 0 16px; }
+.duo-steps.duo-reveal, .duo-services.duo-reveal { opacity: 1; transform: none; }
+.is-visible > li { opacity: 1; translate: 0 0; }
+
+/* Las fotos y vídeos de sección se descubren de abajo arriba al entrar en pantalla. */
+.duo-media.duo-reveal { clip-path: inset(16% 0 0 0 round 22px); opacity: 1; transform: none; transition: clip-path 1200ms cubic-bezier(0.16, 1, 0.3, 1); }
+.duo-media.duo-reveal.is-visible { clip-path: inset(0 0 0 0 round 22px); }
+.duo-media img, .duo-media video { scale: 1.12; transition: scale 1600ms cubic-bezier(0.16, 1, 0.3, 1); }
+.duo-media.is-visible img, .duo-media.is-visible video { scale: 1; }
 
 /* Contacto */
 .duo-contact { position: relative; }
@@ -112,12 +136,28 @@
 .duo-footer { align-items: center; display: flex; flex-wrap: wrap; gap: 1rem 2rem; padding: 1.5rem var(--duo-gutter); }
 .duo-footer a:last-child { font-weight: 600; margin-left: auto; }
 
+/* Entrada de la portada al cargar */
+@keyframes duo-rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes duo-settle { from { scale: 1.14; } to { scale: 1; } }
+@keyframes duo-seal-in { from { opacity: 0; rotate: -25deg; scale: 0.5; } to { opacity: 1; rotate: 0deg; scale: 1; } }
+.duo-hero-title { animation: duo-rise 900ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.duo-half { animation: duo-rise 1000ms cubic-bezier(0.16, 1, 0.3, 1) 120ms both; }
+.duo-half--fisio { animation-delay: 240ms; }
+.duo-half > img, .duo-half > video { animation: duo-settle 1800ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.duo-seal { animation: duo-seal-in 800ms cubic-bezier(0.34, 1.56, 0.64, 1) 650ms both; }
+.duo-hero-strip { animation: duo-rise 800ms cubic-bezier(0.16, 1, 0.3, 1) 500ms both; }
+
 .duo-reveal { opacity: 0; transform: translateY(18px); transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1); }
 .duo-reveal.is-visible { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .duo-page *, .duo-page *::before, .duo-page *::after { transition-duration: 1ms !important; }
   .duo-reveal { opacity: 1; transform: none; }
+  .duo-page *, .duo-page *::before { animation: none !important; }
+  .duo-media.duo-reveal { clip-path: none; }
+  .duo-media img, .duo-media video { scale: 1; }
+  .duo-steps li, .duo-services li { opacity: 1; translate: none; }
+  .duo-kicker::before { margin-right: 0.75rem; width: 2rem; }
 }
 
 @media (max-width: 1100px) {
@@ -130,8 +170,15 @@
   .duo-nav { grid-template-columns: 1fr auto; }
   .duo-nav nav { display: none; }
   .duo-hero-title > span { margin-top: 0.4rem; }
-  .duo-split { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
-  .duo-half-copy > span { font-size: 0.95rem; }
+  /* En móvil los dos servicios van uno junto al otro, desfasados en altura, para verse a la vez. */
+  .duo-hero-title { font-size: clamp(2.5rem, 11.5vw, 3.6rem); padding-bottom: 1.1rem; }
+  .duo-split { gap: 0.6rem; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
+  .duo-half { border-radius: 18px; padding: 0.95rem 0.85rem; }
+  .duo-half--pilates { margin-bottom: 8svh; }
+  .duo-half--fisio { margin-top: 8svh; }
+  .duo-half-copy { gap: 0.4rem; }
+  .duo-half-copy strong { font-size: clamp(1.45rem, 7vw, 2.1rem); line-height: 1; }
+  .duo-half-copy > span { font-size: 0.82rem; line-height: 1.35; }
   .duo-half-more { display: none; }
   /* En móvil la cita ya está fija en la barra superior. */
   .duo-seal { display: none; }
@@ -142,7 +189,8 @@
   .duo-screen { height: auto; min-height: var(--duo-screen); }
   .duo-pilates, .duo-fisio { display: flex; flex-direction: column; gap: 1.5rem; padding: 2.5rem 1rem; }
   .duo-pilates-media, .duo-fisio-media { height: 30svh; }
-  .duo-steps li { padding: 0.9rem 1rem; }
+  .duo-steps li { padding: 0.75rem; }
+  .duo-logo { height: 28px; }
   .duo-contact { display: flex; flex-direction: column; }
   .duo-contact .duo-map { flex: 1; min-height: 42svh; position: relative; }
   .duo-contact-card { border-radius: 0; box-shadow: none; left: auto; max-width: none; position: relative; top: auto; translate: none; }

@@ -1,14 +1,22 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type MouseEvent } from "react";
 import { Link } from "react-router-dom";
+import { Waves } from "lucide-react";
 import fisioPhoto from "@/assets/service-fisio.jpg";
 import pilatesPhoto from "@/assets/service-pilates.jpg";
 import reformerPhoto from "@/assets/hero-reformer.jpg";
+import { CorpoLogo } from "@/components/corpo/CorpoLogo";
 import { CorpoMap } from "@/components/corpo/CorpoMap";
 import { CorpoMedia } from "@/components/corpo/CorpoMedia";
 import { useReveal } from "@/hooks/use-reveal";
 import { corpo } from "@/lib/corpo";
 import type { MediaSlot } from "@/lib/instagram-media";
 import "./duo.css";
+
+const sections = [
+  { id: "pilates", label: "Pilates" },
+  { id: "fisioterapia", label: "Fisioterapia" },
+  { id: "contacto", label: "Contacto" },
+];
 
 const pilatesSteps: { title: string; text: string; slot: MediaSlot }[] = [
   { slot: "pilates-1", title: "Primera clase", text: "Te explicamos cómo funciona el Reformer antes de empezar." },
@@ -23,18 +31,55 @@ const fisioServices: { title: string; text: string; slot?: MediaSlot }[] = [
   { title: "Presoterapia", text: "Un recurso más para la recuperación." },
 ];
 
+/** Índice de cada elemento de una lista para escalonar su animación de entrada. */
+const stagger = (index: number) => ({ "--i": index }) as CSSProperties;
+
 const Duo = () => {
   const pageRef = useRef<HTMLElement>(null);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   useReveal(pageRef, ".duo-reveal");
 
+  useEffect(() => {
+    const page = pageRef.current;
+    if (!page || !("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting) setActiveSection(entry.target.id || null);
+      }),
+      { rootMargin: "-45% 0px -45% 0px" },
+    );
+    page.querySelectorAll("section").forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  // Los enlaces internos se desplazan con suavidad en lugar de saltar a la sección.
+  const scrollToSection = (event: MouseEvent<HTMLElement>) => {
+    const link = (event.target as HTMLElement).closest<HTMLAnchorElement>("a[href^='#']");
+    const target = link && document.getElementById(link.hash.slice(1));
+    if (!target) return;
+    event.preventDefault();
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  };
+
   return (
-    <main ref={pageRef} className="duo-page">
+    <main ref={pageRef} className="duo-page" onClick={scrollToSection}>
       <header className="duo-nav">
-        <Link to="/#proposal-duo" className="duo-wordmark" aria-label="Volver a las propuestas de Corpo">corpo</Link>
+        <Link to="/#proposal-duo" className="duo-logo-link" aria-label="Volver a las propuestas de Corpo">
+          <CorpoLogo className="duo-logo" showTagline={false} />
+        </Link>
         <nav aria-label="Secciones">
-          <a href="#pilates">Pilates</a>
-          <a href="#fisioterapia">Fisioterapia</a>
-          <a href="#contacto">Contacto</a>
+          {sections.map((section) => (
+            <a
+              key={section.id}
+              href={`#${section.id}`}
+              className={activeSection === section.id ? "is-active" : undefined}
+              aria-current={activeSection === section.id ? "location" : undefined}
+            >
+              {section.label}
+            </a>
+          ))}
         </nav>
         <a className="duo-button duo-button--small" href={corpo.bookingUrl} target="_blank" rel="noopener noreferrer">Pedir cita</a>
       </header>
@@ -52,7 +97,7 @@ const Duo = () => {
               <strong>Pilates Máquina</strong>
               <span>Clases en Reformer, en grupos reducidos.</span>
             </span>
-            <span className="duo-half-more">Ver Pilates ↓</span>
+            <span className="duo-half-more">Ver Pilates <span aria-hidden="true">↓</span></span>
           </a>
           <a className="duo-half duo-half--fisio" href="#fisioterapia">
             <CorpoMedia slot="hero-fisio" fallback={fisioPhoto} alt="" priority />
@@ -61,7 +106,7 @@ const Duo = () => {
               <strong>Fisioterapia</strong>
               <span>Fisioterapia avanzada con ecógrafo en consulta.</span>
             </span>
-            <span className="duo-half-more">Ver fisioterapia ↓</span>
+            <span className="duo-half-more">Ver fisioterapia <span aria-hidden="true">↓</span></span>
           </a>
 
           <a className="duo-seal" href={corpo.bookingUrl} target="_blank" rel="noopener noreferrer">
@@ -87,15 +132,15 @@ const Duo = () => {
           <a className="duo-button duo-button--light" href={corpo.bookingUrl} target="_blank" rel="noopener noreferrer">Reservar clase ↗</a>
         </div>
 
-        <figure className="duo-pilates-media duo-reveal">
-          <CorpoMedia slot="pilates" fallback={reformerPhoto} alt="Sala de Pilates Máquina con Reformer" />
+        <figure className="duo-media duo-pilates-media duo-reveal">
+          <CorpoMedia slot="pilates" fallback={reformerPhoto} alt="Clase de Pilates Máquina en la sala de Corpo" />
         </figure>
 
         <ol className="duo-steps duo-reveal">
           {pilatesSteps.map((step, index) => (
-            <li key={step.title}>
-              <CorpoMedia slot={step.slot} alt="" className="duo-step-photo" />
-              <span>{String(index + 1).padStart(2, "0")}</span>
+            <li key={step.title} style={stagger(index)}>
+              <span className="duo-thumb"><CorpoMedia slot={step.slot} alt="" /></span>
+              <span className="duo-step-number">{String(index + 1).padStart(2, "0")}</span>
               <div><h3>{step.title}</h3><p>{step.text}</p></div>
             </li>
           ))}
@@ -113,22 +158,24 @@ const Duo = () => {
           <a className="duo-button" href={corpo.bookingUrl} target="_blank" rel="noopener noreferrer">Pedir cita de fisioterapia ↗</a>
         </div>
 
-        <figure className="duo-fisio-media duo-reveal">
+        <figure className="duo-media duo-fisio-media duo-reveal">
           <CorpoMedia slot="fisio" fallback={fisioPhoto} alt="Fisioterapeutas de Corpo tratando a pacientes en la clínica" />
         </figure>
 
         <ul className="duo-services duo-reveal">
-          <li className="duo-eco">
-            <CorpoMedia slot="ecografia" alt="" className="duo-service-photo" />
+          <li className="duo-eco" style={stagger(0)}>
+            <span className="duo-thumb"><CorpoMedia slot="ecografia" alt="" /></span>
             <div>
               <span className="duo-eco-badge">Lo que nos diferencia</span>
               <h3>Ecografía</h3>
-              <p>Tenemos ecógrafo en la clínica: vemos músculos, tendones y ligamentos en tiempo real durante la valoración.</p>
+              <p>Vemos músculos, tendones y ligamentos en tiempo real durante la valoración.</p>
             </div>
           </li>
-          {fisioServices.map((service) => (
-            <li key={service.title}>
-              {service.slot && <CorpoMedia slot={service.slot} alt="" className="duo-service-photo" />}
+          {fisioServices.map((service, index) => (
+            <li key={service.title} style={stagger(index + 1)}>
+              <span className="duo-thumb">
+                {service.slot ? <CorpoMedia slot={service.slot} alt="" /> : <Waves aria-hidden="true" strokeWidth={1.5} />}
+              </span>
               <div>
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
@@ -157,7 +204,9 @@ const Duo = () => {
       </section>
 
       <footer className="duo-footer">
-        <Link to="/#proposal-duo" className="duo-wordmark" aria-label="Volver a las propuestas de Corpo">corpo</Link>
+        <Link to="/#proposal-duo" className="duo-logo-link" aria-label="Volver a las propuestas de Corpo">
+          <CorpoLogo className="duo-logo duo-logo--footer" />
+        </Link>
         <span>Fisioterapia y Pilates Máquina · Murcia</span>
         <a href={corpo.instagramUrl} target="_blank" rel="noopener noreferrer">@clinicacorpomurcia ↗</a>
       </footer>
