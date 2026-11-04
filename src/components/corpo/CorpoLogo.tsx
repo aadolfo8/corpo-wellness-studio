@@ -1,8 +1,11 @@
-/** Logotipo de Corpo reconstruido en vector a partir de su perfil de Instagram. Hereda el color del texto. */
+/**
+ * Logotipo de Corpo reconstruido en vector a partir de su perfil de Instagram. Hereda el color del texto.
+ * El viewBox cubre desde la x-height (y≈66) hasta el final del trazo de la «p» (y≈195) para no cortarla.
+ */
 export const CorpoLogo = ({ className = "", showTagline = true }: { className?: string; showTagline?: boolean }) => (
   <svg
     className={className}
-    viewBox={showTagline ? "-4 40 478 150" : "-4 40 478 132"}
+    viewBox="-4 58 478 144"
     fill="currentColor"
     role="img"
     aria-label="Corpo, clínica de fisioterapia y Pilates"

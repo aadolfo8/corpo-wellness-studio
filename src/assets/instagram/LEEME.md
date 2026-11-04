@@ -11,7 +11,7 @@ automáticamente; si hay foto y vídeo con el mismo nombre, gana el vídeo.
 | pilates-1 / pilates-2 / pilates-3 | Fotos de los tres pasos de Pilates (Dúo) |
 | fisio | Vídeo de la sección de Fisioterapia |
 | ecografia | Tarjeta destacada de ecografía |
-| fisio-manual / fisio-diatermia / fisio-ondas | Miniaturas de los servicios de fisio (Dúo) |
+| fisio-manual / fisio-diatermia / fisio-ondas / fisio-presoterapia | Miniaturas de los servicios de fisio (Dúo) |
 
 ## Procedencia
 
@@ -28,3 +28,7 @@ Unsplash (licencia Unsplash, uso comercial gratuito, sin atribución obligatoria
 - fisio-ondas.jpg: https://unsplash.com/photos/QBzckSn4fpo
 - pilates-1.jpg: https://unsplash.com/photos/5JQxj-zc5ng
 - pilates-3.jpg: https://unsplash.com/photos/cZ0WYsBFHhs
+
+Wikimedia Commons (CC BY-SA 4.0: exige atribución, que está en el pie de la web):
+- fisio-presoterapia.jpg: «IPK.JPG» de Enter, recortada para quitar la marca del aparato. https://commons.wikimedia.org/wiki/File:IPK.JPG
+  Si la clínica tiene una foto propia de su presoterapia, basta con sustituir este archivo y quitar el crédito del pie (Duo.tsx, .duo-credit).
