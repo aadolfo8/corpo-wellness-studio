@@ -38,6 +38,12 @@
         "value": "newsreader",
         "createdAt": "2026-11-02T07:44:32.360Z",
         "reason": "Claude: per-proposal type pairing, same as other proposal fonts; DESIGN.md describes an earlier proposal"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "prata",
+        "createdAt": "2026-11-04T13:10:59.506Z",
+        "reason": "Prata es la tipografía del logotipo Corpo (CorpoLogo.tsx), ya cargada antes de este cambio"
       }
     ]
   }

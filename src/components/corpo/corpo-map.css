@@ -6,9 +6,6 @@
 .corpo-map-marker__dot { background: var(--map-accent, #8b4f3d); border: 4px solid var(--map-paper, #f6f1e8); border-radius: 50%; box-shadow: 0 8px 24px rgba(23, 25, 26, .28); display: block; height: 22px; left: 4px; position: absolute; top: 8px; width: 22px; }
 .corpo-map-marker__label { background: var(--map-ink, #172d45); color: var(--map-paper, #f6f1e8); font: 600 11px/1 sans-serif; left: 30px; letter-spacing: .08em; padding: 8px 10px; position: absolute; text-transform: uppercase; top: 4px; white-space: nowrap; }
 .corpo-map-shell .leaflet-tile-pane { filter: grayscale(.72) sepia(.16) saturate(.72) contrast(.9); }
-.corpo-map-shell--terra { --map-accent: #8f3b2d; --map-ink: #27332b; --map-paper: #f3eee1; }
-.corpo-map-shell--terra .leaflet-tile-pane { filter: grayscale(.8) sepia(.28) hue-rotate(35deg) saturate(.62) contrast(.88); }
-.corpo-map-shell--wellness { --map-accent: hsl(18 32% 42%); --map-ink: hsl(25 22% 12%); --map-paper: hsl(38 33% 96%); }
 .corpo-map-shell .leaflet-popup-content-wrapper, .corpo-map-shell .leaflet-popup-tip { background: var(--map-paper); border-radius: 2px; color: var(--map-ink); }
 .corpo-map-shell .leaflet-popup-content { font: 400 13px/1.5 sans-serif; margin: 14px 18px; }
 .corpo-map-shell .leaflet-control-zoom a { align-items: center; background: var(--map-paper); border: 0; color: var(--map-ink); display: flex; height: 44px; justify-content: center; width: 44px; }
@@ -19,6 +16,4 @@
 @media (max-width: 800px) { .corpo-map-shell { min-height: 340px; }.corpo-map-shell .leaflet-control-attribution { font-size: 10px; } }
 @media (prefers-reduced-motion: reduce) { .corpo-map-shell .leaflet-zoom-animated { transition: none !important; } }
 .corpo-map-shell--duo { --map-accent: #2f4a3a; --map-ink: #1d2620; --map-paper: #efe6d4; }
-.corpo-map-shell--uniforme { --map-accent: #c9a978; --map-ink: #24392d; --map-paper: #f1e8d6; }
-.corpo-map-shell--consulta { --map-accent: #4b6b4f; --map-ink: #1f2a21; --map-paper: #f6f1e6; }
-.corpo-map-shell--duo .leaflet-tile-pane, .corpo-map-shell--uniforme .leaflet-tile-pane, .corpo-map-shell--consulta .leaflet-tile-pane { filter: grayscale(.85) sepia(.3) hue-rotate(20deg) saturate(.75) contrast(.92); }
+.corpo-map-shell--duo .leaflet-tile-pane { filter: grayscale(.85) sepia(.3) hue-rotate(20deg) saturate(.75) contrast(.92); }

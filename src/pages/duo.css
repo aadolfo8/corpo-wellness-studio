@@ -83,8 +83,11 @@
 .duo-pilates-intro { align-self: center; }
 .duo-pilates-media { border-radius: 22px; margin: 0; min-height: 0; overflow: hidden; }
 .duo-steps { align-self: center; display: grid; gap: clamp(0.6rem, 1.6vh, 1rem); list-style: none; margin: 0; padding: 0; }
-.duo-steps li { align-items: center; background: rgba(245, 239, 227, 0.08); border: 1px solid rgba(245, 239, 227, 0.2); border-radius: 18px; cursor: default; display: grid; gap: 0.9rem; grid-template-columns: clamp(76px, 7vw, 108px) auto 1fr; padding: clamp(0.65rem, 1.8vh, 0.95rem); }
-.duo-step-number { align-self: start; border: 1px solid rgba(233, 223, 204, 0.4); border-radius: 999px; color: var(--duo-beige); font-size: 0.78rem; font-weight: 700; margin-top: 0.15rem; padding: 0.2rem 0.5rem; transition: background-color 250ms ease, color 250ms ease; }
+.duo-steps li { align-items: center; background: rgba(245, 239, 227, 0.08); border: 1px solid rgba(245, 239, 227, 0.2); border-radius: 18px; cursor: default; display: grid; gap: 0.9rem; grid-template-columns: clamp(76px, 7vw, 108px) 1fr; padding: clamp(0.65rem, 1.8vh, 0.95rem); }
+/* El número va en la misma fila que el título y el texto queda alineado debajo del título. */
+.duo-step-body { align-items: center; column-gap: 0.75rem; display: grid; grid-template-columns: auto 1fr; }
+.duo-step-body p { grid-column: 2; }
+.duo-step-number { border: 1px solid rgba(233, 223, 204, 0.4); border-radius: 999px; color: var(--duo-beige); font-size: 0.78rem; font-variant-numeric: tabular-nums; font-weight: 700; line-height: 1; padding: 0.3rem 0.5rem; transition: background-color 250ms ease, color 250ms ease; }
 .duo-steps li:hover { background: rgba(245, 239, 227, 0.14); border-color: rgba(233, 223, 204, 0.55); transform: translateX(6px); }
 .duo-steps li:hover .duo-step-number { background: var(--duo-beige); color: var(--duo-green-deep); }
 .duo-steps h3 { font-size: clamp(1.2rem, 1.6vw, 1.5rem); letter-spacing: -0.03em; }
@@ -142,7 +145,7 @@
 @keyframes duo-seal-in { from { opacity: 0; rotate: -25deg; scale: 0.5; } to { opacity: 1; rotate: 0deg; scale: 1; } }
 .duo-hero-title { animation: duo-rise 900ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 .duo-half { animation: duo-rise 1000ms cubic-bezier(0.16, 1, 0.3, 1) 120ms both; }
-.duo-half--fisio { animation-delay: 240ms; }
+.duo-half--pilates { animation-delay: 240ms; }
 .duo-half > img, .duo-half > video { animation: duo-settle 1800ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 .duo-seal { animation: duo-seal-in 800ms cubic-bezier(0.34, 1.56, 0.64, 1) 650ms both; }
 .duo-hero-strip { animation: duo-rise 800ms cubic-bezier(0.16, 1, 0.3, 1) 500ms both; }
@@ -170,14 +173,14 @@
   .duo-nav { grid-template-columns: 1fr auto; }
   .duo-nav nav { display: none; }
   .duo-hero-title > span { margin-top: 0.4rem; }
-  /* En móvil la portada es un collage: Pilates arriba a la izquierda y Fisioterapia superpuesta abajo a la derecha. */
+  /* En móvil la portada es un collage: Fisioterapia arriba a la izquierda y Pilates superpuesto abajo a la derecha. */
   .duo-hero-title { font-size: clamp(2.5rem, 11.5vw, 3.6rem); padding-bottom: 1rem; }
   .duo-split { display: block; }
   .duo-half { border-radius: 20px; padding: 1rem; position: absolute; }
-  .duo-half--pilates { height: 70%; justify-content: flex-start; left: 0; top: 0; width: 74%; }
-  .duo-half--pilates::after { background: linear-gradient(0deg, rgba(47, 74, 58, 0.05) 45%, rgba(47, 74, 58, 0.88)); }
-  .duo-half--pilates .duo-half-copy { margin-top: 0.5rem; }
-  .duo-half--fisio { border: 5px solid var(--duo-cream); bottom: 0; box-shadow: 0 22px 44px rgba(29, 38, 32, 0.28); height: 58%; right: 0; width: 66%; }
+  .duo-half--fisio { height: 70%; justify-content: flex-start; left: 0; top: 0; width: 74%; }
+  .duo-half--fisio::after { background: linear-gradient(0deg, rgba(31, 51, 40, 0.05) 45%, rgba(31, 51, 40, 0.88)); }
+  .duo-half--fisio .duo-half-copy { margin-top: 0.5rem; }
+  .duo-half--pilates { border: 5px solid var(--duo-cream); bottom: 0; box-shadow: 0 22px 44px rgba(29, 38, 32, 0.28); height: 58%; right: 0; width: 66%; }
   .duo-half-copy { gap: 0.35rem; }
   .duo-half-copy strong { font-size: clamp(1.7rem, 8.4vw, 2.4rem); line-height: 1; }
   .duo-half-copy > span { font-size: 0.85rem; line-height: 1.35; max-width: 15rem; }
