@@ -13,8 +13,8 @@ import type { MediaSlot } from "@/lib/instagram-media";
 import "./duo.css";
 
 const sections = [
-  { id: "pilates", label: "Pilates" },
   { id: "fisioterapia", label: "Fisioterapia" },
+  { id: "pilates", label: "Pilates" },
   { id: "contacto", label: "Contacto" },
 ];
 
@@ -66,7 +66,7 @@ const Duo = () => {
   return (
     <main ref={pageRef} className="duo-page" onClick={scrollToSection}>
       <header className="duo-nav">
-        <Link to="/#proposal-duo" className="duo-logo-link" aria-label="Volver a las propuestas de Corpo">
+        <Link to="/" className="duo-logo-link" aria-label="Clínica Corpo, inicio">
           <CorpoLogo className="duo-logo" showTagline={false} />
         </Link>
         <nav aria-label="Secciones">
@@ -86,27 +86,27 @@ const Duo = () => {
 
       <section className="duo-hero" aria-labelledby="duo-title">
         <h1 id="duo-title" className="duo-hero-title">
-          Pilates <em>y</em> Fisioterapia<span> en Ronda Sur, Murcia</span>
+          Fisioterapia <em>y</em> Pilates<span> en Ronda Sur, Murcia</span>
         </h1>
 
         <div className="duo-split">
-          <a className="duo-half duo-half--pilates" href="#pilates">
-            <CorpoMedia slot="hero-pilates" fallback={pilatesPhoto} alt="" priority />
-            <span className="duo-half-index">01</span>
-            <span className="duo-half-copy">
-              <strong>Pilates Máquina</strong>
-              <span>Clases en Reformer, en grupos reducidos.</span>
-            </span>
-            <span className="duo-half-more">Ver Pilates <span aria-hidden="true">↓</span></span>
-          </a>
-          <a className="duo-half duo-half--fisio" href="#fisioterapia">
+                    <a className="duo-half duo-half--fisio" href="#fisioterapia">
             <CorpoMedia slot="hero-fisio" fallback={fisioPhoto} alt="" priority />
-            <span className="duo-half-index">02</span>
+            <span className="duo-half-index">01</span>
             <span className="duo-half-copy">
               <strong>Fisioterapia</strong>
               <span>Fisioterapia avanzada con ecógrafo en consulta.</span>
             </span>
             <span className="duo-half-more">Ver fisioterapia <span aria-hidden="true">↓</span></span>
+          </a>
+<a className="duo-half duo-half--pilates" href="#pilates">
+            <CorpoMedia slot="hero-pilates" fallback={pilatesPhoto} alt="" priority />
+            <span className="duo-half-index">02</span>
+            <span className="duo-half-copy">
+              <strong>Pilates Máquina</strong>
+              <span>Clases en Reformer, en grupos reducidos.</span>
+            </span>
+            <span className="duo-half-more">Ver Pilates <span aria-hidden="true">↓</span></span>
           </a>
 
           <a className="duo-seal" href={corpo.bookingUrl} target="_blank" rel="noopener noreferrer">
@@ -121,35 +121,9 @@ const Duo = () => {
         </p>
       </section>
 
-      <section id="pilates" data-scroll-align="start" className="duo-screen duo-pilates" aria-labelledby="duo-pilates-title">
-        <div className="duo-pilates-intro duo-reveal">
-          <p className="duo-kicker">01 · Pilates Máquina</p>
-          <h2 id="duo-pilates-title">Fuerza, control y movilidad sobre el Reformer.</h2>
-          <p className="duo-lead">
-            Clases de Pilates Máquina en grupos reducidos: la máquina te sostiene y te da resistencia a la vez.
-            Puedes empezar aunque nunca hayas hecho Pilates.
-          </p>
-          <a className="duo-button duo-button--light" href={corpo.bookingUrl} target="_blank" rel="noopener noreferrer">Reservar clase ↗</a>
-        </div>
-
-        <figure className="duo-media duo-pilates-media duo-reveal">
-          <CorpoMedia slot="pilates" fallback={reformerPhoto} alt="Clase de Pilates Máquina en la sala de Corpo" />
-        </figure>
-
-        <ol className="duo-steps duo-reveal">
-          {pilatesSteps.map((step, index) => (
-            <li key={step.title} style={stagger(index)}>
-              <span className="duo-thumb"><CorpoMedia slot={step.slot} alt="" /></span>
-              <span className="duo-step-number">{String(index + 1).padStart(2, "0")}</span>
-              <div><h3>{step.title}</h3><p>{step.text}</p></div>
-            </li>
-          ))}
-        </ol>
-      </section>
-
       <section id="fisioterapia" data-scroll-align="start" className="duo-screen duo-fisio" aria-labelledby="duo-fisio-title">
         <div className="duo-fisio-intro duo-reveal">
-          <p className="duo-kicker">02 · Fisioterapia</p>
+          <p className="duo-kicker">01 · Fisioterapia</p>
           <h2 id="duo-fisio-title">Fisioterapia, con ecografía en consulta.</h2>
           <p className="duo-lead">
             Fisioterapia avanzada para dolor, lesiones y recuperación. Valoramos, te explicamos lo que vemos y combinamos
@@ -185,6 +159,35 @@ const Duo = () => {
         </ul>
       </section>
 
+      <section id="pilates" data-scroll-align="start" className="duo-screen duo-pilates" aria-labelledby="duo-pilates-title">
+        <div className="duo-pilates-intro duo-reveal">
+          <p className="duo-kicker">02 · Pilates Máquina</p>
+          <h2 id="duo-pilates-title">Fuerza, control y movilidad sobre el Reformer.</h2>
+          <p className="duo-lead">
+            Clases de Pilates Máquina en grupos reducidos: la máquina te sostiene y te da resistencia a la vez.
+            Puedes empezar aunque nunca hayas hecho Pilates.
+          </p>
+          <a className="duo-button duo-button--light" href={corpo.bookingUrl} target="_blank" rel="noopener noreferrer">Reservar clase ↗</a>
+        </div>
+
+        <figure className="duo-media duo-pilates-media duo-reveal">
+          <CorpoMedia slot="pilates" fallback={reformerPhoto} alt="Clase de Pilates Máquina en la sala de Corpo" />
+        </figure>
+
+        <ol className="duo-steps duo-reveal">
+          {pilatesSteps.map((step, index) => (
+            <li key={step.title} style={stagger(index)}>
+              <span className="duo-thumb"><CorpoMedia slot={step.slot} alt="" /></span>
+              <div className="duo-step-body">
+                <span className="duo-step-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
       <section id="contacto" data-scroll-align="start" className="duo-screen duo-contact" aria-labelledby="duo-contact-title">
         <CorpoMap variant="duo" className="duo-map" />
         <div className="duo-contact-card duo-reveal">
@@ -204,10 +207,10 @@ const Duo = () => {
       </section>
 
       <footer className="duo-footer">
-        <Link to="/#proposal-duo" className="duo-logo-link" aria-label="Volver a las propuestas de Corpo">
+        <Link to="/" className="duo-logo-link" aria-label="Clínica Corpo, inicio">
           <CorpoLogo className="duo-logo duo-logo--footer" />
         </Link>
-        <span>Fisioterapia y Pilates Máquina · Murcia</span>
+        <span>Fisioterapia y Pilates Máquina en Ronda Sur, Murcia</span>
         <a href={corpo.instagramUrl} target="_blank" rel="noopener noreferrer">@clinicacorpomurcia ↗</a>
       </footer>
     </main>
