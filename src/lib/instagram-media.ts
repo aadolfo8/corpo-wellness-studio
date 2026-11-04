@@ -14,6 +14,7 @@ export type MediaSlot =
   | "fisio-manual"
   | "fisio-diatermia"
   | "fisio-ondas"
+  | "fisio-presoterapia"
   | "ecografia"
   | "clinica";
 
