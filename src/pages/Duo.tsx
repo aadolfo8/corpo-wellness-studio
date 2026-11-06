@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties, type MouseEvent } from "react";
+import { Waves } from "lucide-react";
 import { Link } from "react-router-dom";
 import fisioPhoto from "@/assets/service-fisio.jpg";
 import pilatesPhoto from "@/assets/service-pilates.jpg";
@@ -8,7 +9,7 @@ import { CorpoMap } from "@/components/corpo/CorpoMap";
 import { CorpoMedia } from "@/components/corpo/CorpoMedia";
 import { useReveal } from "@/hooks/use-reveal";
 import { corpo } from "@/lib/corpo";
-import type { MediaSlot } from "@/lib/instagram-media";
+import { hasInstagramMedia, type MediaSlot } from "@/lib/instagram-media";
 import "./duo.css";
 
 const sections = [
@@ -23,7 +24,7 @@ const pilatesSteps: { title: string; text: string; slot: MediaSlot }[] = [
   { slot: "pilates-3", title: "Progresión", text: "Ajustamos muelles, apoyos y ejercicios a medida que avanzas." },
 ];
 
-const fisioServices: { title: string; text: string; slot: MediaSlot }[] = [
+const fisioServices: { title: string; text: string; slot?: MediaSlot }[] = [
   { slot: "fisio-manual", title: "Terapia manual", text: "El trabajo con las manos, en el centro del tratamiento." },
   { slot: "fisio-diatermia", title: "Diatermia", text: "Tecnología que podemos sumar al tratamiento." },
   { slot: "fisio-ondas", title: "Ondas de choque", text: "Otra herramienta disponible en la clínica." },
@@ -146,7 +147,11 @@ const Duo = () => {
           </li>
           {fisioServices.map((service, index) => (
             <li key={service.title} style={stagger(index + 1)}>
-              <span className="duo-thumb"><CorpoMedia slot={service.slot} alt="" /></span>
+              <span className="duo-thumb">
+                {service.slot && hasInstagramMedia(service.slot)
+                  ? <CorpoMedia slot={service.slot} alt="" />
+                  : <Waves aria-hidden="true" strokeWidth={1.5} />}
+              </span>
               <div>
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
@@ -209,11 +214,6 @@ const Duo = () => {
         </Link>
         <span>Fisioterapia y Pilates Máquina en Ronda Sur, Murcia</span>
         <a href={corpo.instagramUrl} target="_blank" rel="noopener noreferrer">@clinicacorpomurcia ↗</a>
-        <small className="duo-credit">
-          Foto de presoterapia: Enter,{" "}
-          <a href="https://commons.wikimedia.org/wiki/File:IPK.JPG" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>,{" "}
-          <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> (recortada).
-        </small>
       </footer>
     </main>
   );
