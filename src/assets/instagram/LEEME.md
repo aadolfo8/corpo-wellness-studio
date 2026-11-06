@@ -29,6 +29,7 @@ Unsplash (licencia Unsplash, uso comercial gratuito, sin atribución obligatoria
 - pilates-1.jpg: https://unsplash.com/photos/5JQxj-zc5ng
 - pilates-3.jpg: https://unsplash.com/photos/cZ0WYsBFHhs
 
-Wikimedia Commons (CC BY-SA 4.0: exige atribución, que está en el pie de la web):
-- fisio-presoterapia.jpg: «IPK.JPG» de Enter, recortada para quitar la marca del aparato. https://commons.wikimedia.org/wiki/File:IPK.JPG
-  Si la clínica tiene una foto propia de su presoterapia, basta con sustituir este archivo y quitar el crédito del pie (Duo.tsx, .duo-credit).
+## Pendiente
+
+- fisio-presoterapia: no hay foto libre de presoterapia que no exija atribución. Mientras no exista
+  `fisio-presoterapia.jpg`, la tarjeta muestra un icono. Lo ideal es una foto del equipo de la clínica.
