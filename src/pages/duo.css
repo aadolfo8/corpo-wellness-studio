@@ -140,8 +140,6 @@
 
 .duo-footer { align-items: center; display: flex; flex-wrap: wrap; gap: 1rem 2rem; padding: 1.5rem var(--duo-gutter); }
 .duo-footer > a:last-of-type { font-weight: 600; margin-left: auto; }
-.duo-credit { color: var(--duo-muted); flex-basis: 100%; font-size: 0.75rem; }
-.duo-credit a { text-decoration: underline !important; text-underline-offset: 2px; }
 
 /* Entrada de la portada al cargar */
 @keyframes duo-rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
