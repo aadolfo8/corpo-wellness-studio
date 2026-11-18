@@ -20,13 +20,15 @@ export type MediaSlot =
 
 export type Media = { kind: "image" | "video"; src: string };
 
-const files = import.meta.glob<string>("/src/assets/instagram/*.{jpg,jpeg,png,webp,avif,mp4,webm}", {
+// En Astro las fotos importadas llegan como metadatos ({ src, width, height }) y los vídeos como una URL.
+const files = import.meta.glob<string | { src: string }>("/src/assets/instagram/*.{jpg,jpeg,png,webp,avif,mp4,webm}", {
   eager: true,
   import: "default",
 });
 
 const bySlot = new Map<string, Media>();
-for (const [path, src] of Object.entries(files)) {
+for (const [path, file] of Object.entries(files)) {
+  const src = typeof file === "string" ? file : file.src;
   const name = path.split("/").pop()!;
   const slot = name.slice(0, name.lastIndexOf("."));
   const kind = /\.(mp4|webm)$/i.test(name) ? "video" : "image";

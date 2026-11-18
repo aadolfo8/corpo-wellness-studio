@@ -1,0 +1,7 @@
+.proposal-bar { align-items: center; background: rgba(29, 38, 32, 0.92); border-radius: 999px; bottom: 1rem; box-shadow: 0 12px 30px rgba(29, 38, 32, 0.3); color: #f5efe3; display: flex; font: 500 0.82rem/1 "DM Sans", system-ui, sans-serif; gap: 0.25rem; left: 50%; padding: 0.3rem; position: fixed; translate: -50% 0; z-index: 1300; }
+.proposal-bar-label { opacity: 0.6; padding: 0 0.5rem 0 0.7rem; }
+.proposal-bar a { border-radius: 999px; color: inherit; padding: 0.55rem 0.8rem; text-decoration: none; transition: background-color 180ms ease; }
+.proposal-bar a:hover { background: rgba(245, 239, 227, 0.14); }
+.proposal-bar a[aria-current="page"] { background: #e9dfcc; color: #1f3328; font-weight: 700; }
+.proposal-bar a:focus-visible { outline: 2px solid #e9dfcc; outline-offset: 2px; }
+@media (max-width: 520px) { .proposal-bar-label { display: none; } }

@@ -5,7 +5,7 @@
 <br>
 
 ![React 18](https://img.shields.io/badge/React-18-2f4a3a?style=flat-square&logo=react&logoColor=e9dfcc)
-![Vite](https://img.shields.io/badge/Vite-5-2f4a3a?style=flat-square&logo=vite&logoColor=e9dfcc)
+![Astro 7](https://img.shields.io/badge/Astro-7-2f4a3a?style=flat-square&logo=astro&logoColor=e9dfcc)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-2f4a3a?style=flat-square&logo=typescript&logoColor=e9dfcc)
 ![Leaflet](https://img.shields.io/badge/Leaflet-OSM-2f4a3a?style=flat-square&logo=leaflet&logoColor=e9dfcc)
 ![Netlify](https://img.shields.io/badge/Netlify-desplegado-2f4a3a?style=flat-square&logo=netlify&logoColor=e9dfcc)
@@ -15,6 +15,7 @@ la web de Clínica Corpo, fisioterapia y Pilates Máquina en Ronda Sur, Murcia.
 
 [qué es](#qué-es) ·
 [cómo se recorre](#cómo-se-recorre) ·
+[propuestas](#propuestas-alternativas) ·
 [fotos y vídeos](#fotos-y-vídeos) ·
 [seo local](#seo-local) ·
 [decisiones técnicas](#decisiones-técnicas) ·
@@ -81,6 +82,17 @@ pantallas pasan a una columna y los vídeos cargan solo sus metadatos hasta que 
 </tr>
 </table>
 
+## Propuestas alternativas
+
+Además de Dúo, que es la portada, hay dos propuestas con las mismas fotos, vídeos, colores y datos,
+para comparar otros enfoques. Llevan `noindex` y un selector flotante para saltar entre las tres.
+
+| Ruta | Propuesta | Idea |
+|---|---|---|
+| `/` | **Dúo** | Portada partida en dos y una pantalla por servicio. |
+| `/pausa` | **Pausa** | Oscura y lenta: vídeo a pantalla completa que alterna fisio y Pilates, frase con fotos dentro del texto, capítulos con una imagen fija que cambia al bajar y cierre con el logotipo a todo lo ancho. |
+| `/mosaico` | **Mosaico** | Clara y modular: todo en teselas, un selector «¿por dónde empiezo?» que orienta hacia fisioterapia, Pilates o WhatsApp, y una cinta de fotos en movimiento. |
+
 ## Fotos y vídeos
 
 Las fotos y los vídeos salen sobre todo del Instagram de la clínica
@@ -115,11 +127,11 @@ src/assets/instagram/
 - **Ficha de negocio en JSON-LD** (`Physiotherapy` + `ExerciseGym`): dirección, coordenadas,
   teléfono, servicios, zona que atiende y la acción de reservar.
 - **Open Graph y Twitter Card** con una imagen de 1200×630 hecha para la clínica.
-- **`robots.txt` y `sitemap.xml` generados al compilar** por un pequeño plugin de Vite, con la
-  URL real del sitio. En Netlify se toma sola de la variable `URL`; para forzar otra, define
-  `SITE_URL`.
-- **Contenido en `<noscript>`** con el nombre, los servicios, la dirección y el teléfono, para
-  que quede algo legible aunque no se ejecute JavaScript.
+- **HTML completo desde el servidor.** Astro genera cada página como HTML estático, así que
+  los buscadores leen todo el contenido sin ejecutar JavaScript.
+- **`robots.txt` y `sitemap.xml` generados al compilar** (`src/pages/robots.txt.ts` y
+  `sitemap.xml.ts`), con la URL real del sitio. En Netlify se toma sola de la variable `URL`;
+  para forzar otra, define `SITE_URL`.
 - Iconos para todas las plataformas: `favicon.svg`, `.ico`, `apple-touch-icon` e iconos
   *maskable* del manifiesto.
 
@@ -128,9 +140,9 @@ src/assets/instagram/
 | Decisión | Por qué |
 |---|---|
 | **Una sola página** | Una clínica local necesita explicar dos servicios y dar una vía de contacto. Cada clic extra es alguien que no llega a pedir cita. |
-| **Vite + React como SPA estática** | No hay datos que cambien ni nada que renderizar en servidor. Se compila a estáticos y Netlify los sirve; `_redirects` hace que cualquier ruta abierta directamente devuelva la web en lugar de un 404. |
-| **CSS propio para la página** | `duo.css` lleva la paleta (verde, beige, crema) como variables y el diseño a pantalla completa con `100svh`, que con utilidades sería ilegible. |
-| **Leaflet + OpenStreetMap** | Un mapa sin clave de API ni cookies de terceros. Se carga solo cuando la sección de contacto entra en pantalla. |
+| **Astro con islas de React** | Cada ruta se genera como HTML estático y la página se hidrata con React (`client:load`) para la navegación activa, las animaciones y el mapa. Netlify sirve `dist/` tal cual y usa `404.html` para las rutas que no existen. |
+| **CSS propio, sin Tailwind** | Cada propuesta lleva su hoja (`src/views/*.css`) con la paleta (verde, beige, crema) como variables; `src/index.css` es solo un reset mínimo. |
+| **Leaflet + OpenStreetMap** | Un mapa sin clave de API ni cookies de terceros. Leaflet se importa solo en el navegador y cuando la sección de contacto está a punto de verse. |
 | **Medios por nombre de archivo** | `import.meta.glob` descubre los archivos de `src/assets/instagram/` al compilar. Cambiar una foto es sustituir un archivo, sin tocar código. |
 | **Logotipo en SVG** | Reconstruido en vector a partir del perfil de Instagram, hereda el color del texto y se ve nítido a cualquier tamaño. |
 | **Datos de la clínica en un solo sitio** | Dirección, teléfono, email y enlaces viven en `src/lib/corpo.ts`. Si cambia el teléfono, se cambia una vez. |
@@ -139,19 +151,25 @@ src/assets/instagram/
 
 ```
 src/
-  pages/Duo.tsx            la página: portada, fisioterapia, Pilates y contacto
-  pages/duo.css            paleta, tipografía y maquetación a pantalla completa
+  pages/                   rutas de Astro: /, /pausa, /mosaico, 404, robots.txt y sitemap.xml
+  layouts/Base.astro       <head>: metadatos, Open Graph, JSON-LD de la clínica y fuentes
+  views/
+    Duo.tsx · duo.css      la web principal: portada, fisioterapia, Pilates y contacto
+    Pausa.tsx · pausa.css  propuesta alternativa oscura y cinematográfica
+    Mosaico.tsx · mosaico.css  propuesta alternativa en teselas
   components/corpo/
     CorpoLogo.tsx          logotipo en SVG
     CorpoMap.tsx           mapa de Leaflet que se carga al verse
     CorpoMedia.tsx         foto o vídeo de un hueco, con reserva
+    ProposalBar.tsx        selector entre propuestas (solo en las alternativas)
   lib/corpo.ts             datos de contacto de la clínica
   lib/instagram-media.ts   descubre los medios de src/assets/instagram
+  lib/smooth-scroll.ts     desplazamiento suave de los enlaces internos
   hooks/use-reveal.ts      entrada escalonada de las secciones
   assets/instagram/        fotos y vídeos de la página
+  index.css                reset mínimo y estilos de la 404
 public/                    iconos, manifiesto, imagen para compartir y _redirects
-index.html                 metadatos, Open Graph y JSON-LD de la clínica
-vite.config.ts             plugin de SEO: %SITE_URL%, robots.txt y sitemap.xml
+astro.config.mjs           URL del sitio (SITE_URL / URL de Netlify) e integración de React
 PRODUCT.md                 propósito, público y compromisos de marca
 ```
 
@@ -160,7 +178,7 @@ PRODUCT.md                 propósito, público y compromisos de marca
 <details>
 <summary><b>desarrollo local</b></summary>
 
-Requisitos: Node.js y pnpm.
+Requisitos: Node.js 22.23 o superior (`.nvmrc` fija la 24) y pnpm.
 
 ```bash
 pnpm install
@@ -174,7 +192,7 @@ pnpm dev          # http://localhost:8080
 
 ```bash
 pnpm lint
-pnpm test         # Vitest
+pnpm check        # tipos de TypeScript y Astro
 pnpm build        # estáticos en dist/, con robots.txt y sitemap.xml
 pnpm preview
 ```

@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import L from "leaflet";
+import type { Map as LeafletMap } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { corpo } from "@/lib/corpo";
 import "./corpo-map.css";
 
 type CorpoMapProps = {
-  variant: "duo";
+  variant: "duo" | "pausa" | "mosaico";
   className?: string;
 };
 
 export const CorpoMap = ({ variant, className = "" }: CorpoMapProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<L.Map | null>(null);
+  const mapRef = useRef<LeafletMap | null>(null);
   const [ready, setReady] = useState(false);
   const [tileError, setTileError] = useState(false);
 
@@ -40,64 +40,71 @@ export const CorpoMap = ({ variant, className = "" }: CorpoMapProps) => {
   useEffect(() => {
     const container = containerRef.current;
     if (!ready || !container || mapRef.current) return;
+    let cancelled = false;
 
-    const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
-    const map = L.map(container, {
-      center: corpo.coordinates,
-      zoom: 16,
-      scrollWheelZoom: false,
-      dragging: !coarsePointer,
-      touchZoom: !coarsePointer,
-      zoomControl: false,
-      attributionControl: false,
-    });
-    mapRef.current = map;
+    // Leaflet usa `window` al importarse: se carga solo en el navegador, porque Astro renderiza la página en el servidor.
+    import("leaflet").then(({ default: L }) => {
+      if (cancelled || mapRef.current) return;
 
-    const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    });
-    tiles.on("tileerror", () => setTileError(true));
-    tiles.addTo(map);
+      const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+      const map = L.map(container, {
+        center: corpo.coordinates,
+        zoom: 16,
+        scrollWheelZoom: false,
+        dragging: !coarsePointer,
+        touchZoom: !coarsePointer,
+        zoomControl: false,
+        attributionControl: false,
+      });
+      mapRef.current = map;
 
-    L.control.zoom({ position: "bottomright" }).addTo(map);
-    L.control.attribution({ position: "bottomleft", prefix: false }).addTo(map);
+      const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      });
+      tiles.on("tileerror", () => setTileError(true));
+      tiles.addTo(map);
 
-    const icon = L.divIcon({
-      className: "corpo-map-marker",
-      html: '<span class="corpo-map-marker__dot"></span><span class="corpo-map-marker__label">Corpo</span>',
-      iconSize: [88, 38],
-      iconAnchor: [15, 19],
-    });
+      L.control.zoom({ position: "bottomright" }).addTo(map);
+      L.control.attribution({ position: "bottomleft", prefix: false }).addTo(map);
 
-    L.marker(corpo.coordinates, {
-      icon,
-      keyboard: true,
-      title: `${corpo.name}, ${corpo.address}`,
-    })
-      .addTo(map)
-      .bindPopup(`<strong>Corpo</strong><br>${corpo.addressLines.join("<br>")}`);
+      const icon = L.divIcon({
+        className: "corpo-map-marker",
+        html: '<span class="corpo-map-marker__dot"></span><span class="corpo-map-marker__label">Corpo</span>',
+        iconSize: [88, 38],
+        iconAnchor: [15, 19],
+      });
 
-    requestAnimationFrame(() => {
-      const zoomIn = container.querySelector<HTMLAnchorElement>(".leaflet-control-zoom-in");
-      const zoomOut = container.querySelector<HTMLAnchorElement>(".leaflet-control-zoom-out");
-      const close = container.querySelector<HTMLAnchorElement>(".leaflet-popup-close-button");
-      if (zoomIn) {
-        zoomIn.title = "Acercar el mapa";
-        zoomIn.setAttribute("aria-label", "Acercar el mapa");
-      }
-      if (zoomOut) {
-        zoomOut.title = "Alejar el mapa";
-        zoomOut.setAttribute("aria-label", "Alejar el mapa");
-      }
-      if (close) {
-        close.title = "Cerrar información";
-        close.setAttribute("aria-label", "Cerrar información");
-      }
+      L.marker(corpo.coordinates, {
+        icon,
+        keyboard: true,
+        title: `${corpo.name}, ${corpo.address}`,
+      })
+        .addTo(map)
+        .bindPopup(`<strong>Corpo</strong><br>${corpo.addressLines.join("<br>")}`);
+
+      requestAnimationFrame(() => {
+        const zoomIn = container.querySelector<HTMLAnchorElement>(".leaflet-control-zoom-in");
+        const zoomOut = container.querySelector<HTMLAnchorElement>(".leaflet-control-zoom-out");
+        const close = container.querySelector<HTMLAnchorElement>(".leaflet-popup-close-button");
+        if (zoomIn) {
+          zoomIn.title = "Acercar el mapa";
+          zoomIn.setAttribute("aria-label", "Acercar el mapa");
+        }
+        if (zoomOut) {
+          zoomOut.title = "Alejar el mapa";
+          zoomOut.setAttribute("aria-label", "Alejar el mapa");
+        }
+        if (close) {
+          close.title = "Cerrar información";
+          close.setAttribute("aria-label", "Cerrar información");
+        }
+      });
     });
 
     return () => {
-      map.remove();
+      cancelled = true;
+      mapRef.current?.remove();
       mapRef.current = null;
     };
   }, [ready]);

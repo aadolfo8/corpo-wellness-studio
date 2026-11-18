@@ -1,4 +1,4 @@
-import { RefObject, useEffect } from "react";
+import { type RefObject, useEffect } from "react";
 
 /** Adds `is-visible` to every `selector` match inside `root` once it scrolls into view. */
 export const useReveal = (root: RefObject<HTMLElement>, selector: string) => {

@@ -1,0 +1,165 @@
+---
+import "@/index.css";
+import { corpo } from "@/lib/corpo";
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Las propuestas alternativas y el 404 no deben indexarse ni competir con la portada. */
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = "Clínica de fisioterapia y Pilates Máquina (Reformer) en Ronda Sur, Murcia. Fisioterapia avanzada con ecógrafo, terapia manual, ondas de choque, diatermia y clases en grupos reducidos. Pide cita online.",
+  noindex = false,
+} = Astro.props;
+
+const site = String(Astro.site).replace(/\/+$/, "");
+const home = `${site}/`;
+const ogImage = `${site}/og-image.jpg`;
+
+// Ficha de negocio local para Google (JSON-LD).
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Physiotherapy", "ExerciseGym"],
+      "@id": `${site}/#clinica`,
+      name: "Clínica de Fisioterapia Corpo. Pilates Reformer",
+      alternateName: ["Clínica Corpo", "Corpo Fisio & Pilates", "Clínica Corpo Ronda Sur"],
+      description: "Clínica de fisioterapia avanzada con ecógrafo y estudio de Pilates Máquina (Reformer) en grupos reducidos en Ronda Sur, Murcia.",
+      url: home,
+      logo: `${site}/icon-512.png`,
+      image: ogImage,
+      telephone: "+34624060340",
+      email: corpo.email,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: corpo.addressLines[0],
+        addressLocality: "Murcia",
+        addressRegion: "Región de Murcia",
+        postalCode: "30010",
+        addressCountry: "ES",
+      },
+      geo: { "@type": "GeoCoordinates", latitude: corpo.coordinates[0], longitude: corpo.coordinates[1] },
+      hasMap: "https://www.google.com/maps/search/?api=1&query=Corpo&query_place_id=ChIJCd3Qckl5Yw0R4g0ilsJ_AZ4",
+      areaServed: [
+        { "@type": "Place", name: "Ronda Sur, Murcia" },
+        { "@type": "Place", name: "San Benito - Patiño, Murcia" },
+        { "@type": "City", name: "Murcia" },
+      ],
+      sameAs: [
+        corpo.instagramUrl,
+        "https://www.google.com/search?kgmid=/g/11lzx04c0b",
+        "https://share.google/Q8IDRslv0EUp6q2Dr",
+      ],
+      medicalSpecialty: "PhysicalTherapy",
+      availableService: [
+        "Fisioterapia avanzada",
+        "Fisioterapia con ecografía",
+        "Terapia manual",
+        "Ondas de choque",
+        "Diatermia",
+        "Presoterapia",
+      ].map((name) => ({ "@type": "MedicalTherapy", name })),
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Servicios de Clínica Corpo",
+        itemListElement: [
+          "Pilates Máquina (Reformer) en grupos reducidos",
+          "Fisioterapia con ecógrafo",
+          "Terapia manual",
+          "Ondas de choque",
+          "Diatermia",
+          "Presoterapia",
+        ].map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name, areaServed: "Murcia" } })),
+      },
+      potentialAction: {
+        "@type": "ReserveAction",
+        name: "Pedir cita",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: corpo.bookingUrl,
+          actionPlatform: ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"],
+        },
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site}/#web`,
+      url: home,
+      name: "Clínica Corpo",
+      inLanguage: "es-ES",
+      publisher: { "@id": `${site}/#clinica` },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="es-ES">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="robots"
+      content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+    />
+    <meta name="author" content="Clínica Corpo" />
+    <link rel="canonical" href={home} />
+    <meta name="theme-color" content="#2f4a3a" />
+    <meta name="format-detection" content="telephone=yes" />
+
+    <!-- Iconos -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- SEO local -->
+    <meta name="geo.region" content="ES-MU" />
+    <meta name="geo.placename" content="Murcia" />
+    <meta name="geo.position" content="37.9703199;-1.1332359" />
+    <meta name="ICBM" content="37.9703199, -1.1332359" />
+
+    <!-- Open Graph / redes sociales -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="Clínica Corpo" />
+    <meta property="og:url" content={home} />
+    <meta property="og:title" content="Fisioterapia y Pilates Máquina en Murcia | Clínica Corpo" />
+    <meta property="og:description" content="Fisioterapia avanzada con ecógrafo y Pilates Máquina en grupos reducidos en Ronda Sur, Murcia. Pide cita online o escríbenos por WhatsApp." />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Clase de Pilates Máquina en la sala de Clínica Corpo, Murcia" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Fisioterapia y Pilates Máquina en Murcia | Clínica Corpo" />
+    <meta name="twitter:description" content="Fisioterapia con ecógrafo y Pilates Máquina en Ronda Sur, Murcia." />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Prata&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Sans:opsz,wght@9..40,400..700&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap"
+    />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Sin JavaScript, el contenido que entra animado se muestra directamente. -->
+    <noscript>
+      <style is:inline>
+        .duo-reveal, .pausa-reveal, .mosaico-reveal, .duo-steps li, .duo-services li { opacity: 1 !important; transform: none !important; translate: none !important; clip-path: none !important; }
+      </style>
+    </noscript>
+  </head>
+
+  <body>
+    <slot />
+  </body>
+</html>

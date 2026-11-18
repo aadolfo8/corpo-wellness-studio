@@ -1,0 +1,216 @@
+/* Propuesta «Mosaico»: la paleta de Corpo en teselas claras, redondeadas y modulares. */
+.mosaico-page {
+  --mo-green: #2f4a3a;
+  --mo-deep: #1f3328;
+  --mo-beige: #e9dfcc;
+  --mo-cream: #f5efe3;
+  --mo-paper: #fbf7ef;
+  --mo-sage: #cdd6c6;
+  --mo-ink: #1d2620;
+  --mo-muted: #5d665e;
+  --mo-nav: 72px;
+  --mo-gutter: clamp(0.75rem, 2.4vw, 2rem);
+  --mo-gap: clamp(0.5rem, 0.9vw, 0.8rem);
+  --mo-radius: 22px;
+  --mo-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--mo-cream);
+  color: var(--mo-ink);
+  font-family: "DM Sans", system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+:where(.mosaico-page) a { color: inherit; text-decoration: none; }
+.mosaico-page a:focus-visible, .mosaico-page button:focus-visible { outline: 2px solid var(--mo-green); outline-offset: 3px; }
+.mosaico-page h1, .mosaico-page h2, .mosaico-page h3 { font-family: "Bricolage Grotesque", "DM Sans", sans-serif; margin: 0; }
+.mosaico-page em { font-family: "Newsreader", Georgia, serif; font-style: italic; font-weight: 400; }
+.mosaico-page img, .mosaico-page video { display: block; height: 100%; object-fit: cover; width: 100%; }
+.mosaico-page figure { margin: 0; }
+.mosaico-page p { margin: 0; }
+
+.mosaico-kicker { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; margin-bottom: 0.9rem !important; text-transform: uppercase; }
+
+.mosaico-button { align-items: center; background: var(--mo-green); border: 1.5px solid var(--mo-green); border-radius: 999px; color: var(--mo-cream) !important; display: inline-flex; font-weight: 600; gap: 0.5rem; justify-content: center; min-height: 50px; padding: 0 1.4rem; transition: background-color 180ms ease, transform 180ms ease; white-space: nowrap; }
+.mosaico-button:hover { background: var(--mo-deep); border-color: var(--mo-deep); }
+.mosaico-button:active { transform: scale(0.98); }
+.mosaico-button--small { font-size: 0.92rem; min-height: 44px; padding: 0 1.1rem; }
+.mosaico-button--ghost { background: transparent; color: var(--mo-green) !important; }
+.mosaico-button--ghost:hover { background: rgba(47, 74, 58, 0.08); border-color: var(--mo-green); }
+.mosaico-button--light { background: var(--mo-beige); border-color: var(--mo-beige); color: var(--mo-deep) !important; }
+.mosaico-button--light:hover { background: #fff8ea; border-color: #fff8ea; }
+.mosaico-link { font-weight: 600; text-decoration: underline !important; text-underline-offset: 4px; }
+.mosaico-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 0.6rem 1.1rem; }
+
+/* Barra */
+.mosaico-nav { align-items: center; background: var(--mo-cream); display: grid; gap: 1rem; grid-template-columns: 1fr auto 1fr; height: var(--mo-nav); padding: 0 var(--mo-gutter); position: sticky; top: 0; z-index: 1100; }
+.mosaico-logo-link { display: inline-flex; justify-self: start; }
+.mosaico-logo { display: block; height: 30px; width: auto; }
+.mosaico-logo--footer { height: 44px; }
+.mosaico-nav nav { background: var(--mo-beige); border-radius: 999px; display: flex; gap: 0.15rem; padding: 0.3rem; }
+.mosaico-nav nav a { border-radius: 999px; font-size: 0.9rem; font-weight: 500; padding: 0.5rem 0.95rem; transition: background-color 180ms ease; }
+.mosaico-nav nav a:hover { background: var(--mo-cream); }
+.mosaico-nav .mosaico-button { justify-self: end; }
+
+/* Teselas */
+.mosaico-tile { border-radius: var(--mo-radius); isolation: isolate; overflow: hidden; padding: clamp(1rem, 1.6vw, 1.5rem); position: relative; }
+.mosaico-tile strong { display: block; font-family: "Bricolage Grotesque", sans-serif; font-size: clamp(1.1rem, 1.4vw, 1.35rem); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.3rem; }
+.mosaico-tile--media { color: var(--mo-cream); padding: 0; }
+.mosaico-tile--media > img, .mosaico-tile--media > video { inset: 0; position: absolute; transition: transform 900ms var(--mo-ease); z-index: -2; }
+a.mosaico-tile--media:hover > img, a.mosaico-tile--media:hover > video { transform: scale(1.05); }
+.mosaico-tile-label { background: var(--mo-cream); border-radius: 999px; bottom: 1rem; color: var(--mo-deep); font-weight: 700; left: 1rem; padding: 0.6rem 1rem; position: absolute; transition: background-color 200ms ease; }
+a.mosaico-tile:hover .mosaico-tile-label { background: #fff8ea; }
+.mosaico-tile-thumb { border-radius: 14px; display: block; flex: none; height: clamp(54px, 5vw, 72px); overflow: hidden; width: clamp(54px, 5vw, 72px); }
+.mosaico-tile--eco, .mosaico-tile--group { align-items: center; display: flex; gap: 1rem; }
+.mosaico-tile--eco { background: var(--mo-deep); color: var(--mo-cream); }
+.mosaico-tile--eco p { color: rgba(245, 239, 227, 0.82); }
+.mosaico-tile--group { background: var(--mo-sage); }
+.mosaico-tile--eco p, .mosaico-tile--group p { font-size: 0.92rem; line-height: 1.4; }
+.mosaico-tile--where { background: var(--mo-green); color: var(--mo-cream); display: flex; flex-direction: column; font-size: 0.9rem; gap: 3.5rem; justify-content: space-between; line-height: 1.4; transition: background-color 200ms ease; }
+.mosaico-tile--where:hover { background: var(--mo-deep); }
+.mosaico-tile--where .mosaico-tile-label { align-self: flex-start; bottom: auto; left: auto; position: static; }
+.mosaico-tile--where p { opacity: 0.9; }
+
+/* Portada */
+.mosaico-hero { display: grid; gap: var(--mo-gap); grid-template-areas: "title title pil fis" "title title pil fis" "eco grp pil dir"; grid-template-columns: 1fr 1fr 1fr 0.9fr; grid-template-rows: 1fr 1fr auto; height: calc(100svh - var(--mo-nav)); min-height: 620px; padding: 0 var(--mo-gutter) var(--mo-gutter); }
+.mosaico-tile--title { background: var(--mo-beige); display: flex; flex-direction: column; justify-content: space-between; padding: clamp(1.25rem, 2.6vw, 2.5rem); }
+.mosaico-tile--title h1 { font-size: clamp(2.5rem, min(5vw, 8.5vh), 5.8rem); font-weight: 800; letter-spacing: -0.055em; line-height: 0.93; margin: auto 0 clamp(1.25rem, 3.5vh, 2rem); max-width: 12ch; }
+.mosaico-tile--title h1 em { color: var(--mo-green); letter-spacing: -0.02em; }
+.mosaico-tile--title .mosaico-kicker { color: var(--mo-green); }
+.mosaico-hero .mosaico-tile--media::after { background: linear-gradient(180deg, transparent 55%, rgba(31, 51, 40, 0.55)); content: ""; inset: 0; position: absolute; z-index: -1; }
+
+/* Secciones */
+.mosaico-section { padding: clamp(3.5rem, 9vh, 6rem) var(--mo-gutter); scroll-margin-top: var(--mo-nav); }
+.mosaico-section--green { background: var(--mo-green); color: var(--mo-cream); }
+.mosaico-head { margin: 0 auto clamp(1.5rem, 4vh, 2.5rem); max-width: 1400px; }
+.mosaico-page h2 { font-size: clamp(2.2rem, 4.4vw, 4.4rem); font-weight: 800; letter-spacing: -0.05em; line-height: 0.96; }
+
+/* Selector «¿por dónde empiezo?» */
+.mosaico-start .mosaico-kicker { color: var(--mo-green); }
+.mosaico-start-grid { display: grid; gap: var(--mo-gap); grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.7fr); margin: 0 auto; max-width: 1400px; }
+.mosaico-tabs { display: grid; gap: var(--mo-gap); grid-auto-rows: 1fr; }
+.mosaico-tabs button { align-items: flex-start; background: var(--mo-beige); border: 0; border-radius: var(--mo-radius); color: var(--mo-ink); cursor: pointer; display: flex; flex-direction: column; font: 700 clamp(1.15rem, 1.6vw, 1.5rem)/1.15 "Bricolage Grotesque", sans-serif; gap: 1.5rem; justify-content: space-between; letter-spacing: -0.02em; padding: 1.25rem 1.4rem; text-align: left; transition: background-color 220ms ease, color 220ms ease, transform 220ms ease; }
+.mosaico-tabs button:hover { background: #e2d6bf; }
+.mosaico-tabs button[aria-selected="true"] { background: var(--mo-green); color: var(--mo-cream); }
+.mosaico-tab-index { font: 700 0.78rem/1 "DM Sans", sans-serif; letter-spacing: 0.12em; opacity: 0.7; }
+.mosaico-panel { background: var(--mo-paper); border-radius: var(--mo-radius); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); min-height: 420px; overflow: hidden; }
+.mosaico-panel-media { min-height: 100%; overflow: hidden; }
+.mosaico-panel-copy { align-self: center; padding: clamp(1.5rem, 3.5vw, 3rem); }
+.mosaico-panel-copy h3 { font-size: clamp(1.7rem, 2.6vw, 2.6rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.02; }
+.mosaico-panel-copy p { color: var(--mo-muted); font-size: 1.05rem; line-height: 1.6; margin: 1rem 0 1.75rem; max-width: 34rem; }
+@keyframes mosaico-swap { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes mosaico-swap-media { from { opacity: 0; scale: 1.06; } to { opacity: 1; scale: 1; } }
+.mosaico-panel-copy { animation: mosaico-swap 500ms var(--mo-ease) both; }
+.mosaico-panel-media > * { animation: mosaico-swap-media 700ms var(--mo-ease) both; }
+
+/* Cinta de fotos */
+.mosaico-ribbon { overflow: hidden; padding: 0 0 var(--mo-gap); }
+.mosaico-ribbon-track { animation: mosaico-ribbon 70s linear infinite; display: flex; gap: var(--mo-gap); width: max-content; }
+.mosaico-ribbon:hover .mosaico-ribbon-track { animation-play-state: paused; }
+.mosaico-ribbon-item { aspect-ratio: 4 / 3; border-radius: 18px; display: block; height: clamp(160px, 24vh, 250px); overflow: hidden; }
+.mosaico-ribbon-item:nth-child(3n) { aspect-ratio: 3 / 4; }
+.mosaico-ribbon-item:nth-child(3n + 2) { aspect-ratio: 1; }
+@keyframes mosaico-ribbon { to { transform: translateX(calc(-50% - var(--mo-gap) / 2)); } }
+
+/* Rejillas de Fisioterapia, Pilates y Contacto */
+.mosaico-bento { display: grid; gap: var(--mo-gap); margin: 0 auto; max-width: 1400px; }
+.mosaico-bento--fisio { grid-template-areas: "head head eco video" "s1 s2 eco video" "s3 s4 eco video"; grid-template-columns: 1fr 1fr 1.05fr 1fr; grid-template-rows: auto 1fr 1fr; min-height: clamp(620px, 84svh, 860px); }
+.mosaico-bento--pilates { grid-template-areas: "video head head head" "video p1 p2 p3"; grid-template-columns: 0.95fr 1fr 1fr 1fr; grid-template-rows: auto 1fr; min-height: clamp(620px, 84svh, 860px); }
+.mosaico-bento--contact { grid-template-areas: "head head map map" "phone mail map map" "book book wa dir"; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.mosaico-tile--intro { padding: 0.5rem 0.25rem 1.5rem; }
+.mosaico-tile--intro > p:not(.mosaico-kicker) { font-size: clamp(1rem, 1.2vw, 1.12rem); line-height: 1.6; margin: 1.1rem 0 1.5rem; max-width: 34rem; }
+#fisioterapia .mosaico-kicker, #contacto .mosaico-kicker { color: var(--mo-green); }
+.mosaico-tile--on-green .mosaico-kicker { color: var(--mo-beige); }
+.mosaico-tile--on-green > p:not(.mosaico-kicker) { opacity: 0.88; }
+
+.mosaico-tile--feature { background: var(--mo-deep); color: var(--mo-cream); display: flex; flex-direction: column; }
+.mosaico-feature-media { border-radius: 14px; display: block; flex: 1; margin-bottom: 1.25rem; min-height: 160px; overflow: hidden; }
+.mosaico-badge { align-self: flex-start; background: var(--mo-beige); border-radius: 999px; color: var(--mo-deep); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; padding: 0.35rem 0.75rem; text-transform: uppercase; }
+.mosaico-tile--feature h3 { font-size: clamp(1.8rem, 2.6vw, 2.6rem); font-weight: 800; letter-spacing: -0.05em; margin-top: 0.6rem; }
+.mosaico-tile--feature p { color: rgba(245, 239, 227, 0.85); line-height: 1.5; margin-top: 0.5rem; }
+
+.mosaico-tile--service { background: var(--mo-beige); display: flex; flex-direction: column; justify-content: flex-end; transition: background-color 220ms ease; }
+.mosaico-tile--service:hover { background: #e2d6bf; }
+.mosaico-service-thumb { align-items: center; background: var(--mo-cream); border-radius: 12px; color: var(--mo-green); display: flex; height: 56px; justify-content: center; margin-bottom: auto; overflow: hidden; width: 56px; }
+.mosaico-service-thumb svg { height: 45%; width: 45%; }
+.mosaico-tile--service h3 { font-size: clamp(1.1rem, 1.4vw, 1.3rem); letter-spacing: -0.03em; margin-top: 1.25rem; }
+.mosaico-tile--service p { color: var(--mo-muted); font-size: 0.9rem; line-height: 1.4; margin-top: 0.25rem; }
+
+.mosaico-tile--step { background: rgba(245, 239, 227, 0.08); border: 1px solid rgba(245, 239, 227, 0.18); display: flex; flex-direction: column; gap: 1rem; }
+.mosaico-step-media { border-radius: 14px; display: block; flex: 1; min-height: 150px; overflow: hidden; }
+.mosaico-step-media img { transition: transform 700ms var(--mo-ease); }
+.mosaico-tile--step:hover .mosaico-step-media img { transform: scale(1.06); }
+.mosaico-step-number { border: 1px solid rgba(233, 223, 204, 0.45); border-radius: 999px; color: var(--mo-beige); display: inline-block; font-size: 0.75rem; font-variant-numeric: tabular-nums; font-weight: 700; padding: 0.3rem 0.55rem; }
+.mosaico-tile--step h3 { font-size: clamp(1.2rem, 1.6vw, 1.5rem); letter-spacing: -0.03em; margin-top: 0.6rem; }
+.mosaico-tile--step p { line-height: 1.45; margin-top: 0.3rem; opacity: 0.85; }
+
+.mosaico-bento--contact address { color: var(--mo-muted); font-size: 1.1rem; font-style: normal; line-height: 1.55; margin-top: 1.1rem; }
+.mosaico-tile--map { min-height: 440px; padding: 0; }
+.mosaico-map { height: 100%; inset: 0; min-height: 100%; position: absolute; }
+.mosaico-tile--fact, .mosaico-tile--cta { display: flex; flex-direction: column; gap: 2rem; justify-content: space-between; min-height: 150px; transition: background-color 200ms ease, transform 200ms var(--mo-ease); }
+.mosaico-tile--fact { background: var(--mo-paper); }
+.mosaico-tile--fact:hover { background: #fff; transform: translateY(-3px); }
+.mosaico-tile--beige { background: var(--mo-beige); }
+.mosaico-tile--beige:hover { background: #e2d6bf; }
+.mosaico-tile--fact > span, .mosaico-tile--cta > span { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.1em; opacity: 0.7; text-transform: uppercase; }
+.mosaico-tile--fact strong, .mosaico-tile--cta strong { font-size: clamp(1.4rem, 2vw, 2rem); font-weight: 800; letter-spacing: -0.04em; margin: 0; }
+.mosaico-tile--fact .mosaico-mail { font-size: clamp(1rem, 1.25vw, 1.2rem); letter-spacing: -0.01em; }
+.mosaico-tile--cta { background: var(--mo-green); color: var(--mo-cream); }
+.mosaico-tile--cta:hover { background: var(--mo-deep); transform: translateY(-3px); }
+.mosaico-tile--cta strong { font-size: clamp(2rem, 3.4vw, 3.2rem); }
+
+.mosaico-footer { align-items: center; display: flex; flex-wrap: wrap; gap: 1rem 2rem; padding: 1.5rem var(--mo-gutter) 5.5rem; }
+.mosaico-footer > a { font-weight: 600; margin-left: auto; }
+
+/* Entradas */
+@keyframes mosaico-pop { from { opacity: 0; transform: translateY(22px) scale(0.98); } to { opacity: 1; transform: none; } }
+.mosaico-hero > * { animation: mosaico-pop 900ms var(--mo-ease) both; }
+.mosaico-hero > :nth-child(2) { animation-delay: 80ms; }
+.mosaico-hero > :nth-child(3) { animation-delay: 160ms; }
+.mosaico-hero > :nth-child(4) { animation-delay: 240ms; }
+.mosaico-hero > :nth-child(5) { animation-delay: 300ms; }
+.mosaico-hero > :nth-child(6) { animation-delay: 360ms; }
+.mosaico-reveal { opacity: 0; transform: translateY(20px); transition: opacity 750ms var(--mo-ease), transform 750ms var(--mo-ease), background-color 200ms ease; }
+.mosaico-reveal.is-visible { opacity: 1; transform: none; }
+.mosaico-tile--fact.mosaico-reveal.is-visible:hover, .mosaico-tile--cta.mosaico-reveal.is-visible:hover { transform: translateY(-3px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mosaico-page *, .mosaico-page *::before, .mosaico-page *::after { animation: none !important; transition-duration: 1ms !important; }
+  .mosaico-reveal { opacity: 1; transform: none; }
+  .mosaico-ribbon { overflow-x: auto; }
+}
+
+@media (max-width: 1100px) {
+  .mosaico-nav nav a:first-child { display: none; }
+}
+
+@media (max-width: 900px) {
+  .mosaico-page { --mo-nav: 64px; --mo-radius: 18px; }
+  .mosaico-nav { grid-template-columns: 1fr auto; }
+  .mosaico-nav nav { display: none; }
+  .mosaico-logo { height: 26px; }
+
+  .mosaico-hero { grid-template-areas: "title title" "pil fis" "eco eco" "grp grp" "dir dir"; grid-template-columns: 1fr 1fr; grid-template-rows: auto 46svh auto auto auto; height: auto; min-height: 0; }
+  .mosaico-tile--title h1 { font-size: clamp(2.3rem, 10.5vw, 3.4rem); margin-top: 2rem; }
+  .mosaico-tile-label { bottom: 0.6rem; font-size: 0.85rem; left: 0.6rem; padding: 0.5rem 0.75rem; }
+  .mosaico-tile--where { gap: 1.25rem; }
+
+  .mosaico-start-grid { grid-template-columns: 1fr; }
+  .mosaico-tabs { grid-auto-rows: auto; }
+  .mosaico-tabs button { flex-direction: row; gap: 0.9rem; justify-content: flex-start; padding: 1rem 1.1rem; }
+  .mosaico-tab-index { padding-top: 0.3rem; }
+  .mosaico-panel { grid-template-columns: 1fr; min-height: 0; }
+  .mosaico-panel-media { aspect-ratio: 16 / 11; }
+
+  .mosaico-bento--fisio { grid-template-areas: "head head" "video video" "eco eco" "s1 s2" "s3 s4"; grid-template-columns: 1fr 1fr; grid-template-rows: none; min-height: 0; }
+  .mosaico-bento--pilates { grid-template-areas: "head" "video" "p1" "p2" "p3"; grid-template-columns: 1fr; grid-template-rows: none; min-height: 0; }
+  /* Los vídeos vienen de reels verticales. */
+  .mosaico-bento .mosaico-tile--media { aspect-ratio: 4 / 5; max-height: 80svh; }
+  .mosaico-feature-media { aspect-ratio: 16 / 10; flex: none; }
+  .mosaico-tile--service { min-height: 190px; }
+  .mosaico-step-media { aspect-ratio: 16 / 10; flex: none; }
+
+  .mosaico-bento--contact { grid-template-areas: "head head" "map map" "phone phone" "mail mail" "book book" "wa dir"; grid-template-columns: 1fr 1fr; }
+  .mosaico-tile--map { min-height: 340px; }
+  .mosaico-tile--fact, .mosaico-tile--cta { min-height: 120px; }
+  .mosaico-footer > a { margin-left: 0; }
+}

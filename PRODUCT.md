@@ -43,7 +43,7 @@ La web funciona como escaparate de una clínica local en Ronda Sur, Murcia. Las 
 
 - Fotografías existentes en `src/assets/`: hero-reformer.jpg, service-fisio.jpg, service-pilates.jpg, service-recovery.jpg y about-studio.jpg.
 - Se pueden incorporar y guardar imágenes adicionales de internet cuando mejoren una propuesta visual. Deben proceder de una fuente verificable, tener un uso permitido y optimizarse antes de integrarlas.
-- Textos y estructura existentes en `src/components/corpo/` y `src/pages/Index.tsx`.
+- Textos y estructura existentes en `src/components/corpo/` y `src/views/` (una página por propuesta).
 - No hay testimonios verificables ni precios confirmados en este repositorio.
 
 ## Product Principles

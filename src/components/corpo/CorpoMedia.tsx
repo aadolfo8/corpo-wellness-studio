@@ -2,8 +2,8 @@ import { instagramMedia, type MediaSlot } from "@/lib/instagram-media";
 
 type CorpoMediaProps = {
   slot: MediaSlot;
-  /** Imagen de reserva mientras no haya un archivo de Instagram para este hueco. */
-  fallback?: string;
+  /** Imagen de reserva mientras no haya un archivo de Instagram para este hueco (URL o foto importada). */
+  fallback?: string | { src: string };
   alt: string;
   className?: string;
   priority?: boolean;
@@ -29,7 +29,7 @@ export const CorpoMedia = ({ slot, fallback, alt, className = "", priority = fal
     );
   }
 
-  const src = media?.src ?? fallback;
+  const src = media?.src ?? (typeof fallback === "string" ? fallback : fallback?.src);
   if (!src) return null;
 
   return (
