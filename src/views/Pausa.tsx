@@ -21,60 +21,153 @@ const heroItems: { id: Focus; index: string; title: string; text: string; href: 
   { id: "pilates", index: "02", title: "Pilates Máquina", text: "Reformer en grupos reducidos", href: "#pilates" },
 ];
 
-type Chapter = { act: "Fisioterapia" | "Pilates Máquina"; title: string; text: string; slot: MediaSlot; anchor?: string };
+type Chapter = { title: string; text: string; slot: MediaSlot };
 
-const chapters: Chapter[] = [
+type Act = {
+  id: Focus;
+  anchor: string;
+  index: string;
+  title: string;
+  lead: string;
+  cta: string;
+  chapters: Chapter[];
+};
+
+/** Dos actos: cada uno con su color y su lado, para que al bajar se note el cambio de servicio. */
+const acts: Act[] = [
   {
-    act: "Fisioterapia",
+    id: "fisio",
     anchor: "fisioterapia",
-    slot: "ecografia",
-    title: "Ecografía en consulta",
-    text: "Vemos músculos, tendones y ligamentos en tiempo real durante la valoración. Es lo que nos diferencia.",
+    index: "01",
+    title: "Fisioterapia",
+    lead: "Para dolor, lesiones y recuperación. Valoramos, te explicamos lo que vemos y tratamos.",
+    cta: "Pedir cita de fisioterapia ↗",
+    chapters: [
+      {
+        slot: "ecografia",
+        title: "Ecografía en consulta",
+        text: "Vemos músculos, tendones y ligamentos en tiempo real durante la valoración. Es lo que nos diferencia.",
+      },
+      {
+        slot: "fisio-manual",
+        title: "Terapia manual",
+        text: "El trabajo con las manos, en el centro del tratamiento, combinado con la tecnología que necesita cada caso.",
+      },
+      {
+        slot: "fisio-ondas",
+        title: "Diatermia, ondas de choque y presoterapia",
+        text: "Herramientas que podemos sumar al tratamiento cuando tu caso lo pide.",
+      },
+    ],
   },
   {
-    act: "Fisioterapia",
-    slot: "fisio-manual",
-    title: "Terapia manual",
-    text: "El trabajo con las manos, en el centro del tratamiento. Valoramos, te explicamos lo que vemos y combinamos las manos con la tecnología que necesita cada caso.",
-  },
-  {
-    act: "Fisioterapia",
-    slot: "fisio-ondas",
-    title: "Diatermia, ondas de choque y presoterapia",
-    text: "Herramientas que podemos sumar al tratamiento cuando tu caso lo pide.",
-  },
-  {
-    act: "Pilates Máquina",
+    id: "pilates",
     anchor: "pilates",
-    slot: "pilates-1",
-    title: "Primera clase",
-    text: "Te explicamos cómo funciona el Reformer antes de empezar. Puedes venir aunque nunca hayas hecho Pilates.",
-  },
-  {
-    act: "Pilates Máquina",
-    slot: "pilates-2",
-    title: "Grupo reducido",
-    text: "Pocas personas por clase para poder corregirte de cerca.",
-  },
-  {
-    act: "Pilates Máquina",
-    slot: "pilates-3",
-    title: "Progresión",
-    text: "Ajustamos muelles, apoyos y ejercicios a medida que avanzas. La máquina te sostiene y te da resistencia a la vez.",
+    index: "02",
+    title: "Pilates Máquina",
+    lead: "Fuerza, control y movilidad sobre el Reformer, en grupos reducidos. No hace falta experiencia.",
+    cta: "Reservar clase de Pilates ↗",
+    chapters: [
+      {
+        slot: "pilates-1",
+        title: "Primera clase",
+        text: "Te explicamos cómo funciona el Reformer antes de empezar. Puedes venir aunque nunca hayas hecho Pilates.",
+      },
+      {
+        slot: "pilates-2",
+        title: "Grupo reducido",
+        text: "Pocas personas por clase para poder corregirte de cerca.",
+      },
+      {
+        slot: "pilates-3",
+        title: "Progresión",
+        text: "Ajustamos muelles, apoyos y ejercicios a medida que avanzas. La máquina te sostiene y te da resistencia a la vez.",
+      },
+    ],
   },
 ];
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
+/** Un acto: cabecera, lista de capítulos y un escenario fijo cuya imagen cambia con el capítulo que cruza el centro. */
+const ActSection = ({ act }: { act: Act }) => {
+  const listRef = useRef<HTMLOListElement>(null);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list || !("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(Number((entry.target as HTMLElement).dataset.index));
+      }),
+      { rootMargin: "-50% 0px -50% 0px" },
+    );
+    list.querySelectorAll(".pausa-chapter").forEach((chapter) => observer.observe(chapter));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section
+      id={act.anchor}
+      data-scroll-align="start"
+      className={`pausa-act pausa-act--${act.id}`}
+      aria-labelledby={`pausa-act-${act.id}`}
+    >
+      <header className="pausa-act-head pausa-reveal">
+        <span className="pausa-act-index">{act.index}</span>
+        <h2 id={`pausa-act-${act.id}`}>{act.title}</h2>
+        <p>{act.lead}</p>
+      </header>
+
+      <div className="pausa-act-body">
+        <div className="pausa-stage" aria-hidden="true">
+          {act.chapters.map((chapter, index) => (
+            <div key={chapter.title} className={`pausa-stage-layer${index === active ? " is-active" : ""}`}>
+              <CorpoMedia slot={chapter.slot} alt="" />
+            </div>
+          ))}
+          <p className="pausa-stage-counter">
+            <span>{act.title}</span>
+            <span>{pad(active + 1)} / {pad(act.chapters.length)}</span>
+          </p>
+        </div>
+
+        <ol ref={listRef} className="pausa-chapter-list">
+          {act.chapters.map((chapter, index) => (
+            <li key={chapter.title} data-index={index} className={`pausa-chapter${index === active ? " is-active" : ""}`}>
+              <figure className="pausa-chapter-media">
+                <CorpoMedia slot={chapter.slot} alt="" />
+              </figure>
+              <p className="pausa-chapter-act">{act.index}.{index + 1} · {act.title}</p>
+              <h3>{chapter.title}</h3>
+              <p className="pausa-chapter-text">{chapter.text}</p>
+              {index === act.chapters.length - 1 && (
+                <a
+                  className={`pausa-button${act.id === "pilates" ? " pausa-button--dark" : ""}`}
+                  href={corpo.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {act.cta}
+                </a>
+              )}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+};
+
 /**
- * Propuesta «Pausa»: cinematográfica y lenta. Vídeo a pantalla completa en la portada,
- * capítulos con una imagen fija que cambia al avanzar y un cierre con el logotipo a todo lo ancho.
+ * Propuesta «Pausa»: cinematográfica y lenta. Reels verticales en la portada, un acto por servicio
+ * (cada uno con su color y su lado) con una imagen fija que cambia al bajar, y un cierre con el logotipo a todo lo ancho.
  */
 const Pausa = () => {
   const pageRef = useRef<HTMLElement>(null);
   const [heroFocus, setHeroFocus] = useState<Focus>("fisio");
   const [autoplay, setAutoplay] = useState(true);
-  const [activeChapter, setActiveChapter] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   useReveal(pageRef, ".pausa-reveal");
 
@@ -94,20 +187,6 @@ const Pausa = () => {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // El capítulo que cruza el centro de la pantalla decide qué imagen se ve en el escenario.
-  useEffect(() => {
-    const page = pageRef.current;
-    if (!page || !("IntersectionObserver" in window)) return;
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => {
-        if (entry.isIntersecting) setActiveChapter(Number((entry.target as HTMLElement).dataset.index));
-      }),
-      { rootMargin: "-50% 0px -50% 0px" },
-    );
-    page.querySelectorAll(".pausa-chapter").forEach((chapter) => observer.observe(chapter));
-    return () => observer.disconnect();
   }, []);
 
   const chooseHero = (focus: Focus) => {
@@ -189,46 +268,7 @@ const Pausa = () => {
         </ul>
       </section>
 
-      <section className="pausa-chapters" aria-label="Fisioterapia y Pilates, paso a paso">
-        <div className="pausa-stage" aria-hidden="true">
-          {chapters.map((chapter, index) => (
-            <div key={chapter.title} className={`pausa-stage-layer${index === activeChapter ? " is-active" : ""}`}>
-              <CorpoMedia slot={chapter.slot} alt="" />
-            </div>
-          ))}
-          <p className="pausa-stage-counter">
-            <span>{chapters[activeChapter].act}</span>
-            <span>{pad(activeChapter + 1)} / {pad(chapters.length)}</span>
-          </p>
-        </div>
-
-        <ol className="pausa-chapter-list">
-          {chapters.map((chapter, index) => {
-            const lastOfAct = chapters[index + 1]?.act !== chapter.act;
-            return (
-              <li
-                key={chapter.title}
-                id={chapter.anchor}
-                data-index={index}
-                data-scroll-align="start"
-                className={`pausa-chapter${index === activeChapter ? " is-active" : ""}`}
-              >
-                <figure className="pausa-chapter-media">
-                  <CorpoMedia slot={chapter.slot} alt="" />
-                </figure>
-                <p className="pausa-chapter-act">{pad(index + 1)} · {chapter.act}</p>
-                <h2>{chapter.title}</h2>
-                <p className="pausa-chapter-text">{chapter.text}</p>
-                {lastOfAct && (
-                  <a className="pausa-button" href={corpo.bookingUrl} target="_blank" rel="noopener noreferrer">
-                    {chapter.act === "Fisioterapia" ? "Pedir cita de fisioterapia ↗" : "Reservar clase de Pilates ↗"}
-                  </a>
-                )}
-              </li>
-            );
-          })}
-        </ol>
-      </section>
+      {acts.map((act) => <ActSection key={act.id} act={act} />)}
 
       <section id="contacto" data-scroll-align="start" className="pausa-contact" aria-labelledby="pausa-contact-title">
         <div className="pausa-contact-copy pausa-reveal">

@@ -81,26 +81,42 @@
 .pausa-intro-list a:hover strong { color: var(--pausa-green); }
 .pausa-intro-list a:hover .pausa-intro-arrow { transform: translateY(5px); }
 
-/* Capítulos: la lista avanza y el escenario fijo cambia de imagen. */
-.pausa-chapters { display: grid; gap: clamp(2rem, 5vw, 5rem); grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); padding: 0 var(--pausa-gutter); }
+/* Actos: Fisioterapia en verde oscuro (texto a la izquierda) y Pilates en beige (imagen a la izquierda). */
+.pausa-act { padding: clamp(4.5rem, 12vh, 8rem) var(--pausa-gutter) 0; scroll-margin-top: var(--pausa-nav); }
+.pausa-act--fisio { background: var(--pausa-deep); color: var(--pausa-cream); --pausa-rule: rgba(245, 239, 227, 0.22); --pausa-accent: var(--pausa-beige); }
+.pausa-act--pilates { background: var(--pausa-beige); color: var(--pausa-ink); --pausa-rule: rgba(29, 38, 32, 0.2); --pausa-accent: var(--pausa-green); }
+.pausa-act--pilates a:focus-visible { outline-color: var(--pausa-green); }
+
+.pausa-act-head { border-bottom: 1px solid var(--pausa-rule); display: flex; flex-direction: column; padding-bottom: clamp(2rem, 5vh, 3rem); }
+.pausa-act--pilates .pausa-act-head { align-items: flex-end; text-align: right; }
+.pausa-act--pilates .pausa-act-index { align-self: flex-end; }
+.pausa-act-index { align-self: flex-start; border: 1px solid var(--pausa-rule); border-radius: 999px; color: var(--pausa-accent); font-size: 0.78rem; font-variant-numeric: tabular-nums; font-weight: 600; letter-spacing: 0.14em; padding: 0.35rem 0.75rem; }
+.pausa-act-head h2 { font-size: clamp(3.4rem, 10vw, 10rem); letter-spacing: -0.035em; line-height: 0.92; margin-top: clamp(1rem, 3vh, 1.75rem); }
+.pausa-act-head p { font-size: clamp(1rem, 1.3vw, 1.18rem); line-height: 1.55; margin: 1.25rem 0 0; max-width: 34rem; opacity: 0.85; }
+
+.pausa-act-body { display: grid; gap: clamp(2rem, 5vw, 5rem); grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
+.pausa-act--pilates .pausa-act-body { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
 .pausa-stage { align-self: start; border-radius: 8px; grid-column: 2; grid-row: 1; height: calc(100svh - var(--pausa-nav) - 3rem); overflow: hidden; position: sticky; top: calc(var(--pausa-nav) + 1.5rem); }
+.pausa-act--pilates .pausa-stage { grid-column: 1; }
 .pausa-stage-layer { inset: 0; opacity: 0; position: absolute; transition: opacity 900ms ease; }
 .pausa-stage-layer > * { scale: 1.06; transition: scale 1600ms var(--pausa-ease); }
 .pausa-stage-layer.is-active { opacity: 1; }
 .pausa-stage-layer.is-active > * { scale: 1; }
 .pausa-stage::after { background: linear-gradient(180deg, transparent 60%, rgba(31, 51, 40, 0.75)); content: ""; inset: 0; position: absolute; }
-.pausa-stage-counter { bottom: 0; display: flex; font-size: 0.78rem; font-variant-numeric: tabular-nums; font-weight: 600; justify-content: space-between; left: 0; letter-spacing: 0.14em; margin: 0; padding: 1.25rem 1.5rem; position: absolute; right: 0; text-transform: uppercase; z-index: 1; }
-.pausa-chapter-list { grid-column: 1; grid-row: 1; list-style: none; margin: 0; padding: 12vh 0; }
-.pausa-chapter { display: flex; flex-direction: column; justify-content: center; min-height: 82svh; opacity: 0.3; scroll-margin-top: var(--pausa-nav); transition: opacity 600ms ease; }
+.pausa-stage-counter { bottom: 0; color: var(--pausa-cream); display: flex; font-size: 0.78rem; font-variant-numeric: tabular-nums; font-weight: 600; justify-content: space-between; left: 0; letter-spacing: 0.14em; margin: 0; padding: 1.25rem 1.5rem; position: absolute; right: 0; text-transform: uppercase; z-index: 1; }
+
+.pausa-chapter-list { grid-column: 1; grid-row: 1; list-style: none; margin: 0; padding: 8vh 0 12vh; }
+.pausa-act--pilates .pausa-chapter-list { grid-column: 2; }
+.pausa-chapter { display: flex; flex-direction: column; justify-content: center; min-height: 78svh; opacity: 0.3; transition: opacity 600ms ease; }
 .pausa-chapter.is-active { opacity: 1; }
 .pausa-chapter-media { display: none; }
-.pausa-chapter-act { color: var(--pausa-beige); font-size: 0.78rem; font-variant-numeric: tabular-nums; font-weight: 600; letter-spacing: 0.16em; margin: 0 0 1rem; text-transform: uppercase; }
-.pausa-chapter h2 { font-size: clamp(2.2rem, 4vw, 3.9rem); letter-spacing: -0.02em; line-height: 1.02; max-width: 14ch; }
+.pausa-chapter-act { color: var(--pausa-accent); font-size: 0.78rem; font-variant-numeric: tabular-nums; font-weight: 600; letter-spacing: 0.16em; margin: 0 0 1rem; text-transform: uppercase; }
+.pausa-chapter h3 { font-family: "Prata", Georgia, serif; font-size: clamp(2.2rem, 4vw, 3.9rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.02; margin: 0; max-width: 14ch; }
 .pausa-chapter-text { font-size: clamp(1rem, 1.3vw, 1.18rem); line-height: 1.6; margin: 1.5rem 0 0; max-width: 31rem; opacity: 0.85; }
 .pausa-chapter .pausa-button { align-self: flex-start; margin-top: 2rem; }
 
 /* Contacto */
-.pausa-contact { background: var(--pausa-cream); color: var(--pausa-ink); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); min-height: calc(100svh - var(--pausa-nav)); scroll-margin-top: var(--pausa-nav); }
+.pausa-contact { background: var(--pausa-cream); border-top: 1px solid rgba(29, 38, 32, 0.12); color: var(--pausa-ink); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); min-height: calc(100svh - var(--pausa-nav)); scroll-margin-top: var(--pausa-nav); }
 .pausa-contact-copy { align-self: center; padding: clamp(3rem, 8vh, 6rem) var(--pausa-gutter); }
 .pausa-contact .pausa-eyebrow { color: var(--pausa-green); }
 .pausa-contact h2 { font-size: clamp(2.6rem, 5vw, 4.8rem); letter-spacing: -0.02em; line-height: 1; }
@@ -145,7 +161,9 @@
   .pausa-hero-switch a > span:last-child { font-size: 0.85rem; }
 
   /* En móvil no hay escenario fijo: cada capítulo lleva su foto. */
-  .pausa-chapters { display: block; }
+  .pausa-act-body { display: block; }
+  .pausa-act--pilates .pausa-act-head { align-items: flex-start; text-align: left; }
+  .pausa-act--pilates .pausa-act-index { align-self: flex-start; }
   .pausa-stage { display: none; }
   .pausa-chapter-list { padding: 3rem 0 2rem; }
   .pausa-chapter { min-height: 0; opacity: 1; padding: 0 0 3.5rem; }
