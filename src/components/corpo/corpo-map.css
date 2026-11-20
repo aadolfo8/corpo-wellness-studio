@@ -17,8 +17,8 @@
 @media (prefers-reduced-motion: reduce) { .corpo-map-shell .leaflet-zoom-animated { transition: none !important; } }
 .corpo-map-shell--duo { --map-accent: #2f4a3a; --map-ink: #1d2620; --map-paper: #efe6d4; }
 .corpo-map-shell--duo .leaflet-tile-pane { filter: grayscale(.85) sepia(.3) hue-rotate(20deg) saturate(.75) contrast(.92); }
-.corpo-map-shell--pausa { --map-accent: #e9dfcc; --map-ink: #1f3328; --map-paper: #f5efe3; }
+.corpo-map-shell--pausa { --map-accent: #e9dfcc; --map-ink: #3a5c48; --map-paper: #f5efe3; }
 .corpo-map-shell--pausa .leaflet-tile-pane { filter: grayscale(1) sepia(.35) hue-rotate(60deg) saturate(.55) brightness(.82) contrast(1.05); }
-.corpo-map-shell--pausa .corpo-map-marker__dot { background: #2f4a3a; }
+.corpo-map-shell--pausa .corpo-map-marker__dot { background: #4b7059; }
 .corpo-map-shell--mosaico { --map-accent: #2f4a3a; --map-ink: #1d2620; --map-paper: #f5efe3; }
 .corpo-map-shell--mosaico .leaflet-tile-pane { filter: grayscale(.8) sepia(.25) hue-rotate(25deg) saturate(.8) contrast(.94) brightness(1.03); }

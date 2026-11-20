@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import fisioPhoto from "@/assets/service-fisio.jpg";
-import reformerPhoto from "@/assets/hero-reformer.jpg";
+import heroFisioPhoto from "@/assets/pausa-hero-fisio.webp";
+import heroPilatesPhoto from "@/assets/pausa-hero-pilates.webp";
 import { CorpoLogo } from "@/components/corpo/CorpoLogo";
 import { CorpoMap } from "@/components/corpo/CorpoMap";
 import { CorpoMedia } from "@/components/corpo/CorpoMedia";
@@ -144,7 +144,7 @@ const ActSection = ({ act }: { act: Act }) => {
               <p className="pausa-chapter-text">{chapter.text}</p>
               {index === act.chapters.length - 1 && (
                 <a
-                  className={`pausa-button${act.id === "pilates" ? " pausa-button--dark" : ""}`}
+                  className={`pausa-button${act.id === "fisio" ? " pausa-button--dark" : ""}`}
                   href={corpo.bookingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -162,7 +162,7 @@ const ActSection = ({ act }: { act: Act }) => {
 
 /**
  * Propuesta «Pausa»: cinematográfica y lenta. Reels verticales en la portada, un acto por servicio
- * (cada uno con su color y su lado) con una imagen fija que cambia al bajar, y un cierre con el logotipo a todo lo ancho.
+ * (cada uno con su color y su lado) con una imagen fija que cambia al bajar, y un pie discreto.
  */
 const Pausa = () => {
   const pageRef = useRef<HTMLElement>(null);
@@ -231,7 +231,7 @@ const Pausa = () => {
           </ul>
         </div>
 
-        {/* Los vídeos son reels verticales: se muestran en su formato, como dos fotos de pie, para no perder calidad. */}
+        {/* Fotos de la clínica: la sala de fisioterapia y la de Pilates, en dos marcos cuadrados. */}
         <div className="pausa-reels" aria-hidden="true">
           {heroItems.map((item) => (
             <div
@@ -239,33 +239,11 @@ const Pausa = () => {
               className={`pausa-reel pausa-reel--${item.id}${heroFocus === item.id ? " is-active" : ""}`}
               onMouseEnter={() => chooseHero(item.id)}
             >
-              <CorpoMedia slot={item.id} fallback={item.id === "fisio" ? fisioPhoto : reformerPhoto} alt="" priority />
+              <img src={item.id === "fisio" ? heroFisioPhoto.src : heroPilatesPhoto.src} alt="" loading="eager" decoding="async" fetchPriority="high" />
               <span className="pausa-reel-label">{item.title}</span>
             </div>
           ))}
         </div>
-      </section>
-
-      <section className="pausa-intro" aria-labelledby="pausa-intro-title">
-        <h2 id="pausa-intro-title" className="pausa-reveal">Dos maneras de cuidar el cuerpo, <em>en el mismo sitio.</em></h2>
-        <ul className="pausa-intro-list pausa-reveal">
-          <li>
-            <a href="#fisioterapia">
-              <span className="pausa-intro-index">01</span>
-              <strong>Fisioterapia</strong>
-              <span className="pausa-intro-text">Cuando algo duele: valoración con ecógrafo, terapia manual y la tecnología que pida cada caso.</span>
-              <span className="pausa-intro-arrow" aria-hidden="true">↓</span>
-            </a>
-          </li>
-          <li>
-            <a href="#pilates">
-              <span className="pausa-intro-index">02</span>
-              <strong>Pilates Máquina</strong>
-              <span className="pausa-intro-text">Para ganar fuerza, control y movilidad sobre el Reformer, en grupos reducidos.</span>
-              <span className="pausa-intro-arrow" aria-hidden="true">↓</span>
-            </a>
-          </li>
-        </ul>
       </section>
 
       {acts.map((act) => <ActSection key={act.id} act={act} />)}
